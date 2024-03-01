@@ -11,9 +11,19 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-export * from './apis/auth-api';
-export * from './apis/pings-api';
-export * from './apis/proxies-api';
-export * from './apis/roles-api';
-export * from './apis/success-api';
 
+import { ProxyDto } from './proxy-dto';
+ /**
+ * 
+ *
+ * @export
+ * @interface CreateProxiesDto
+ */
+export interface CreateProxiesDto {
+
+    /**
+     * @type {Array<ProxyDto>}
+     * @memberof CreateProxiesDto
+     */
+    data: Array<ProxyDto>;
+}
