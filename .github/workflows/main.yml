@@ -12,9 +12,10 @@ jobs:
             - name: Mirror GitHub repository to GitLab
               env:
                   GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+                  GH_TOKEN: ${{ secrets.GH_TOKEN }}
                   GITLAB_API_REPO: ${{ secrets.GITLAB_API_REPO }}
               run: |
-                  git clone --mirror https://github.com/${{ github.repository }} github-repo
+                  git clone --mirror https://${GH_TOKEN}:x-oauth-basic@github.com/${{ github.repository }} github-repo
                   cd github-repo
                   git remote add gitlab https://oauth2:${GITLAB_TOKEN}@${GITLAB_API_REPO}
                   git push --mirror gitlab
