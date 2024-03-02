@@ -9,7 +9,8 @@
   "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc --outDir dist/",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "ts-node test.ts"
   },
   "dependencies": {
     "axios": "^0.21.1"
