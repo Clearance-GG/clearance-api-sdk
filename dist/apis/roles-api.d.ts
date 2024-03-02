@@ -81,7 +81,7 @@ export declare const RolesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rolesControllerCreateCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RoleCategoryDto>>>;
+    rolesControllerCreateCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Delete a role
@@ -112,7 +112,7 @@ export declare const RolesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rolesControllerUpdateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<RoleCategoryDto>>>;
+    rolesControllerUpdateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Upsert a role within a role category
@@ -134,7 +134,7 @@ export declare const RolesApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rolesControllerCreateCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<RoleCategoryDto>>;
+    rolesControllerCreateCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Delete a role
@@ -165,7 +165,7 @@ export declare const RolesApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rolesControllerUpdateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<RoleCategoryDto>>;
+    rolesControllerUpdateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Upsert a role within a role category
@@ -190,7 +190,7 @@ export declare class RolesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RolesApi
      */
-    rolesControllerCreateCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<RoleCategoryDto>>;
+    rolesControllerCreateCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Delete a role
@@ -225,7 +225,7 @@ export declare class RolesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RolesApi
      */
-    rolesControllerUpdateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<RoleCategoryDto>>;
+    rolesControllerUpdateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Upsert a role within a role category

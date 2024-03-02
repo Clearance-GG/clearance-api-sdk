@@ -12,6 +12,8 @@
 import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
+import { DiscordIdDto } from '../models';
+import { GetChannelIdsResponseDto } from '../models';
 import { LeaderboardEntryDto } from '../models';
 import { UpdateSuccessDTO } from '../models';
 import { UserDto } from '../models';
@@ -39,11 +41,27 @@ export declare const SuccessApiAxiosParamCreator: (configuration?: Configuration
     successControllerFindOne: (userId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get discord channel IDs
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    successControllerGeteChannelIds: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get the leaderboard for a guild
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     successControllerLeaderboard: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Add or update discord channel IDs
+     * @param {DiscordIdDto} body The channel id
+     * @param {string} channelId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    successControllerUpsertDiscordIds: (body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * SuccessApi - functional programming interface
@@ -69,11 +87,27 @@ export declare const SuccessApiFp: (configuration?: Configuration) => {
     successControllerFindOne(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<UserDto>>>;
     /**
      *
+     * @summary Get discord channel IDs
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    successControllerGeteChannelIds(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GetChannelIdsResponseDto>>>;
+    /**
+     *
      * @summary Get the leaderboard for a guild
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     successControllerLeaderboard(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<LeaderboardEntryDto>>>>;
+    /**
+     *
+     * @summary Add or update discord channel IDs
+     * @param {DiscordIdDto} body The channel id
+     * @param {string} channelId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    successControllerUpsertDiscordIds(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * SuccessApi - factory interface
@@ -99,11 +133,27 @@ export declare const SuccessApiFactory: (configuration?: Configuration, basePath
     successControllerFindOne(userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UserDto>>;
     /**
      *
+     * @summary Get discord channel IDs
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    successControllerGeteChannelIds(options?: AxiosRequestConfig): Promise<AxiosResponse<GetChannelIdsResponseDto>>;
+    /**
+     *
      * @summary Get the leaderboard for a guild
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     successControllerLeaderboard(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<LeaderboardEntryDto>>>;
+    /**
+     *
+     * @summary Add or update discord channel IDs
+     * @param {DiscordIdDto} body The channel id
+     * @param {string} channelId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    successControllerUpsertDiscordIds(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * SuccessApi - object-oriented interface
@@ -133,10 +183,28 @@ export declare class SuccessApi extends BaseAPI {
     successControllerFindOne(userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UserDto>>;
     /**
      *
+     * @summary Get discord channel IDs
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SuccessApi
+     */
+    successControllerGeteChannelIds(options?: AxiosRequestConfig): Promise<AxiosResponse<GetChannelIdsResponseDto>>;
+    /**
+     *
      * @summary Get the leaderboard for a guild
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SuccessApi
      */
     successControllerLeaderboard(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<LeaderboardEntryDto>>>;
+    /**
+     *
+     * @summary Add or update discord channel IDs
+     * @param {DiscordIdDto} body The channel id
+     * @param {string} channelId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SuccessApi
+     */
+    successControllerUpsertDiscordIds(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }

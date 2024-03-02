@@ -56,7 +56,7 @@ export declare const PingsApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<CreateUpdatePingDto>>>;
+    pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Delete a ping
@@ -86,7 +86,7 @@ export declare const PingsApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<CreateUpdatePingDto>>;
+    pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Delete a ping
@@ -119,7 +119,7 @@ export declare class PingsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PingsApi
      */
-    pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<CreateUpdatePingDto>>;
+    pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Delete a ping
