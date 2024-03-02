@@ -22,4 +22,49 @@ export interface SignInResponse {
      * @example eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
      */
     accessToken: string;
+    /**
+     * @type {string}
+     * @memberof SignInResponse
+     */
+    groupName: string;
+    /**
+     * @type {string}
+     * @memberof SignInResponse
+     */
+    userRoleId: string;
+    /**
+     * @type {string}
+     * @memberof SignInResponse
+     */
+    supportRoleId: string;
+    /**
+     * @type {string}
+     * @memberof SignInResponse
+     */
+    adminRoleId: string;
+    /**
+     * @type {string}
+     * @memberof SignInResponse
+     */
+    ownerRoleId: string;
+    /**
+     * @type {boolean}
+     * @memberof SignInResponse
+     */
+    customBranding: boolean;
+    /**
+     * @type {string}
+     * @memberof SignInResponse
+     */
+    moduleIconUrl: string;
+    /**
+     * @type {string}
+     * @memberof SignInResponse
+     */
+    guildIconUrl: string;
+    /**
+     * @type {string}
+     * @memberof SignInResponse
+     */
+    embedColor: string;
 }

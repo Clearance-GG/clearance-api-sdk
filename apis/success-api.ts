@@ -43,7 +43,7 @@ export const SuccessApiAxiosParamCreator = function (configuration?: Configurati
             if (userId === null || userId === undefined) {
                 throw new RequiredError('userId','Required parameter userId was null or undefined when calling successControllerCreate.');
             }
-            const localVarPath = `/success/{userId}`
+            const localVarPath = `/api/success/{userId}`
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -96,7 +96,7 @@ export const SuccessApiAxiosParamCreator = function (configuration?: Configurati
             if (userId === null || userId === undefined) {
                 throw new RequiredError('userId','Required parameter userId was null or undefined when calling successControllerFindOne.');
             }
-            const localVarPath = `/success/{userId}`
+            const localVarPath = `/api/success/{userId}`
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -140,7 +140,7 @@ export const SuccessApiAxiosParamCreator = function (configuration?: Configurati
          * @throws {RequiredError}
          */
         successControllerLeaderboard: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/success/leaderboard`;
+            const localVarPath = `/api/success/leaderboard`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;

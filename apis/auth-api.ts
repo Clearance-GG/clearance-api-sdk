@@ -37,7 +37,7 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling authControllerSignIn.');
             }
-            const localVarPath = `/auth/signin`;
+            const localVarPath = `/api/auth/signin`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;

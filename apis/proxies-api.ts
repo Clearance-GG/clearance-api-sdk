@@ -36,7 +36,7 @@ export const ProxiesApiAxiosParamCreator = function (configuration?: Configurati
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling proxiesControllerAddProxies.');
             }
-            const localVarPath = `/proxies/add`;
+            const localVarPath = `/api/proxies/add`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -83,7 +83,7 @@ export const ProxiesApiAxiosParamCreator = function (configuration?: Configurati
          * @throws {RequiredError}
          */
         proxiesControllerDeleteAllProxies: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/proxies/delete`;
+            const localVarPath = `/api/proxies/delete`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -126,7 +126,7 @@ export const ProxiesApiAxiosParamCreator = function (configuration?: Configurati
          * @throws {RequiredError}
          */
         proxiesControllerFetchAllProxies: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/proxies/fetch`;
+            const localVarPath = `/api/proxies/fetch`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;

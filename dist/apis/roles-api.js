@@ -105,7 +105,7 @@ var RolesApiAxiosParamCreator = function (configuration) {
                             if (body === null || body === undefined) {
                                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling rolesControllerCreateCategory.');
                             }
-                            localVarPath = "/roles/create-category";
+                            localVarPath = "/api/roles/create-category";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
@@ -167,7 +167,7 @@ var RolesApiAxiosParamCreator = function (configuration) {
                             if (body === null || body === undefined) {
                                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling rolesControllerDeleteRole.');
                             }
-                            localVarPath = "/roles/delete";
+                            localVarPath = "/api/roles/delete";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
@@ -229,7 +229,7 @@ var RolesApiAxiosParamCreator = function (configuration) {
                             if (body === null || body === undefined) {
                                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling rolesControllerDeleteRoleCategory.');
                             }
-                            localVarPath = "/roles/delete-category";
+                            localVarPath = "/api/roles/delete-category";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
@@ -286,7 +286,7 @@ var RolesApiAxiosParamCreator = function (configuration) {
                 return __generator(this, function (_b) {
                     switch (_b.label) {
                         case 0:
-                            localVarPath = "/roles/dump";
+                            localVarPath = "/api/roles/dump";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
@@ -345,7 +345,7 @@ var RolesApiAxiosParamCreator = function (configuration) {
                             if (body === null || body === undefined) {
                                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling rolesControllerUpdateRoleCategory.');
                             }
-                            localVarPath = "/roles/update-category";
+                            localVarPath = "/api/roles/update-category";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
@@ -407,7 +407,7 @@ var RolesApiAxiosParamCreator = function (configuration) {
                             if (body === null || body === undefined) {
                                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling rolesControllerUpsertRole.');
                             }
-                            localVarPath = "/roles/upsert";
+                            localVarPath = "/api/roles/upsert";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;

@@ -105,7 +105,7 @@ var PingsApiAxiosParamCreator = function (configuration) {
                             if (body === null || body === undefined) {
                                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling pingsControllerAddPing.');
                             }
-                            localVarPath = "/pings";
+                            localVarPath = "/api/pings";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
@@ -167,7 +167,7 @@ var PingsApiAxiosParamCreator = function (configuration) {
                             if (body === null || body === undefined) {
                                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling pingsControllerDeletePing.');
                             }
-                            localVarPath = "/pings";
+                            localVarPath = "/api/pings";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
@@ -229,7 +229,7 @@ var PingsApiAxiosParamCreator = function (configuration) {
                             if (body === null || body === undefined) {
                                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling pingsControllerUpdatePing.');
                             }
-                            localVarPath = "/pings";
+                            localVarPath = "/api/pings";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;

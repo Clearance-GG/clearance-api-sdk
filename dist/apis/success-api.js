@@ -110,7 +110,7 @@ var SuccessApiAxiosParamCreator = function (configuration) {
                             if (userId === null || userId === undefined) {
                                 throw new base_1.RequiredError('userId', 'Required parameter userId was null or undefined when calling successControllerCreate.');
                             }
-                            localVarPath = "/success/{userId}"
+                            localVarPath = "/api/success/{userId}"
                                 .replace("{".concat("userId", "}"), encodeURIComponent(String(userId)));
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
@@ -173,7 +173,7 @@ var SuccessApiAxiosParamCreator = function (configuration) {
                             if (userId === null || userId === undefined) {
                                 throw new base_1.RequiredError('userId', 'Required parameter userId was null or undefined when calling successControllerFindOne.');
                             }
-                            localVarPath = "/success/{userId}"
+                            localVarPath = "/api/success/{userId}"
                                 .replace("{".concat("userId", "}"), encodeURIComponent(String(userId)));
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
@@ -228,7 +228,7 @@ var SuccessApiAxiosParamCreator = function (configuration) {
                 return __generator(this, function (_b) {
                     switch (_b.label) {
                         case 0:
-                            localVarPath = "/success/leaderboard";
+                            localVarPath = "/api/success/leaderboard";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;

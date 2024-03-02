@@ -37,7 +37,7 @@ export const PingsApiAxiosParamCreator = function (configuration?: Configuration
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling pingsControllerAddPing.');
             }
-            const localVarPath = `/pings`;
+            const localVarPath = `/api/pings`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -89,7 +89,7 @@ export const PingsApiAxiosParamCreator = function (configuration?: Configuration
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling pingsControllerDeletePing.');
             }
-            const localVarPath = `/pings`;
+            const localVarPath = `/api/pings`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -141,7 +141,7 @@ export const PingsApiAxiosParamCreator = function (configuration?: Configuration
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling pingsControllerUpdatePing.');
             }
-            const localVarPath = `/pings`;
+            const localVarPath = `/api/pings`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;

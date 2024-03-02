@@ -105,7 +105,7 @@ var ProxiesApiAxiosParamCreator = function (configuration) {
                             if (body === null || body === undefined) {
                                 throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling proxiesControllerAddProxies.');
                             }
-                            localVarPath = "/proxies/add";
+                            localVarPath = "/api/proxies/add";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
@@ -162,7 +162,7 @@ var ProxiesApiAxiosParamCreator = function (configuration) {
                 return __generator(this, function (_b) {
                     switch (_b.label) {
                         case 0:
-                            localVarPath = "/proxies/delete";
+                            localVarPath = "/api/proxies/delete";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
@@ -216,7 +216,7 @@ var ProxiesApiAxiosParamCreator = function (configuration) {
                 return __generator(this, function (_b) {
                     switch (_b.label) {
                         case 0:
-                            localVarPath = "/proxies/fetch";
+                            localVarPath = "/api/proxies/fetch";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;

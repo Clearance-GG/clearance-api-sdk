@@ -39,7 +39,7 @@ export const RolesApiAxiosParamCreator = function (configuration?: Configuration
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling rolesControllerCreateCategory.');
             }
-            const localVarPath = `/roles/create-category`;
+            const localVarPath = `/api/roles/create-category`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -91,7 +91,7 @@ export const RolesApiAxiosParamCreator = function (configuration?: Configuration
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling rolesControllerDeleteRole.');
             }
-            const localVarPath = `/roles/delete`;
+            const localVarPath = `/api/roles/delete`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -143,7 +143,7 @@ export const RolesApiAxiosParamCreator = function (configuration?: Configuration
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling rolesControllerDeleteRoleCategory.');
             }
-            const localVarPath = `/roles/delete-category`;
+            const localVarPath = `/api/roles/delete-category`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -190,7 +190,7 @@ export const RolesApiAxiosParamCreator = function (configuration?: Configuration
          * @throws {RequiredError}
          */
         rolesControllerDumpRoles: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/roles/dump`;
+            const localVarPath = `/api/roles/dump`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -238,7 +238,7 @@ export const RolesApiAxiosParamCreator = function (configuration?: Configuration
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling rolesControllerUpdateRoleCategory.');
             }
-            const localVarPath = `/roles/update-category`;
+            const localVarPath = `/api/roles/update-category`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -290,7 +290,7 @@ export const RolesApiAxiosParamCreator = function (configuration?: Configuration
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling rolesControllerUpsertRole.');
             }
-            const localVarPath = `/roles/upsert`;
+            const localVarPath = `/api/roles/upsert`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;

@@ -103,7 +103,7 @@ var AuthApiAxiosParamCreator = function (configuration) {
                     if (body === null || body === undefined) {
                         throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling authControllerSignIn.');
                     }
-                    localVarPath = "/auth/signin";
+                    localVarPath = "/api/auth/signin";
                     localVarUrlObj = new URL(localVarPath, 'https://example.com');
                     if (configuration) {
                         baseOptions = configuration.baseOptions;
