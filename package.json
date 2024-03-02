@@ -1,9 +1,15 @@
 {
-  "name": "clearance-api-sdk",
+  "name": "",
   "version": "1.0.0",
-  "description": "API client for Clearance GG",
-  "author": "moinke",
-  "keywords": [],
+  "description": "OpenAPI client for ",
+  "author": "OpenAPI-Generator Contributors",
+  "keywords": [
+    "axios",
+    "typescript",
+    "openapi-client",
+    "openapi-generator",
+    ""
+  ],
   "license": "Unlicense",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",

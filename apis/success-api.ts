@@ -17,7 +17,9 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { LeaderboardEntryDto } from '../models';
 import { UpdateSuccessDTO } from '../models';
+import { UserDto } from '../models';
 /**
  * SuccessApi - axios parameter creator
  * @export
@@ -205,7 +207,7 @@ export const SuccessApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async successControllerFindOne(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+        async successControllerFindOne(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<UserDto>>> {
             const localVarAxiosArgs = await SuccessApiAxiosParamCreator(configuration).successControllerFindOne(userId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -218,7 +220,7 @@ export const SuccessApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async successControllerLeaderboard(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+        async successControllerLeaderboard(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<LeaderboardEntryDto>>>> {
             const localVarAxiosArgs = await SuccessApiAxiosParamCreator(configuration).successControllerLeaderboard(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -252,7 +254,7 @@ export const SuccessApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async successControllerFindOne(userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+        async successControllerFindOne(userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UserDto>> {
             return SuccessApiFp(configuration).successControllerFindOne(userId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -261,7 +263,7 @@ export const SuccessApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async successControllerLeaderboard(options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+        async successControllerLeaderboard(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<LeaderboardEntryDto>>> {
             return SuccessApiFp(configuration).successControllerLeaderboard(options).then((request) => request(axios, basePath));
         },
     };
@@ -294,7 +296,7 @@ export class SuccessApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SuccessApi
      */
-    public async successControllerFindOne(userId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+    public async successControllerFindOne(userId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<UserDto>> {
         return SuccessApiFp(this.configuration).successControllerFindOne(userId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -304,7 +306,7 @@ export class SuccessApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SuccessApi
      */
-    public async successControllerLeaderboard(options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+    public async successControllerLeaderboard(options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<LeaderboardEntryDto>>> {
         return SuccessApiFp(this.configuration).successControllerLeaderboard(options).then((request) => request(this.axios, this.basePath));
     }
 }

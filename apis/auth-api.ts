@@ -18,6 +18,7 @@ import { Configuration } from '../configuration';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { AuthDTO } from '../models';
+import { SignInResponse } from '../models';
 /**
  * AuthApi - axios parameter creator
  * @export
@@ -83,7 +84,7 @@ export const AuthApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authControllerSignIn(body: AuthDTO, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+        async authControllerSignIn(body: AuthDTO, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SignInResponse>>> {
             const localVarAxiosArgs = await AuthApiAxiosParamCreator(configuration).authControllerSignIn(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -106,7 +107,7 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authControllerSignIn(body: AuthDTO, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+        async authControllerSignIn(body: AuthDTO, options?: AxiosRequestConfig): Promise<AxiosResponse<SignInResponse>> {
             return AuthApiFp(configuration).authControllerSignIn(body, options).then((request) => request(axios, basePath));
         },
     };
@@ -127,7 +128,7 @@ export class AuthApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    public async authControllerSignIn(body: AuthDTO, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+    public async authControllerSignIn(body: AuthDTO, options?: AxiosRequestConfig) : Promise<AxiosResponse<SignInResponse>> {
         return AuthApiFp(this.configuration).authControllerSignIn(body, options).then((request) => request(this.axios, this.basePath));
     }
 }
