@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "API client for Clearance GG",
   "author": "moinke",
-  "keywords": [],,
+  "keywords": [],
   "license": "Unlicense",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
