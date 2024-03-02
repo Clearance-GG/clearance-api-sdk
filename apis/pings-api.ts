@@ -197,7 +197,7 @@ export const PingsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<CreateUpdatePingDto>>> {
+        async pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await PingsApiAxiosParamCreator(configuration).pingsControllerAddPing(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -248,7 +248,7 @@ export const PingsApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<CreateUpdatePingDto>> {
+        async pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return PingsApiFp(configuration).pingsControllerAddPing(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -289,7 +289,7 @@ export class PingsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PingsApi
      */
-    public async pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<CreateUpdatePingDto>> {
+    public async pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return PingsApiFp(this.configuration).pingsControllerAddPing(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
