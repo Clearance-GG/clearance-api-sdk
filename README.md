@@ -45,3 +45,7 @@ _unPublished (not recommended):_
 npm install PATH_TO_GENERATED_PACKAGE --save
 
 swagger-codegen generate -i http://localhost:3000/docs-json -l typescript-axios
+
+npm i
+
+tsc
