@@ -39,12 +39,13 @@ export declare const SuccessApiAxiosParamCreator: (configuration?: Configuration
     /**
      *
      * @summary Get success ledger info for a specific message ID
+     * @param {string} userId The user to check for
      * @param {string} channelId The ID of the channel to fetch info from
      * @param {string} messageId The ID of the message to fetch info from
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    successControllerGetSuccessLedgerInfo: (channelId: string, messageId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    successControllerGetSuccessLedgerInfo: (userId: string, channelId: string, messageId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update or create success points for a user
@@ -86,12 +87,13 @@ export declare const SuccessApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get success ledger info for a specific message ID
+     * @param {string} userId The user to check for
      * @param {string} channelId The ID of the channel to fetch info from
      * @param {string} messageId The ID of the message to fetch info from
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    successControllerGetSuccessLedgerInfo(channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<boolean>>>;
+    successControllerGetSuccessLedgerInfo(userId: string, channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<boolean>>>;
     /**
      *
      * @summary Update or create success points for a user
@@ -133,12 +135,13 @@ export declare const SuccessApiFactory: (configuration?: Configuration, basePath
     /**
      *
      * @summary Get success ledger info for a specific message ID
+     * @param {string} userId The user to check for
      * @param {string} channelId The ID of the channel to fetch info from
      * @param {string} messageId The ID of the message to fetch info from
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    successControllerGetSuccessLedgerInfo(channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>>;
+    successControllerGetSuccessLedgerInfo(userId: string, channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>>;
     /**
      *
      * @summary Update or create success points for a user
@@ -184,13 +187,14 @@ export declare class SuccessApi extends BaseAPI {
     /**
      *
      * @summary Get success ledger info for a specific message ID
+     * @param {string} userId The user to check for
      * @param {string} channelId The ID of the channel to fetch info from
      * @param {string} messageId The ID of the message to fetch info from
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SuccessApi
      */
-    successControllerGetSuccessLedgerInfo(channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>>;
+    successControllerGetSuccessLedgerInfo(userId: string, channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>>;
     /**
      *
      * @summary Update or create success points for a user

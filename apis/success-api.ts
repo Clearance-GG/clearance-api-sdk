@@ -117,12 +117,17 @@ export const SuccessApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Get success ledger info for a specific message ID
+         * @param {string} userId The user to check for
          * @param {string} channelId The ID of the channel to fetch info from
          * @param {string} messageId The ID of the message to fetch info from
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerGetSuccessLedgerInfo: async (channelId: string, messageId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        successControllerGetSuccessLedgerInfo: async (userId: string, channelId: string, messageId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            if (userId === null || userId === undefined) {
+                throw new RequiredError('userId','Required parameter userId was null or undefined when calling successControllerGetSuccessLedgerInfo.');
+            }
             // verify required parameter 'channelId' is not null or undefined
             if (channelId === null || channelId === undefined) {
                 throw new RequiredError('channelId','Required parameter channelId was null or undefined when calling successControllerGetSuccessLedgerInfo.');
@@ -131,7 +136,8 @@ export const SuccessApiAxiosParamCreator = function (configuration?: Configurati
             if (messageId === null || messageId === undefined) {
                 throw new RequiredError('messageId','Required parameter messageId was null or undefined when calling successControllerGetSuccessLedgerInfo.');
             }
-            const localVarPath = `/api/success/ledger/{channelId}/{messageId}`
+            const localVarPath = `/api/success/ledger/{userId}/{channelId}/{messageId}`
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)))
                 .replace(`{${"channelId"}}`, encodeURIComponent(String(channelId)))
                 .replace(`{${"messageId"}}`, encodeURIComponent(String(messageId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -323,13 +329,14 @@ export const SuccessApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get success ledger info for a specific message ID
+         * @param {string} userId The user to check for
          * @param {string} channelId The ID of the channel to fetch info from
          * @param {string} messageId The ID of the message to fetch info from
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async successControllerGetSuccessLedgerInfo(channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<boolean>>> {
-            const localVarAxiosArgs = await SuccessApiAxiosParamCreator(configuration).successControllerGetSuccessLedgerInfo(channelId, messageId, options);
+        async successControllerGetSuccessLedgerInfo(userId: string, channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<boolean>>> {
+            const localVarAxiosArgs = await SuccessApiAxiosParamCreator(configuration).successControllerGetSuccessLedgerInfo(userId, channelId, messageId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -395,13 +402,14 @@ export const SuccessApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Get success ledger info for a specific message ID
+         * @param {string} userId The user to check for
          * @param {string} channelId The ID of the channel to fetch info from
          * @param {string} messageId The ID of the message to fetch info from
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async successControllerGetSuccessLedgerInfo(channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>> {
-            return SuccessApiFp(configuration).successControllerGetSuccessLedgerInfo(channelId, messageId, options).then((request) => request(axios, basePath));
+        async successControllerGetSuccessLedgerInfo(userId: string, channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>> {
+            return SuccessApiFp(configuration).successControllerGetSuccessLedgerInfo(userId, channelId, messageId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -458,14 +466,15 @@ export class SuccessApi extends BaseAPI {
     /**
      * 
      * @summary Get success ledger info for a specific message ID
+     * @param {string} userId The user to check for
      * @param {string} channelId The ID of the channel to fetch info from
      * @param {string} messageId The ID of the message to fetch info from
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SuccessApi
      */
-    public async successControllerGetSuccessLedgerInfo(channelId: string, messageId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<boolean>> {
-        return SuccessApiFp(this.configuration).successControllerGetSuccessLedgerInfo(channelId, messageId, options).then((request) => request(this.axios, this.basePath));
+    public async successControllerGetSuccessLedgerInfo(userId: string, channelId: string, messageId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<boolean>> {
+        return SuccessApiFp(this.configuration).successControllerGetSuccessLedgerInfo(userId, channelId, messageId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

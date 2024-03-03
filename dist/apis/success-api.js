@@ -198,18 +198,23 @@ var SuccessApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Get success ledger info for a specific message ID
+         * @param {string} userId The user to check for
          * @param {string} channelId The ID of the channel to fetch info from
          * @param {string} messageId The ID of the message to fetch info from
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerGetSuccessLedgerInfo: function (channelId, messageId, options) {
+        successControllerGetSuccessLedgerInfo: function (userId, channelId, messageId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
                 return __generator(this, function (_b) {
                     switch (_b.label) {
                         case 0:
+                            // verify required parameter 'userId' is not null or undefined
+                            if (userId === null || userId === undefined) {
+                                throw new base_1.RequiredError('userId', 'Required parameter userId was null or undefined when calling successControllerGetSuccessLedgerInfo.');
+                            }
                             // verify required parameter 'channelId' is not null or undefined
                             if (channelId === null || channelId === undefined) {
                                 throw new base_1.RequiredError('channelId', 'Required parameter channelId was null or undefined when calling successControllerGetSuccessLedgerInfo.');
@@ -218,7 +223,8 @@ var SuccessApiAxiosParamCreator = function (configuration) {
                             if (messageId === null || messageId === undefined) {
                                 throw new base_1.RequiredError('messageId', 'Required parameter messageId was null or undefined when calling successControllerGetSuccessLedgerInfo.');
                             }
-                            localVarPath = "/api/success/ledger/{channelId}/{messageId}"
+                            localVarPath = "/api/success/ledger/{userId}/{channelId}/{messageId}"
+                                .replace("{".concat("userId", "}"), encodeURIComponent(String(userId)))
                                 .replace("{".concat("channelId", "}"), encodeURIComponent(String(channelId)))
                                 .replace("{".concat("messageId", "}"), encodeURIComponent(String(messageId)));
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -457,17 +463,18 @@ var SuccessApiFp = function (configuration) {
         /**
          *
          * @summary Get success ledger info for a specific message ID
+         * @param {string} userId The user to check for
          * @param {string} channelId The ID of the channel to fetch info from
          * @param {string} messageId The ID of the message to fetch info from
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerGetSuccessLedgerInfo: function (channelId, messageId, options) {
+        successControllerGetSuccessLedgerInfo: function (userId, channelId, messageId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.SuccessApiAxiosParamCreator)(configuration).successControllerGetSuccessLedgerInfo(channelId, messageId, options)];
+                        case 0: return [4 /*yield*/, (0, exports.SuccessApiAxiosParamCreator)(configuration).successControllerGetSuccessLedgerInfo(userId, channelId, messageId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -570,15 +577,16 @@ var SuccessApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Get success ledger info for a specific message ID
+         * @param {string} userId The user to check for
          * @param {string} channelId The ID of the channel to fetch info from
          * @param {string} messageId The ID of the message to fetch info from
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerGetSuccessLedgerInfo: function (channelId, messageId, options) {
+        successControllerGetSuccessLedgerInfo: function (userId, channelId, messageId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.SuccessApiFp)(configuration).successControllerGetSuccessLedgerInfo(channelId, messageId, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.SuccessApiFp)(configuration).successControllerGetSuccessLedgerInfo(userId, channelId, messageId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -659,17 +667,18 @@ var SuccessApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Get success ledger info for a specific message ID
+     * @param {string} userId The user to check for
      * @param {string} channelId The ID of the channel to fetch info from
      * @param {string} messageId The ID of the message to fetch info from
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SuccessApi
      */
-    SuccessApi.prototype.successControllerGetSuccessLedgerInfo = function (channelId, messageId, options) {
+    SuccessApi.prototype.successControllerGetSuccessLedgerInfo = function (userId, channelId, messageId, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.SuccessApiFp)(this.configuration).successControllerGetSuccessLedgerInfo(channelId, messageId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.SuccessApiFp)(this.configuration).successControllerGetSuccessLedgerInfo(userId, channelId, messageId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

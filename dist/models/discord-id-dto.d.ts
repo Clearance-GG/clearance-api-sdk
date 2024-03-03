@@ -37,10 +37,10 @@ export interface DiscordIdDto {
      */
     maxMultiplier?: number;
     /**
-     * @type {string}
+     * @type {Array<string>}
      * @memberof DiscordIdDto
      */
-    emoji?: string;
+    emojis?: Array<string>;
     /**
      * @type {boolean}
      * @memberof DiscordIdDto
