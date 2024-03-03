@@ -1,3 +1,6 @@
+"use strict";
+/* tslint:disable */
+/* eslint-disable */
 /**
  * Clearance API
  * Clearance.gg API docs for all the bots and monitors
@@ -9,9 +12,4 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-export * from './apis/auth-api';
-export * from './apis/pings-api';
-export * from './apis/proxies-api';
-export * from './apis/roles-api';
-export * from './apis/success-api';
-export * from './apis/users-api';
+Object.defineProperty(exports, "__esModule", { value: true });

@@ -39,6 +39,24 @@ export interface UserDto {
     points: number;
 
     /**
+     * @type {string}
+     * @memberof UserDto
+     */
+    twitterHandle?: string;
+
+    /**
+     * @type {string}
+     * @memberof UserDto
+     */
+    instagramHandle?: string;
+
+    /**
+     * @type {boolean}
+     * @memberof UserDto
+     */
+    whopReview: boolean;
+
+    /**
      * @type {Date}
      * @memberof UserDto
      */

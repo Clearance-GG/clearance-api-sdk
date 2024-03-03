@@ -43,7 +43,19 @@ export interface SignInResponse {
      * @type {string}
      * @memberof SignInResponse
      */
-    supportRoleId: string;
+    supportRoleId?: string;
+
+    /**
+     * @type {string}
+     * @memberof SignInResponse
+     */
+    staffRoleId?: string;
+
+    /**
+     * @type {string}
+     * @memberof SignInResponse
+     */
+    modRoleId?: string;
 
     /**
      * @type {string}
@@ -67,17 +79,29 @@ export interface SignInResponse {
      * @type {string}
      * @memberof SignInResponse
      */
-    moduleIconUrl: string;
+    moduleIconUrl?: string;
 
     /**
      * @type {string}
      * @memberof SignInResponse
      */
-    guildIconUrl: string;
+    guildIconUrl?: string;
 
     /**
      * @type {string}
      * @memberof SignInResponse
      */
-    embedColor: string;
+    embedColor?: string;
+
+    /**
+     * @type {string}
+     * @memberof SignInResponse
+     */
+    twitterHandle?: string;
+
+    /**
+     * @type {string}
+     * @memberof SignInResponse
+     */
+    instagramHandle?: string;
 }

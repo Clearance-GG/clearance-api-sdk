@@ -30,17 +30,17 @@ export interface DiscordIdDto {
      * @type {number}
      * @memberof DiscordIdDto
      */
-    amount: number;
+    amount?: number;
 
     /**
      * @type {number}
      * @memberof DiscordIdDto
      */
-    tweetAmount: number;
+    tweetAmount?: number;
 
     /**
      * @type {number}
      * @memberof DiscordIdDto
      */
-    maxMultiplier: number;
+    maxMultiplier?: number;
 }

@@ -157,71 +157,11 @@ var SuccessApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Find success data for a specific user
-         * @param {string} userId The ID of the user to find
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        successControllerFindOne: function (userId, options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
-                        case 0:
-                            // verify required parameter 'userId' is not null or undefined
-                            if (userId === null || userId === undefined) {
-                                throw new base_1.RequiredError('userId', 'Required parameter userId was null or undefined when calling successControllerFindOne.');
-                            }
-                            localVarPath = "/api/success/{userId}"
-                                .replace("{".concat("userId", "}"), encodeURIComponent(String(userId)));
-                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                            if (configuration) {
-                                baseOptions = configuration.baseOptions;
-                            }
-                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                            localVarHeaderParameter = {};
-                            localVarQueryParameter = {};
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
-                            return [4 /*yield*/, configuration.accessToken()];
-                        case 1:
-                            _a = _b.sent();
-                            return [3 /*break*/, 4];
-                        case 2: return [4 /*yield*/, configuration.accessToken];
-                        case 3:
-                            _a = _b.sent();
-                            _b.label = 4;
-                        case 4:
-                            accessToken = _a;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-                            _b.label = 5;
-                        case 5:
-                            query = new URLSearchParams(localVarUrlObj.search);
-                            for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
-                            }
-                            for (key in options.params) {
-                                query.set(key, options.params[key]);
-                            }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            return [2 /*return*/, {
-                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                                    options: localVarRequestOptions,
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         *
          * @summary Get discord channel IDs
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerGeteChannelIds: function (options) {
+        successControllerGetChannelIds: function (options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
@@ -327,7 +267,7 @@ var SuccessApiAxiosParamCreator = function (configuration) {
          *
          * @summary Add or update discord channel IDs
          * @param {DiscordIdDto} body The channel id
-         * @param {string} channelId
+         * @param {string} channelId The ID of the channel to update
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -346,7 +286,7 @@ var SuccessApiAxiosParamCreator = function (configuration) {
                             if (channelId === null || channelId === undefined) {
                                 throw new base_1.RequiredError('channelId', 'Required parameter channelId was null or undefined when calling successControllerUpsertDiscordIds.');
                             }
-                            localVarPath = "/api/success/ids"
+                            localVarPath = "/api/success/ids/{channelId}"
                                 .replace("{".concat("channelId", "}"), encodeURIComponent(String(channelId)));
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
@@ -428,41 +368,16 @@ var SuccessApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Find success data for a specific user
-         * @param {string} userId The ID of the user to find
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        successControllerFindOne: function (userId, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.SuccessApiAxiosParamCreator)(configuration).successControllerFindOne(userId, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         *
          * @summary Get discord channel IDs
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerGeteChannelIds: function (options) {
+        successControllerGetChannelIds: function (options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.SuccessApiAxiosParamCreator)(configuration).successControllerGeteChannelIds(options)];
+                        case 0: return [4 /*yield*/, (0, exports.SuccessApiAxiosParamCreator)(configuration).successControllerGetChannelIds(options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -503,7 +418,7 @@ var SuccessApiFp = function (configuration) {
          *
          * @summary Add or update discord channel IDs
          * @param {DiscordIdDto} body The channel id
-         * @param {string} channelId
+         * @param {string} channelId The ID of the channel to update
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -551,28 +466,14 @@ var SuccessApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Find success data for a specific user
-         * @param {string} userId The ID of the user to find
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        successControllerFindOne: function (userId, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.SuccessApiFp)(configuration).successControllerFindOne(userId, options).then(function (request) { return request(axios, basePath); })];
-                });
-            });
-        },
-        /**
-         *
          * @summary Get discord channel IDs
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerGeteChannelIds: function (options) {
+        successControllerGetChannelIds: function (options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.SuccessApiFp)(configuration).successControllerGeteChannelIds(options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.SuccessApiFp)(configuration).successControllerGetChannelIds(options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -593,7 +494,7 @@ var SuccessApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Add or update discord channel IDs
          * @param {DiscordIdDto} body The channel id
-         * @param {string} channelId
+         * @param {string} channelId The ID of the channel to update
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -637,32 +538,16 @@ var SuccessApi = /** @class */ (function (_super) {
     };
     /**
      *
-     * @summary Find success data for a specific user
-     * @param {string} userId The ID of the user to find
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SuccessApi
-     */
-    SuccessApi.prototype.successControllerFindOne = function (userId, options) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.SuccessApiFp)(this.configuration).successControllerFindOne(userId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
-            });
-        });
-    };
-    /**
-     *
      * @summary Get discord channel IDs
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SuccessApi
      */
-    SuccessApi.prototype.successControllerGeteChannelIds = function (options) {
+    SuccessApi.prototype.successControllerGetChannelIds = function (options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.SuccessApiFp)(this.configuration).successControllerGeteChannelIds(options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.SuccessApiFp)(this.configuration).successControllerGetChannelIds(options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
@@ -685,7 +570,7 @@ var SuccessApi = /** @class */ (function (_super) {
      *
      * @summary Add or update discord channel IDs
      * @param {DiscordIdDto} body The channel id
-     * @param {string} channelId
+     * @param {string} channelId The ID of the channel to update
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SuccessApi

@@ -75,27 +75,27 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PingsApi = exports.PingsApiFactory = exports.PingsApiFp = exports.PingsApiAxiosParamCreator = void 0;
+exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiAxiosParamCreator = void 0;
 var axios_1 = require("axios");
 // Some imports not used depending on template conditions
 // @ts-ignore
 var base_1 = require("../base");
 /**
- * PingsApi - axios parameter creator
+ * UsersApi - axios parameter creator
  * @export
  */
-var PingsApiAxiosParamCreator = function (configuration) {
+var UsersApiAxiosParamCreator = function (configuration) {
     var _this = this;
     return {
         /**
          *
-         * @summary Add a new ping
-         * @param {CreateUpdatePingDto} body
-         * @param {string} channelId The ID of the channel to add a ping for
+         * @summary Update or create user data
+         * @param {UpsertUserDto} body The info to update/create
+         * @param {string} userId The ID of the user to update/create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingsControllerAddPing: function (body, channelId, options) {
+        usersControllerCreate: function (body, userId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions, needsSerialization;
@@ -104,14 +104,14 @@ var PingsApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'body' is not null or undefined
                             if (body === null || body === undefined) {
-                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling pingsControllerAddPing.');
+                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling usersControllerCreate.');
                             }
-                            // verify required parameter 'channelId' is not null or undefined
-                            if (channelId === null || channelId === undefined) {
-                                throw new base_1.RequiredError('channelId', 'Required parameter channelId was null or undefined when calling pingsControllerAddPing.');
+                            // verify required parameter 'userId' is not null or undefined
+                            if (userId === null || userId === undefined) {
+                                throw new base_1.RequiredError('userId', 'Required parameter userId was null or undefined when calling usersControllerCreate.');
                             }
-                            localVarPath = "/api/pings/{channelId}"
-                                .replace("{".concat("channelId", "}"), encodeURIComponent(String(channelId)));
+                            localVarPath = "/api/users/{userId}"
+                                .replace("{".concat("userId", "}"), encodeURIComponent(String(userId)));
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
@@ -157,29 +157,29 @@ var PingsApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Delete a ping
-         * @param {string} channelId The ID of the channel to add a ping for
+         * @summary Find data for a specific user
+         * @param {string} userId The ID of the user to find
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingsControllerDeletePing: function (channelId, options) {
+        usersControllerFindOne: function (userId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
                 return __generator(this, function (_b) {
                     switch (_b.label) {
                         case 0:
-                            // verify required parameter 'channelId' is not null or undefined
-                            if (channelId === null || channelId === undefined) {
-                                throw new base_1.RequiredError('channelId', 'Required parameter channelId was null or undefined when calling pingsControllerDeletePing.');
+                            // verify required parameter 'userId' is not null or undefined
+                            if (userId === null || userId === undefined) {
+                                throw new base_1.RequiredError('userId', 'Required parameter userId was null or undefined when calling usersControllerFindOne.');
                             }
-                            localVarPath = "/api/pings/{channelId}"
-                                .replace("{".concat("channelId", "}"), encodeURIComponent(String(channelId)));
+                            localVarPath = "/api/users/{userId}"
+                                .replace("{".concat("userId", "}"), encodeURIComponent(String(userId)));
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
                             }
-                            localVarRequestOptions = __assign(__assign({ method: 'DELETE' }, baseOptions), options);
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
                             localVarHeaderParameter = {};
                             localVarQueryParameter = {};
                             if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
@@ -215,97 +215,29 @@ var PingsApiAxiosParamCreator = function (configuration) {
                 });
             });
         },
-        /**
-         *
-         * @summary Update a ping
-         * @param {CreateUpdatePingDto} body
-         * @param {string} channelId The ID of the channel to add a ping for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        pingsControllerUpdatePing: function (body, channelId, options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions, needsSerialization;
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
-                        case 0:
-                            // verify required parameter 'body' is not null or undefined
-                            if (body === null || body === undefined) {
-                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling pingsControllerUpdatePing.');
-                            }
-                            // verify required parameter 'channelId' is not null or undefined
-                            if (channelId === null || channelId === undefined) {
-                                throw new base_1.RequiredError('channelId', 'Required parameter channelId was null or undefined when calling pingsControllerUpdatePing.');
-                            }
-                            localVarPath = "/api/pings/{channelId}"
-                                .replace("{".concat("channelId", "}"), encodeURIComponent(String(channelId)));
-                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                            if (configuration) {
-                                baseOptions = configuration.baseOptions;
-                            }
-                            localVarRequestOptions = __assign(__assign({ method: 'PUT' }, baseOptions), options);
-                            localVarHeaderParameter = {};
-                            localVarQueryParameter = {};
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
-                            return [4 /*yield*/, configuration.accessToken()];
-                        case 1:
-                            _a = _b.sent();
-                            return [3 /*break*/, 4];
-                        case 2: return [4 /*yield*/, configuration.accessToken];
-                        case 3:
-                            _a = _b.sent();
-                            _b.label = 4;
-                        case 4:
-                            accessToken = _a;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-                            _b.label = 5;
-                        case 5:
-                            localVarHeaderParameter['Content-Type'] = 'application/json';
-                            query = new URLSearchParams(localVarUrlObj.search);
-                            for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
-                            }
-                            for (key in options.params) {
-                                query.set(key, options.params[key]);
-                            }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
-                            return [2 /*return*/, {
-                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                                    options: localVarRequestOptions,
-                                }];
-                    }
-                });
-            });
-        },
     };
 };
-exports.PingsApiAxiosParamCreator = PingsApiAxiosParamCreator;
+exports.UsersApiAxiosParamCreator = UsersApiAxiosParamCreator;
 /**
- * PingsApi - functional programming interface
+ * UsersApi - functional programming interface
  * @export
  */
-var PingsApiFp = function (configuration) {
+var UsersApiFp = function (configuration) {
     return {
         /**
          *
-         * @summary Add a new ping
-         * @param {CreateUpdatePingDto} body
-         * @param {string} channelId The ID of the channel to add a ping for
+         * @summary Update or create user data
+         * @param {UpsertUserDto} body The info to update/create
+         * @param {string} userId The ID of the user to update/create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingsControllerAddPing: function (body, channelId, options) {
+        usersControllerCreate: function (body, userId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.PingsApiAxiosParamCreator)(configuration).pingsControllerAddPing(body, channelId, options)];
+                        case 0: return [4 /*yield*/, (0, exports.UsersApiAxiosParamCreator)(configuration).usersControllerCreate(body, userId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -320,43 +252,17 @@ var PingsApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Delete a ping
-         * @param {string} channelId The ID of the channel to add a ping for
+         * @summary Find data for a specific user
+         * @param {string} userId The ID of the user to find
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingsControllerDeletePing: function (channelId, options) {
+        usersControllerFindOne: function (userId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.PingsApiAxiosParamCreator)(configuration).pingsControllerDeletePing(channelId, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         *
-         * @summary Update a ping
-         * @param {CreateUpdatePingDto} body
-         * @param {string} channelId The ID of the channel to add a ping for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        pingsControllerUpdatePing: function (body, channelId, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.PingsApiAxiosParamCreator)(configuration).pingsControllerUpdatePing(body, channelId, options)];
+                        case 0: return [4 /*yield*/, (0, exports.UsersApiAxiosParamCreator)(configuration).usersControllerFindOne(userId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -371,121 +277,89 @@ var PingsApiFp = function (configuration) {
         },
     };
 };
-exports.PingsApiFp = PingsApiFp;
+exports.UsersApiFp = UsersApiFp;
 /**
- * PingsApi - factory interface
+ * UsersApi - factory interface
  * @export
  */
-var PingsApiFactory = function (configuration, basePath, axios) {
+var UsersApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
-         * @summary Add a new ping
-         * @param {CreateUpdatePingDto} body
-         * @param {string} channelId The ID of the channel to add a ping for
+         * @summary Update or create user data
+         * @param {UpsertUserDto} body The info to update/create
+         * @param {string} userId The ID of the user to update/create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingsControllerAddPing: function (body, channelId, options) {
+        usersControllerCreate: function (body, userId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.PingsApiFp)(configuration).pingsControllerAddPing(body, channelId, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.UsersApiFp)(configuration).usersControllerCreate(body, userId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
         /**
          *
-         * @summary Delete a ping
-         * @param {string} channelId The ID of the channel to add a ping for
+         * @summary Find data for a specific user
+         * @param {string} userId The ID of the user to find
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingsControllerDeletePing: function (channelId, options) {
+        usersControllerFindOne: function (userId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.PingsApiFp)(configuration).pingsControllerDeletePing(channelId, options).then(function (request) { return request(axios, basePath); })];
-                });
-            });
-        },
-        /**
-         *
-         * @summary Update a ping
-         * @param {CreateUpdatePingDto} body
-         * @param {string} channelId The ID of the channel to add a ping for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        pingsControllerUpdatePing: function (body, channelId, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.PingsApiFp)(configuration).pingsControllerUpdatePing(body, channelId, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.UsersApiFp)(configuration).usersControllerFindOne(userId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
     };
 };
-exports.PingsApiFactory = PingsApiFactory;
+exports.UsersApiFactory = UsersApiFactory;
 /**
- * PingsApi - object-oriented interface
+ * UsersApi - object-oriented interface
  * @export
- * @class PingsApi
+ * @class UsersApi
  * @extends {BaseAPI}
  */
-var PingsApi = /** @class */ (function (_super) {
-    __extends(PingsApi, _super);
-    function PingsApi() {
+var UsersApi = /** @class */ (function (_super) {
+    __extends(UsersApi, _super);
+    function UsersApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
      *
-     * @summary Add a new ping
-     * @param {CreateUpdatePingDto} body
-     * @param {string} channelId The ID of the channel to add a ping for
+     * @summary Update or create user data
+     * @param {UpsertUserDto} body The info to update/create
+     * @param {string} userId The ID of the user to update/create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PingsApi
+     * @memberof UsersApi
      */
-    PingsApi.prototype.pingsControllerAddPing = function (body, channelId, options) {
+    UsersApi.prototype.usersControllerCreate = function (body, userId, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.PingsApiFp)(this.configuration).pingsControllerAddPing(body, channelId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.UsersApiFp)(this.configuration).usersControllerCreate(body, userId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
     /**
      *
-     * @summary Delete a ping
-     * @param {string} channelId The ID of the channel to add a ping for
+     * @summary Find data for a specific user
+     * @param {string} userId The ID of the user to find
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof PingsApi
+     * @memberof UsersApi
      */
-    PingsApi.prototype.pingsControllerDeletePing = function (channelId, options) {
+    UsersApi.prototype.usersControllerFindOne = function (userId, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.PingsApiFp)(this.configuration).pingsControllerDeletePing(channelId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.UsersApiFp)(this.configuration).usersControllerFindOne(userId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
-    /**
-     *
-     * @summary Update a ping
-     * @param {CreateUpdatePingDto} body
-     * @param {string} channelId The ID of the channel to add a ping for
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PingsApi
-     */
-    PingsApi.prototype.pingsControllerUpdatePing = function (body, channelId, options) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.PingsApiFp)(this.configuration).pingsControllerUpdatePing(body, channelId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
-            });
-        });
-    };
-    return PingsApi;
+    return UsersApi;
 }(base_1.BaseAPI));
-exports.PingsApi = PingsApi;
+exports.UsersApi = UsersApi;

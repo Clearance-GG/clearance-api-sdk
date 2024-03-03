@@ -13,7 +13,6 @@ import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
 import { CreateUpdatePingDto } from '../models';
-import { DeletePingDto } from '../models';
 /**
  * PingsApi - axios parameter creator
  * @export
@@ -23,26 +22,28 @@ export declare const PingsApiAxiosParamCreator: (configuration?: Configuration) 
      *
      * @summary Add a new ping
      * @param {CreateUpdatePingDto} body
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pingsControllerAddPing: (body: CreateUpdatePingDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    pingsControllerAddPing: (body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Delete a ping
-     * @param {DeletePingDto} body
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pingsControllerDeletePing: (body: DeletePingDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    pingsControllerDeletePing: (channelId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update a ping
      * @param {CreateUpdatePingDto} body
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pingsControllerUpdatePing: (body: CreateUpdatePingDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    pingsControllerUpdatePing: (body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * PingsApi - functional programming interface
@@ -53,26 +54,28 @@ export declare const PingsApiFp: (configuration?: Configuration) => {
      *
      * @summary Add a new ping
      * @param {CreateUpdatePingDto} body
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    pingsControllerAddPing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Delete a ping
-     * @param {DeletePingDto} body
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pingsControllerDeletePing(body: DeletePingDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    pingsControllerDeletePing(channelId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Update a ping
      * @param {CreateUpdatePingDto} body
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pingsControllerUpdatePing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<CreateUpdatePingDto>>>;
+    pingsControllerUpdatePing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * PingsApi - factory interface
@@ -83,26 +86,28 @@ export declare const PingsApiFactory: (configuration?: Configuration, basePath?:
      *
      * @summary Add a new ping
      * @param {CreateUpdatePingDto} body
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    pingsControllerAddPing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Delete a ping
-     * @param {DeletePingDto} body
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pingsControllerDeletePing(body: DeletePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    pingsControllerDeletePing(channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Update a ping
      * @param {CreateUpdatePingDto} body
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    pingsControllerUpdatePing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<CreateUpdatePingDto>>;
+    pingsControllerUpdatePing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * PingsApi - object-oriented interface
@@ -115,27 +120,29 @@ export declare class PingsApi extends BaseAPI {
      *
      * @summary Add a new ping
      * @param {CreateUpdatePingDto} body
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PingsApi
      */
-    pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    pingsControllerAddPing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Delete a ping
-     * @param {DeletePingDto} body
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PingsApi
      */
-    pingsControllerDeletePing(body: DeletePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    pingsControllerDeletePing(channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Update a ping
      * @param {CreateUpdatePingDto} body
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PingsApi
      */
-    pingsControllerUpdatePing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<CreateUpdatePingDto>>;
+    pingsControllerUpdatePing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }

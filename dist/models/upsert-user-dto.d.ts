@@ -13,47 +13,32 @@
 *
 *
 * @export
-* @interface UserDto
+* @interface UpsertUserDto
 */
-export interface UserDto {
+export interface UpsertUserDto {
     /**
      * @type {string}
-     * @memberof UserDto
+     * @memberof UpsertUserDto
      */
     userId: string;
     /**
-     * @type {string}
-     * @memberof UserDto
-     */
-    guildId: string;
-    /**
      * @type {number}
-     * @memberof UserDto
+     * @memberof UpsertUserDto
      */
-    points: number;
+    points?: number;
     /**
      * @type {string}
-     * @memberof UserDto
+     * @memberof UpsertUserDto
      */
-    twitterHandle?: string;
+    twitterHandle: string;
     /**
      * @type {string}
-     * @memberof UserDto
+     * @memberof UpsertUserDto
      */
     instagramHandle?: string;
     /**
      * @type {boolean}
-     * @memberof UserDto
+     * @memberof UpsertUserDto
      */
-    whopReview: boolean;
-    /**
-     * @type {Date}
-     * @memberof UserDto
-     */
-    createdAt: Date;
-    /**
-     * @type {Date}
-     * @memberof UserDto
-     */
-    updatedAt: Date;
+    whopReview?: boolean;
 }

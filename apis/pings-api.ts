@@ -18,7 +18,6 @@ import { Configuration } from '../configuration';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { CreateUpdatePingDto } from '../models';
-import { DeletePingDto } from '../models';
 /**
  * PingsApi - axios parameter creator
  * @export
@@ -29,15 +28,21 @@ export const PingsApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Add a new ping
          * @param {CreateUpdatePingDto} body 
+         * @param {string} channelId The ID of the channel to add a ping for
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingsControllerAddPing: async (body: CreateUpdatePingDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        pingsControllerAddPing: async (body: CreateUpdatePingDto, channelId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling pingsControllerAddPing.');
             }
-            const localVarPath = `/api/pings`;
+            // verify required parameter 'channelId' is not null or undefined
+            if (channelId === null || channelId === undefined) {
+                throw new RequiredError('channelId','Required parameter channelId was null or undefined when calling pingsControllerAddPing.');
+            }
+            const localVarPath = `/api/pings/{channelId}`
+                .replace(`{${"channelId"}}`, encodeURIComponent(String(channelId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -80,16 +85,17 @@ export const PingsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Delete a ping
-         * @param {DeletePingDto} body 
+         * @param {string} channelId The ID of the channel to add a ping for
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingsControllerDeletePing: async (body: DeletePingDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling pingsControllerDeletePing.');
+        pingsControllerDeletePing: async (channelId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'channelId' is not null or undefined
+            if (channelId === null || channelId === undefined) {
+                throw new RequiredError('channelId','Required parameter channelId was null or undefined when calling pingsControllerDeletePing.');
             }
-            const localVarPath = `/api/pings`;
+            const localVarPath = `/api/pings/{channelId}`
+                .replace(`{${"channelId"}}`, encodeURIComponent(String(channelId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -109,8 +115,6 @@ export const PingsApiAxiosParamCreator = function (configuration?: Configuration
                 localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
             }
 
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -121,8 +125,6 @@ export const PingsApiAxiosParamCreator = function (configuration?: Configuration
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -133,15 +135,21 @@ export const PingsApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @summary Update a ping
          * @param {CreateUpdatePingDto} body 
+         * @param {string} channelId The ID of the channel to add a ping for
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingsControllerUpdatePing: async (body: CreateUpdatePingDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        pingsControllerUpdatePing: async (body: CreateUpdatePingDto, channelId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling pingsControllerUpdatePing.');
             }
-            const localVarPath = `/api/pings`;
+            // verify required parameter 'channelId' is not null or undefined
+            if (channelId === null || channelId === undefined) {
+                throw new RequiredError('channelId','Required parameter channelId was null or undefined when calling pingsControllerUpdatePing.');
+            }
+            const localVarPath = `/api/pings/{channelId}`
+                .replace(`{${"channelId"}}`, encodeURIComponent(String(channelId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -194,11 +202,12 @@ export const PingsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add a new ping
          * @param {CreateUpdatePingDto} body 
+         * @param {string} channelId The ID of the channel to add a ping for
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await PingsApiAxiosParamCreator(configuration).pingsControllerAddPing(body, options);
+        async pingsControllerAddPing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await PingsApiAxiosParamCreator(configuration).pingsControllerAddPing(body, channelId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -207,12 +216,12 @@ export const PingsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Delete a ping
-         * @param {DeletePingDto} body 
+         * @param {string} channelId The ID of the channel to add a ping for
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pingsControllerDeletePing(body: DeletePingDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await PingsApiAxiosParamCreator(configuration).pingsControllerDeletePing(body, options);
+        async pingsControllerDeletePing(channelId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await PingsApiAxiosParamCreator(configuration).pingsControllerDeletePing(channelId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -222,11 +231,12 @@ export const PingsApiFp = function(configuration?: Configuration) {
          * 
          * @summary Update a ping
          * @param {CreateUpdatePingDto} body 
+         * @param {string} channelId The ID of the channel to add a ping for
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pingsControllerUpdatePing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<CreateUpdatePingDto>>> {
-            const localVarAxiosArgs = await PingsApiAxiosParamCreator(configuration).pingsControllerUpdatePing(body, options);
+        async pingsControllerUpdatePing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await PingsApiAxiosParamCreator(configuration).pingsControllerUpdatePing(body, channelId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -245,31 +255,33 @@ export const PingsApiFactory = function (configuration?: Configuration, basePath
          * 
          * @summary Add a new ping
          * @param {CreateUpdatePingDto} body 
+         * @param {string} channelId The ID of the channel to add a ping for
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return PingsApiFp(configuration).pingsControllerAddPing(body, options).then((request) => request(axios, basePath));
+        async pingsControllerAddPing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return PingsApiFp(configuration).pingsControllerAddPing(body, channelId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Delete a ping
-         * @param {DeletePingDto} body 
+         * @param {string} channelId The ID of the channel to add a ping for
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pingsControllerDeletePing(body: DeletePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return PingsApiFp(configuration).pingsControllerDeletePing(body, options).then((request) => request(axios, basePath));
+        async pingsControllerDeletePing(channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return PingsApiFp(configuration).pingsControllerDeletePing(channelId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Update a ping
          * @param {CreateUpdatePingDto} body 
+         * @param {string} channelId The ID of the channel to add a ping for
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pingsControllerUpdatePing(body: CreateUpdatePingDto, options?: AxiosRequestConfig): Promise<AxiosResponse<CreateUpdatePingDto>> {
-            return PingsApiFp(configuration).pingsControllerUpdatePing(body, options).then((request) => request(axios, basePath));
+        async pingsControllerUpdatePing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return PingsApiFp(configuration).pingsControllerUpdatePing(body, channelId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -285,33 +297,35 @@ export class PingsApi extends BaseAPI {
      * 
      * @summary Add a new ping
      * @param {CreateUpdatePingDto} body 
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PingsApi
      */
-    public async pingsControllerAddPing(body: CreateUpdatePingDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return PingsApiFp(this.configuration).pingsControllerAddPing(body, options).then((request) => request(this.axios, this.basePath));
+    public async pingsControllerAddPing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return PingsApiFp(this.configuration).pingsControllerAddPing(body, channelId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
      * @summary Delete a ping
-     * @param {DeletePingDto} body 
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PingsApi
      */
-    public async pingsControllerDeletePing(body: DeletePingDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return PingsApiFp(this.configuration).pingsControllerDeletePing(body, options).then((request) => request(this.axios, this.basePath));
+    public async pingsControllerDeletePing(channelId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return PingsApiFp(this.configuration).pingsControllerDeletePing(channelId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
      * @summary Update a ping
      * @param {CreateUpdatePingDto} body 
+     * @param {string} channelId The ID of the channel to add a ping for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PingsApi
      */
-    public async pingsControllerUpdatePing(body: CreateUpdatePingDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<CreateUpdatePingDto>> {
-        return PingsApiFp(this.configuration).pingsControllerUpdatePing(body, options).then((request) => request(this.axios, this.basePath));
+    public async pingsControllerUpdatePing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return PingsApiFp(this.configuration).pingsControllerUpdatePing(body, channelId, options).then((request) => request(this.axios, this.basePath));
     }
 }

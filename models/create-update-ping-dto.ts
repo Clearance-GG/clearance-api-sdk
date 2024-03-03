@@ -21,12 +21,6 @@
 export interface CreateUpdatePingDto {
 
     /**
-     * @type {string}
-     * @memberof CreateUpdatePingDto
-     */
-    channelId: string;
-
-    /**
      * @type {boolean}
      * @memberof CreateUpdatePingDto
      */

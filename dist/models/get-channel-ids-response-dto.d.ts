@@ -30,5 +30,5 @@ export interface GetChannelIdsResponseDto {
      * @type {any}
      * @memberof GetChannelIdsResponseDto
      */
-    info: any;
+    infoIds: any;
 }

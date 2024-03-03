@@ -32,3 +32,4 @@ __exportStar(require("./apis/pings-api"), exports);
 __exportStar(require("./apis/proxies-api"), exports);
 __exportStar(require("./apis/roles-api"), exports);
 __exportStar(require("./apis/success-api"), exports);
+__exportStar(require("./apis/users-api"), exports);
