@@ -89,74 +89,6 @@ var SuccessApiAxiosParamCreator = function (configuration) {
     return {
         /**
          *
-         * @summary Update or create success points for a user
-         * @param {UpdateSuccessDTO} body The points and related info to update/create
-         * @param {string} userId The ID of the user to update/create points for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        successControllerCreate: function (body, userId, options) {
-            if (options === void 0) { options = {}; }
-            return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions, needsSerialization;
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
-                        case 0:
-                            // verify required parameter 'body' is not null or undefined
-                            if (body === null || body === undefined) {
-                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling successControllerCreate.');
-                            }
-                            // verify required parameter 'userId' is not null or undefined
-                            if (userId === null || userId === undefined) {
-                                throw new base_1.RequiredError('userId', 'Required parameter userId was null or undefined when calling successControllerCreate.');
-                            }
-                            localVarPath = "/api/success/{userId}"
-                                .replace("{".concat("userId", "}"), encodeURIComponent(String(userId)));
-                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                            if (configuration) {
-                                baseOptions = configuration.baseOptions;
-                            }
-                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                            localVarHeaderParameter = {};
-                            localVarQueryParameter = {};
-                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
-                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
-                            return [4 /*yield*/, configuration.accessToken()];
-                        case 1:
-                            _a = _b.sent();
-                            return [3 /*break*/, 4];
-                        case 2: return [4 /*yield*/, configuration.accessToken];
-                        case 3:
-                            _a = _b.sent();
-                            _b.label = 4;
-                        case 4:
-                            accessToken = _a;
-                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-                            _b.label = 5;
-                        case 5:
-                            localVarHeaderParameter['Content-Type'] = 'application/json';
-                            query = new URLSearchParams(localVarUrlObj.search);
-                            for (key in localVarQueryParameter) {
-                                query.set(key, localVarQueryParameter[key]);
-                            }
-                            for (key in options.params) {
-                                query.set(key, options.params[key]);
-                            }
-                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
-                            return [2 /*return*/, {
-                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                                    options: localVarRequestOptions,
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         *
          * @summary Get discord channel IDs
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -215,7 +147,7 @@ var SuccessApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerLeaderboard: function (options) {
+        successControllerGetLeaderboard: function (options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
@@ -265,13 +197,79 @@ var SuccessApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Add or update discord channel IDs
-         * @param {DiscordIdDto} body The channel id
-         * @param {string} channelId The ID of the channel to update
+         * @summary Get success ledger info for a specific message ID
+         * @param {string} channelId The ID of the channel to fetch info from
+         * @param {string} messageId The ID of the message to fetch info from
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerUpsertDiscordIds: function (body, channelId, options) {
+        successControllerGetSuccessLedgerInfo: function (channelId, messageId, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            // verify required parameter 'channelId' is not null or undefined
+                            if (channelId === null || channelId === undefined) {
+                                throw new base_1.RequiredError('channelId', 'Required parameter channelId was null or undefined when calling successControllerGetSuccessLedgerInfo.');
+                            }
+                            // verify required parameter 'messageId' is not null or undefined
+                            if (messageId === null || messageId === undefined) {
+                                throw new base_1.RequiredError('messageId', 'Required parameter messageId was null or undefined when calling successControllerGetSuccessLedgerInfo.');
+                            }
+                            localVarPath = "/api/success/ledger/{channelId}/{messageId}"
+                                .replace("{".concat("channelId", "}"), encodeURIComponent(String(channelId)))
+                                .replace("{".concat("messageId", "}"), encodeURIComponent(String(messageId)));
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Update or create success points for a user
+         * @param {UpdateSuccessDTO} body The points and related info to update/create
+         * @param {string} userId The ID of the user to update/create points for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        successControllerUpdatePoints: function (body, userId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions, needsSerialization;
@@ -280,11 +278,79 @@ var SuccessApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'body' is not null or undefined
                             if (body === null || body === undefined) {
-                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling successControllerUpsertDiscordIds.');
+                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling successControllerUpdatePoints.');
+                            }
+                            // verify required parameter 'userId' is not null or undefined
+                            if (userId === null || userId === undefined) {
+                                throw new base_1.RequiredError('userId', 'Required parameter userId was null or undefined when calling successControllerUpdatePoints.');
+                            }
+                            localVarPath = "/api/success/{userId}"
+                                .replace("{".concat("userId", "}"), encodeURIComponent(String(userId)));
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Add or update discord channel IDs
+         * @param {DiscordIdDto} body The channel id
+         * @param {string} channelId The ID of the channel to update
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        successControllerUpsertChannelId: function (body, channelId, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions, needsSerialization;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            // verify required parameter 'body' is not null or undefined
+                            if (body === null || body === undefined) {
+                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling successControllerUpsertChannelId.');
                             }
                             // verify required parameter 'channelId' is not null or undefined
                             if (channelId === null || channelId === undefined) {
-                                throw new base_1.RequiredError('channelId', 'Required parameter channelId was null or undefined when calling successControllerUpsertDiscordIds.');
+                                throw new base_1.RequiredError('channelId', 'Required parameter channelId was null or undefined when calling successControllerUpsertChannelId.');
                             }
                             localVarPath = "/api/success/ids/{channelId}"
                                 .replace("{".concat("channelId", "}"), encodeURIComponent(String(channelId)));
@@ -342,32 +408,6 @@ var SuccessApiFp = function (configuration) {
     return {
         /**
          *
-         * @summary Update or create success points for a user
-         * @param {UpdateSuccessDTO} body The points and related info to update/create
-         * @param {string} userId The ID of the user to update/create points for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        successControllerCreate: function (body, userId, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                var localVarAxiosArgs;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.SuccessApiAxiosParamCreator)(configuration).successControllerCreate(body, userId, options)];
-                        case 1:
-                            localVarAxiosArgs = _a.sent();
-                            return [2 /*return*/, function (axios, basePath) {
-                                    if (axios === void 0) { axios = axios_1.default; }
-                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
-                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
-                                    return axios.request(axiosRequestArgs);
-                                }];
-                    }
-                });
-            });
-        },
-        /**
-         *
          * @summary Get discord channel IDs
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -396,12 +436,64 @@ var SuccessApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerLeaderboard: function (options) {
+        successControllerGetLeaderboard: function (options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.SuccessApiAxiosParamCreator)(configuration).successControllerLeaderboard(options)];
+                        case 0: return [4 /*yield*/, (0, exports.SuccessApiAxiosParamCreator)(configuration).successControllerGetLeaderboard(options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Get success ledger info for a specific message ID
+         * @param {string} channelId The ID of the channel to fetch info from
+         * @param {string} messageId The ID of the message to fetch info from
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        successControllerGetSuccessLedgerInfo: function (channelId, messageId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, (0, exports.SuccessApiAxiosParamCreator)(configuration).successControllerGetSuccessLedgerInfo(channelId, messageId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Update or create success points for a user
+         * @param {UpdateSuccessDTO} body The points and related info to update/create
+         * @param {string} userId The ID of the user to update/create points for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        successControllerUpdatePoints: function (body, userId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, (0, exports.SuccessApiAxiosParamCreator)(configuration).successControllerUpdatePoints(body, userId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -422,12 +514,12 @@ var SuccessApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerUpsertDiscordIds: function (body, channelId, options) {
+        successControllerUpsertChannelId: function (body, channelId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.SuccessApiAxiosParamCreator)(configuration).successControllerUpsertDiscordIds(body, channelId, options)];
+                        case 0: return [4 /*yield*/, (0, exports.SuccessApiAxiosParamCreator)(configuration).successControllerUpsertChannelId(body, channelId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -451,21 +543,6 @@ var SuccessApiFactory = function (configuration, basePath, axios) {
     return {
         /**
          *
-         * @summary Update or create success points for a user
-         * @param {UpdateSuccessDTO} body The points and related info to update/create
-         * @param {string} userId The ID of the user to update/create points for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        successControllerCreate: function (body, userId, options) {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.SuccessApiFp)(configuration).successControllerCreate(body, userId, options).then(function (request) { return request(axios, basePath); })];
-                });
-            });
-        },
-        /**
-         *
          * @summary Get discord channel IDs
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -483,10 +560,40 @@ var SuccessApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerLeaderboard: function (options) {
+        successControllerGetLeaderboard: function (options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.SuccessApiFp)(configuration).successControllerLeaderboard(options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.SuccessApiFp)(configuration).successControllerGetLeaderboard(options).then(function (request) { return request(axios, basePath); })];
+                });
+            });
+        },
+        /**
+         *
+         * @summary Get success ledger info for a specific message ID
+         * @param {string} channelId The ID of the channel to fetch info from
+         * @param {string} messageId The ID of the message to fetch info from
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        successControllerGetSuccessLedgerInfo: function (channelId, messageId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, (0, exports.SuccessApiFp)(configuration).successControllerGetSuccessLedgerInfo(channelId, messageId, options).then(function (request) { return request(axios, basePath); })];
+                });
+            });
+        },
+        /**
+         *
+         * @summary Update or create success points for a user
+         * @param {UpdateSuccessDTO} body The points and related info to update/create
+         * @param {string} userId The ID of the user to update/create points for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        successControllerUpdatePoints: function (body, userId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, (0, exports.SuccessApiFp)(configuration).successControllerUpdatePoints(body, userId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -498,10 +605,10 @@ var SuccessApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerUpsertDiscordIds: function (body, channelId, options) {
+        successControllerUpsertChannelId: function (body, channelId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.SuccessApiFp)(configuration).successControllerUpsertDiscordIds(body, channelId, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.SuccessApiFp)(configuration).successControllerUpsertChannelId(body, channelId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -519,23 +626,6 @@ var SuccessApi = /** @class */ (function (_super) {
     function SuccessApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    /**
-     *
-     * @summary Update or create success points for a user
-     * @param {UpdateSuccessDTO} body The points and related info to update/create
-     * @param {string} userId The ID of the user to update/create points for
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SuccessApi
-     */
-    SuccessApi.prototype.successControllerCreate = function (body, userId, options) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.SuccessApiFp)(this.configuration).successControllerCreate(body, userId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
-            });
-        });
-    };
     /**
      *
      * @summary Get discord channel IDs
@@ -558,11 +648,45 @@ var SuccessApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof SuccessApi
      */
-    SuccessApi.prototype.successControllerLeaderboard = function (options) {
+    SuccessApi.prototype.successControllerGetLeaderboard = function (options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.SuccessApiFp)(this.configuration).successControllerLeaderboard(options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.SuccessApiFp)(this.configuration).successControllerGetLeaderboard(options).then(function (request) { return request(_this.axios, _this.basePath); })];
+            });
+        });
+    };
+    /**
+     *
+     * @summary Get success ledger info for a specific message ID
+     * @param {string} channelId The ID of the channel to fetch info from
+     * @param {string} messageId The ID of the message to fetch info from
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SuccessApi
+     */
+    SuccessApi.prototype.successControllerGetSuccessLedgerInfo = function (channelId, messageId, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, (0, exports.SuccessApiFp)(this.configuration).successControllerGetSuccessLedgerInfo(channelId, messageId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+            });
+        });
+    };
+    /**
+     *
+     * @summary Update or create success points for a user
+     * @param {UpdateSuccessDTO} body The points and related info to update/create
+     * @param {string} userId The ID of the user to update/create points for
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SuccessApi
+     */
+    SuccessApi.prototype.successControllerUpdatePoints = function (body, userId, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, (0, exports.SuccessApiFp)(this.configuration).successControllerUpdatePoints(body, userId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
@@ -575,11 +699,11 @@ var SuccessApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof SuccessApi
      */
-    SuccessApi.prototype.successControllerUpsertDiscordIds = function (body, channelId, options) {
+    SuccessApi.prototype.successControllerUpsertChannelId = function (body, channelId, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.SuccessApiFp)(this.configuration).successControllerUpsertDiscordIds(body, channelId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.SuccessApiFp)(this.configuration).successControllerUpsertChannelId(body, channelId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

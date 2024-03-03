@@ -23,6 +23,7 @@ __exportStar(require("./discord-id-dto"), exports);
 __exportStar(require("./dump-roles-response-dto"), exports);
 __exportStar(require("./get-channel-ids-response-dto"), exports);
 __exportStar(require("./leaderboard-entry-dto"), exports);
+__exportStar(require("./points-balance-dto"), exports);
 __exportStar(require("./proxy-dto"), exports);
 __exportStar(require("./role-category-dto"), exports);
 __exportStar(require("./role-info-dto"), exports);

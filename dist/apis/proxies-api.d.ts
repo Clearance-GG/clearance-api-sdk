@@ -39,7 +39,7 @@ export declare const ProxiesApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    proxiesControllerFetchAllProxies: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    proxiesControllerGetAllProxies: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * ProxiesApi - functional programming interface
@@ -67,7 +67,7 @@ export declare const ProxiesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    proxiesControllerFetchAllProxies(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<CreateProxiesDto>>>>;
+    proxiesControllerGetAllProxies(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<CreateProxiesDto>>>>;
 };
 /**
  * ProxiesApi - factory interface
@@ -95,7 +95,7 @@ export declare const ProxiesApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    proxiesControllerFetchAllProxies(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<CreateProxiesDto>>>;
+    proxiesControllerGetAllProxies(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<CreateProxiesDto>>>;
 };
 /**
  * ProxiesApi - object-oriented interface
@@ -128,5 +128,5 @@ export declare class ProxiesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProxiesApi
      */
-    proxiesControllerFetchAllProxies(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<CreateProxiesDto>>>;
+    proxiesControllerGetAllProxies(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<CreateProxiesDto>>>;
 }

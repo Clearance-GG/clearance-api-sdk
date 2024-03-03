@@ -28,7 +28,7 @@ export declare const RolesApiAxiosParamCreator: (configuration?: Configuration) 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rolesControllerCreateCategory: (body: RoleCategoryDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    rolesControllerCreateRoleCategory: (body: RoleCategoryDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Delete a role
@@ -81,7 +81,7 @@ export declare const RolesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rolesControllerCreateCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    rolesControllerCreateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Delete a role
@@ -134,7 +134,7 @@ export declare const RolesApiFactory: (configuration?: Configuration, basePath?:
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rolesControllerCreateCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    rolesControllerCreateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Delete a role
@@ -190,7 +190,7 @@ export declare class RolesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RolesApi
      */
-    rolesControllerCreateCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    rolesControllerCreateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Delete a role

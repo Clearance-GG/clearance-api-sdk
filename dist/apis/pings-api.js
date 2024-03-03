@@ -95,7 +95,7 @@ var PingsApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingsControllerAddPing: function (body, channelId, options) {
+        pingsControllerCreatePing: function (body, channelId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions, needsSerialization;
@@ -104,11 +104,11 @@ var PingsApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'body' is not null or undefined
                             if (body === null || body === undefined) {
-                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling pingsControllerAddPing.');
+                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling pingsControllerCreatePing.');
                             }
                             // verify required parameter 'channelId' is not null or undefined
                             if (channelId === null || channelId === undefined) {
-                                throw new base_1.RequiredError('channelId', 'Required parameter channelId was null or undefined when calling pingsControllerAddPing.');
+                                throw new base_1.RequiredError('channelId', 'Required parameter channelId was null or undefined when calling pingsControllerCreatePing.');
                             }
                             localVarPath = "/api/pings/{channelId}"
                                 .replace("{".concat("channelId", "}"), encodeURIComponent(String(channelId)));
@@ -300,12 +300,12 @@ var PingsApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingsControllerAddPing: function (body, channelId, options) {
+        pingsControllerCreatePing: function (body, channelId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.PingsApiAxiosParamCreator)(configuration).pingsControllerAddPing(body, channelId, options)];
+                        case 0: return [4 /*yield*/, (0, exports.PingsApiAxiosParamCreator)(configuration).pingsControllerCreatePing(body, channelId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -386,10 +386,10 @@ var PingsApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingsControllerAddPing: function (body, channelId, options) {
+        pingsControllerCreatePing: function (body, channelId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.PingsApiFp)(configuration).pingsControllerAddPing(body, channelId, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.PingsApiFp)(configuration).pingsControllerCreatePing(body, channelId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -445,11 +445,11 @@ var PingsApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof PingsApi
      */
-    PingsApi.prototype.pingsControllerAddPing = function (body, channelId, options) {
+    PingsApi.prototype.pingsControllerCreatePing = function (body, channelId, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.PingsApiFp)(this.configuration).pingsControllerAddPing(body, channelId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.PingsApiFp)(this.configuration).pingsControllerCreatePing(body, channelId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

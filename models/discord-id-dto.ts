@@ -43,4 +43,28 @@ export interface DiscordIdDto {
      * @memberof DiscordIdDto
      */
     maxMultiplier?: number;
+
+    /**
+     * @type {string}
+     * @memberof DiscordIdDto
+     */
+    emoji?: string;
+
+    /**
+     * @type {boolean}
+     * @memberof DiscordIdDto
+     */
+    image?: boolean;
+
+    /**
+     * @type {boolean}
+     * @memberof DiscordIdDto
+     */
+    video?: boolean;
+
+    /**
+     * @type {Array<string>}
+     * @memberof DiscordIdDto
+     */
+    defaultReactions: Array<string>;
 }

@@ -125,7 +125,7 @@ export const ProxiesApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        proxiesControllerFetchAllProxies: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        proxiesControllerGetAllProxies: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/proxies/fetch`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -204,8 +204,8 @@ export const ProxiesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async proxiesControllerFetchAllProxies(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<CreateProxiesDto>>>> {
-            const localVarAxiosArgs = await ProxiesApiAxiosParamCreator(configuration).proxiesControllerFetchAllProxies(options);
+        async proxiesControllerGetAllProxies(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<CreateProxiesDto>>>> {
+            const localVarAxiosArgs = await ProxiesApiAxiosParamCreator(configuration).proxiesControllerGetAllProxies(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -245,8 +245,8 @@ export const ProxiesApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async proxiesControllerFetchAllProxies(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<CreateProxiesDto>>> {
-            return ProxiesApiFp(configuration).proxiesControllerFetchAllProxies(options).then((request) => request(axios, basePath));
+        async proxiesControllerGetAllProxies(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<CreateProxiesDto>>> {
+            return ProxiesApiFp(configuration).proxiesControllerGetAllProxies(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -286,7 +286,7 @@ export class ProxiesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProxiesApi
      */
-    public async proxiesControllerFetchAllProxies(options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<CreateProxiesDto>>> {
-        return ProxiesApiFp(this.configuration).proxiesControllerFetchAllProxies(options).then((request) => request(this.axios, this.basePath));
+    public async proxiesControllerGetAllProxies(options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<CreateProxiesDto>>> {
+        return ProxiesApiFp(this.configuration).proxiesControllerGetAllProxies(options).then((request) => request(this.axios, this.basePath));
     }
 }

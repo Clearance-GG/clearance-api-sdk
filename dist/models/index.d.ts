@@ -7,6 +7,7 @@ export * from './discord-id-dto';
 export * from './dump-roles-response-dto';
 export * from './get-channel-ids-response-dto';
 export * from './leaderboard-entry-dto';
+export * from './points-balance-dto';
 export * from './proxy-dto';
 export * from './role-category-dto';
 export * from './role-info-dto';

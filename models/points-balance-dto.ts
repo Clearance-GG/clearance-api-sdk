@@ -16,31 +16,13 @@
  * 
  *
  * @export
- * @interface UpdateSuccessDTO
+ * @interface PointsBalanceDto
  */
-export interface UpdateSuccessDTO {
-
-    /**
-     * @type {string}
-     * @memberof UpdateSuccessDTO
-     */
-    channelId?: string;
-
-    /**
-     * @type {string}
-     * @memberof UpdateSuccessDTO
-     */
-    messageId?: string;
+export interface PointsBalanceDto {
 
     /**
      * @type {number}
-     * @memberof UpdateSuccessDTO
+     * @memberof PointsBalanceDto
      */
     points: number;
-
-    /**
-     * @type {string}
-     * @memberof UpdateSuccessDTO
-     */
-    reason: string;
 }

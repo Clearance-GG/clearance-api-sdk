@@ -20,6 +20,7 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 import { DiscordIdDto } from '../models';
 import { GetChannelIdsResponseDto } from '../models';
 import { LeaderboardEntryDto } from '../models';
+import { PointsBalanceDto } from '../models';
 import { UpdateSuccessDTO } from '../models';
 /**
  * SuccessApi - axios parameter creator
@@ -27,64 +28,6 @@ import { UpdateSuccessDTO } from '../models';
  */
 export const SuccessApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
-        /**
-         * 
-         * @summary Update or create success points for a user
-         * @param {UpdateSuccessDTO} body The points and related info to update/create
-         * @param {string} userId The ID of the user to update/create points for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        successControllerCreate: async (body: UpdateSuccessDTO, userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling successControllerCreate.');
-            }
-            // verify required parameter 'userId' is not null or undefined
-            if (userId === null || userId === undefined) {
-                throw new RequiredError('userId','Required parameter userId was null or undefined when calling successControllerCreate.');
-            }
-            const localVarPath = `/api/success/{userId}`
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
         /**
          * 
          * @summary Get discord channel IDs
@@ -134,7 +77,7 @@ export const SuccessApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerLeaderboard: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        successControllerGetLeaderboard: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/success/leaderboard`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -173,20 +116,133 @@ export const SuccessApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary Get success ledger info for a specific message ID
+         * @param {string} channelId The ID of the channel to fetch info from
+         * @param {string} messageId The ID of the message to fetch info from
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        successControllerGetSuccessLedgerInfo: async (channelId: string, messageId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'channelId' is not null or undefined
+            if (channelId === null || channelId === undefined) {
+                throw new RequiredError('channelId','Required parameter channelId was null or undefined when calling successControllerGetSuccessLedgerInfo.');
+            }
+            // verify required parameter 'messageId' is not null or undefined
+            if (messageId === null || messageId === undefined) {
+                throw new RequiredError('messageId','Required parameter messageId was null or undefined when calling successControllerGetSuccessLedgerInfo.');
+            }
+            const localVarPath = `/api/success/ledger/{channelId}/{messageId}`
+                .replace(`{${"channelId"}}`, encodeURIComponent(String(channelId)))
+                .replace(`{${"messageId"}}`, encodeURIComponent(String(messageId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update or create success points for a user
+         * @param {UpdateSuccessDTO} body The points and related info to update/create
+         * @param {string} userId The ID of the user to update/create points for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        successControllerUpdatePoints: async (body: UpdateSuccessDTO, userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling successControllerUpdatePoints.');
+            }
+            // verify required parameter 'userId' is not null or undefined
+            if (userId === null || userId === undefined) {
+                throw new RequiredError('userId','Required parameter userId was null or undefined when calling successControllerUpdatePoints.');
+            }
+            const localVarPath = `/api/success/{userId}`
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Add or update discord channel IDs
          * @param {DiscordIdDto} body The channel id
          * @param {string} channelId The ID of the channel to update
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerUpsertDiscordIds: async (body: DiscordIdDto, channelId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        successControllerUpsertChannelId: async (body: DiscordIdDto, channelId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling successControllerUpsertDiscordIds.');
+                throw new RequiredError('body','Required parameter body was null or undefined when calling successControllerUpsertChannelId.');
             }
             // verify required parameter 'channelId' is not null or undefined
             if (channelId === null || channelId === undefined) {
-                throw new RequiredError('channelId','Required parameter channelId was null or undefined when calling successControllerUpsertDiscordIds.');
+                throw new RequiredError('channelId','Required parameter channelId was null or undefined when calling successControllerUpsertChannelId.');
             }
             const localVarPath = `/api/success/ids/{channelId}`
                 .replace(`{${"channelId"}}`, encodeURIComponent(String(channelId)));
@@ -240,21 +296,6 @@ export const SuccessApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Update or create success points for a user
-         * @param {UpdateSuccessDTO} body The points and related info to update/create
-         * @param {string} userId The ID of the user to update/create points for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async successControllerCreate(body: UpdateSuccessDTO, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await SuccessApiAxiosParamCreator(configuration).successControllerCreate(body, userId, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * 
          * @summary Get discord channel IDs
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -272,8 +313,38 @@ export const SuccessApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async successControllerLeaderboard(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<LeaderboardEntryDto>>>> {
-            const localVarAxiosArgs = await SuccessApiAxiosParamCreator(configuration).successControllerLeaderboard(options);
+        async successControllerGetLeaderboard(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<LeaderboardEntryDto>>>> {
+            const localVarAxiosArgs = await SuccessApiAxiosParamCreator(configuration).successControllerGetLeaderboard(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
+         * @summary Get success ledger info for a specific message ID
+         * @param {string} channelId The ID of the channel to fetch info from
+         * @param {string} messageId The ID of the message to fetch info from
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async successControllerGetSuccessLedgerInfo(channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<boolean>>> {
+            const localVarAxiosArgs = await SuccessApiAxiosParamCreator(configuration).successControllerGetSuccessLedgerInfo(channelId, messageId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
+         * @summary Update or create success points for a user
+         * @param {UpdateSuccessDTO} body The points and related info to update/create
+         * @param {string} userId The ID of the user to update/create points for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async successControllerUpdatePoints(body: UpdateSuccessDTO, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PointsBalanceDto>>> {
+            const localVarAxiosArgs = await SuccessApiAxiosParamCreator(configuration).successControllerUpdatePoints(body, userId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -287,8 +358,8 @@ export const SuccessApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async successControllerUpsertDiscordIds(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await SuccessApiAxiosParamCreator(configuration).successControllerUpsertDiscordIds(body, channelId, options);
+        async successControllerUpsertChannelId(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await SuccessApiAxiosParamCreator(configuration).successControllerUpsertChannelId(body, channelId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -305,17 +376,6 @@ export const SuccessApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
-         * @summary Update or create success points for a user
-         * @param {UpdateSuccessDTO} body The points and related info to update/create
-         * @param {string} userId The ID of the user to update/create points for
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async successControllerCreate(body: UpdateSuccessDTO, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return SuccessApiFp(configuration).successControllerCreate(body, userId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @summary Get discord channel IDs
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -329,8 +389,30 @@ export const SuccessApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async successControllerLeaderboard(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<LeaderboardEntryDto>>> {
-            return SuccessApiFp(configuration).successControllerLeaderboard(options).then((request) => request(axios, basePath));
+        async successControllerGetLeaderboard(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<LeaderboardEntryDto>>> {
+            return SuccessApiFp(configuration).successControllerGetLeaderboard(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get success ledger info for a specific message ID
+         * @param {string} channelId The ID of the channel to fetch info from
+         * @param {string} messageId The ID of the message to fetch info from
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async successControllerGetSuccessLedgerInfo(channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>> {
+            return SuccessApiFp(configuration).successControllerGetSuccessLedgerInfo(channelId, messageId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update or create success points for a user
+         * @param {UpdateSuccessDTO} body The points and related info to update/create
+         * @param {string} userId The ID of the user to update/create points for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async successControllerUpdatePoints(body: UpdateSuccessDTO, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PointsBalanceDto>> {
+            return SuccessApiFp(configuration).successControllerUpdatePoints(body, userId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -340,8 +422,8 @@ export const SuccessApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async successControllerUpsertDiscordIds(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return SuccessApiFp(configuration).successControllerUpsertDiscordIds(body, channelId, options).then((request) => request(axios, basePath));
+        async successControllerUpsertChannelId(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return SuccessApiFp(configuration).successControllerUpsertChannelId(body, channelId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -353,18 +435,6 @@ export const SuccessApiFactory = function (configuration?: Configuration, basePa
  * @extends {BaseAPI}
  */
 export class SuccessApi extends BaseAPI {
-    /**
-     * 
-     * @summary Update or create success points for a user
-     * @param {UpdateSuccessDTO} body The points and related info to update/create
-     * @param {string} userId The ID of the user to update/create points for
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SuccessApi
-     */
-    public async successControllerCreate(body: UpdateSuccessDTO, userId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return SuccessApiFp(this.configuration).successControllerCreate(body, userId, options).then((request) => request(this.axios, this.basePath));
-    }
     /**
      * 
      * @summary Get discord channel IDs
@@ -382,8 +452,32 @@ export class SuccessApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SuccessApi
      */
-    public async successControllerLeaderboard(options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<LeaderboardEntryDto>>> {
-        return SuccessApiFp(this.configuration).successControllerLeaderboard(options).then((request) => request(this.axios, this.basePath));
+    public async successControllerGetLeaderboard(options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<LeaderboardEntryDto>>> {
+        return SuccessApiFp(this.configuration).successControllerGetLeaderboard(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Get success ledger info for a specific message ID
+     * @param {string} channelId The ID of the channel to fetch info from
+     * @param {string} messageId The ID of the message to fetch info from
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SuccessApi
+     */
+    public async successControllerGetSuccessLedgerInfo(channelId: string, messageId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<boolean>> {
+        return SuccessApiFp(this.configuration).successControllerGetSuccessLedgerInfo(channelId, messageId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Update or create success points for a user
+     * @param {UpdateSuccessDTO} body The points and related info to update/create
+     * @param {string} userId The ID of the user to update/create points for
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SuccessApi
+     */
+    public async successControllerUpdatePoints(body: UpdateSuccessDTO, userId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<PointsBalanceDto>> {
+        return SuccessApiFp(this.configuration).successControllerUpdatePoints(body, userId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
@@ -394,7 +488,7 @@ export class SuccessApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SuccessApi
      */
-    public async successControllerUpsertDiscordIds(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return SuccessApiFp(this.configuration).successControllerUpsertDiscordIds(body, channelId, options).then((request) => request(this.axios, this.basePath));
+    public async successControllerUpsertChannelId(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return SuccessApiFp(this.configuration).successControllerUpsertChannelId(body, channelId, options).then((request) => request(this.axios, this.basePath));
     }
 }

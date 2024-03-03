@@ -27,20 +27,69 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
     return {
         /**
          * 
+         * @summary Find data for a specific user
+         * @param {string} userId The ID of the user to find
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersControllerGetUser: async (userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            if (userId === null || userId === undefined) {
+                throw new RequiredError('userId','Required parameter userId was null or undefined when calling usersControllerGetUser.');
+            }
+            const localVarPath = `/api/users/{userId}`
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update or create user data
          * @param {UpsertUserDto} body The info to update/create
          * @param {string} userId The ID of the user to update/create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerCreate: async (body: UpsertUserDto, userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        usersControllerUpdateUser: async (body: UpsertUserDto, userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling usersControllerCreate.');
+                throw new RequiredError('body','Required parameter body was null or undefined when calling usersControllerUpdateUser.');
             }
             // verify required parameter 'userId' is not null or undefined
             if (userId === null || userId === undefined) {
-                throw new RequiredError('userId','Required parameter userId was null or undefined when calling usersControllerCreate.');
+                throw new RequiredError('userId','Required parameter userId was null or undefined when calling usersControllerUpdateUser.');
             }
             const localVarPath = `/api/users/{userId}`
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
@@ -83,55 +132,6 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * 
-         * @summary Find data for a specific user
-         * @param {string} userId The ID of the user to find
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        usersControllerFindOne: async (userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'userId' is not null or undefined
-            if (userId === null || userId === undefined) {
-                throw new RequiredError('userId','Required parameter userId was null or undefined when calling usersControllerFindOne.');
-            }
-            const localVarPath = `/api/users/{userId}`
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            if (configuration && configuration.accessToken) {
-                const accessToken = typeof configuration.accessToken === 'function'
-                    ? await configuration.accessToken()
-                    : await configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
-            }
-
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -143,14 +143,13 @@ export const UsersApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Update or create user data
-         * @param {UpsertUserDto} body The info to update/create
-         * @param {string} userId The ID of the user to update/create
+         * @summary Find data for a specific user
+         * @param {string} userId The ID of the user to find
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async usersControllerCreate(body: UpsertUserDto, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await UsersApiAxiosParamCreator(configuration).usersControllerCreate(body, userId, options);
+        async usersControllerGetUser(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<UserDto>>> {
+            const localVarAxiosArgs = await UsersApiAxiosParamCreator(configuration).usersControllerGetUser(userId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -158,13 +157,14 @@ export const UsersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Find data for a specific user
-         * @param {string} userId The ID of the user to find
+         * @summary Update or create user data
+         * @param {UpsertUserDto} body The info to update/create
+         * @param {string} userId The ID of the user to update/create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async usersControllerFindOne(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<UserDto>>> {
-            const localVarAxiosArgs = await UsersApiAxiosParamCreator(configuration).usersControllerFindOne(userId, options);
+        async usersControllerUpdateUser(body: UpsertUserDto, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await UsersApiAxiosParamCreator(configuration).usersControllerUpdateUser(body, userId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -181,24 +181,24 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
     return {
         /**
          * 
+         * @summary Find data for a specific user
+         * @param {string} userId The ID of the user to find
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async usersControllerGetUser(userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UserDto>> {
+            return UsersApiFp(configuration).usersControllerGetUser(userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Update or create user data
          * @param {UpsertUserDto} body The info to update/create
          * @param {string} userId The ID of the user to update/create
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async usersControllerCreate(body: UpsertUserDto, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return UsersApiFp(configuration).usersControllerCreate(body, userId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Find data for a specific user
-         * @param {string} userId The ID of the user to find
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async usersControllerFindOne(userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UserDto>> {
-            return UsersApiFp(configuration).usersControllerFindOne(userId, options).then((request) => request(axios, basePath));
+        async usersControllerUpdateUser(body: UpsertUserDto, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return UsersApiFp(configuration).usersControllerUpdateUser(body, userId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -212,6 +212,17 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
 export class UsersApi extends BaseAPI {
     /**
      * 
+     * @summary Find data for a specific user
+     * @param {string} userId The ID of the user to find
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public async usersControllerGetUser(userId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<UserDto>> {
+        return UsersApiFp(this.configuration).usersControllerGetUser(userId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
      * @summary Update or create user data
      * @param {UpsertUserDto} body The info to update/create
      * @param {string} userId The ID of the user to update/create
@@ -219,18 +230,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public async usersControllerCreate(body: UpsertUserDto, userId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return UsersApiFp(this.configuration).usersControllerCreate(body, userId, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * 
-     * @summary Find data for a specific user
-     * @param {string} userId The ID of the user to find
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public async usersControllerFindOne(userId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<UserDto>> {
-        return UsersApiFp(this.configuration).usersControllerFindOne(userId, options).then((request) => request(this.axios, this.basePath));
+    public async usersControllerUpdateUser(body: UpsertUserDto, userId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return UsersApiFp(this.configuration).usersControllerUpdateUser(body, userId, options).then((request) => request(this.axios, this.basePath));
     }
 }

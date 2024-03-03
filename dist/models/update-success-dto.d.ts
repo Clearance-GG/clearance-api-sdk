@@ -20,12 +20,12 @@ export interface UpdateSuccessDTO {
      * @type {string}
      * @memberof UpdateSuccessDTO
      */
-    channelId: string;
+    channelId?: string;
     /**
      * @type {string}
      * @memberof UpdateSuccessDTO
      */
-    messageId: string;
+    messageId?: string;
     /**
      * @type {number}
      * @memberof UpdateSuccessDTO

@@ -209,7 +209,7 @@ var ProxiesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        proxiesControllerFetchAllProxies: function (options) {
+        proxiesControllerGetAllProxies: function (options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
@@ -321,12 +321,12 @@ var ProxiesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        proxiesControllerFetchAllProxies: function (options) {
+        proxiesControllerGetAllProxies: function (options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.ProxiesApiAxiosParamCreator)(configuration).proxiesControllerFetchAllProxies(options)];
+                        case 0: return [4 /*yield*/, (0, exports.ProxiesApiAxiosParamCreator)(configuration).proxiesControllerGetAllProxies(options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -381,10 +381,10 @@ var ProxiesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        proxiesControllerFetchAllProxies: function (options) {
+        proxiesControllerGetAllProxies: function (options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.ProxiesApiFp)(configuration).proxiesControllerFetchAllProxies(options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.ProxiesApiFp)(configuration).proxiesControllerGetAllProxies(options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -440,11 +440,11 @@ var ProxiesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof ProxiesApi
      */
-    ProxiesApi.prototype.proxiesControllerFetchAllProxies = function (options) {
+    ProxiesApi.prototype.proxiesControllerGetAllProxies = function (options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.ProxiesApiFp)(this.configuration).proxiesControllerFetchAllProxies(options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.ProxiesApiFp)(this.configuration).proxiesControllerGetAllProxies(options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

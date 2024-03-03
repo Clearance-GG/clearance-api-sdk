@@ -34,10 +34,10 @@ export const RolesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rolesControllerCreateCategory: async (body: RoleCategoryDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        rolesControllerCreateRoleCategory: async (body: RoleCategoryDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling rolesControllerCreateCategory.');
+                throw new RequiredError('body','Required parameter body was null or undefined when calling rolesControllerCreateRoleCategory.');
             }
             const localVarPath = `/api/roles/create-category`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -346,8 +346,8 @@ export const RolesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async rolesControllerCreateCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await RolesApiAxiosParamCreator(configuration).rolesControllerCreateCategory(body, options);
+        async rolesControllerCreateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await RolesApiAxiosParamCreator(configuration).rolesControllerCreateRoleCategory(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -438,8 +438,8 @@ export const RolesApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async rolesControllerCreateCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return RolesApiFp(configuration).rolesControllerCreateCategory(body, options).then((request) => request(axios, basePath));
+        async rolesControllerCreateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return RolesApiFp(configuration).rolesControllerCreateRoleCategory(body, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -508,8 +508,8 @@ export class RolesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RolesApi
      */
-    public async rolesControllerCreateCategory(body: RoleCategoryDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return RolesApiFp(this.configuration).rolesControllerCreateCategory(body, options).then((request) => request(this.axios, this.basePath));
+    public async rolesControllerCreateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return RolesApiFp(this.configuration).rolesControllerCreateRoleCategory(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

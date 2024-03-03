@@ -15,21 +15,13 @@ import { RequestArgs, BaseAPI } from '../base';
 import { DiscordIdDto } from '../models';
 import { GetChannelIdsResponseDto } from '../models';
 import { LeaderboardEntryDto } from '../models';
+import { PointsBalanceDto } from '../models';
 import { UpdateSuccessDTO } from '../models';
 /**
  * SuccessApi - axios parameter creator
  * @export
  */
 export declare const SuccessApiAxiosParamCreator: (configuration?: Configuration) => {
-    /**
-     *
-     * @summary Update or create success points for a user
-     * @param {UpdateSuccessDTO} body The points and related info to update/create
-     * @param {string} userId The ID of the user to update/create points for
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    successControllerCreate: (body: UpdateSuccessDTO, userId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get discord channel IDs
@@ -43,22 +35,16 @@ export declare const SuccessApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    successControllerLeaderboard: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    successControllerGetLeaderboard: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Add or update discord channel IDs
-     * @param {DiscordIdDto} body The channel id
-     * @param {string} channelId The ID of the channel to update
+     * @summary Get success ledger info for a specific message ID
+     * @param {string} channelId The ID of the channel to fetch info from
+     * @param {string} messageId The ID of the message to fetch info from
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    successControllerUpsertDiscordIds: (body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-};
-/**
- * SuccessApi - functional programming interface
- * @export
- */
-export declare const SuccessApiFp: (configuration?: Configuration) => {
+    successControllerGetSuccessLedgerInfo: (channelId: string, messageId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Update or create success points for a user
@@ -67,7 +53,22 @@ export declare const SuccessApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    successControllerCreate(body: UpdateSuccessDTO, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    successControllerUpdatePoints: (body: UpdateSuccessDTO, userId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Add or update discord channel IDs
+     * @param {DiscordIdDto} body The channel id
+     * @param {string} channelId The ID of the channel to update
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    successControllerUpsertChannelId: (body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+};
+/**
+ * SuccessApi - functional programming interface
+ * @export
+ */
+export declare const SuccessApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Get discord channel IDs
@@ -81,22 +82,16 @@ export declare const SuccessApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    successControllerLeaderboard(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<LeaderboardEntryDto>>>>;
+    successControllerGetLeaderboard(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<LeaderboardEntryDto>>>>;
     /**
      *
-     * @summary Add or update discord channel IDs
-     * @param {DiscordIdDto} body The channel id
-     * @param {string} channelId The ID of the channel to update
+     * @summary Get success ledger info for a specific message ID
+     * @param {string} channelId The ID of the channel to fetch info from
+     * @param {string} messageId The ID of the message to fetch info from
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    successControllerUpsertDiscordIds(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
-};
-/**
- * SuccessApi - factory interface
- * @export
- */
-export declare const SuccessApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
+    successControllerGetSuccessLedgerInfo(channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<boolean>>>;
     /**
      *
      * @summary Update or create success points for a user
@@ -105,7 +100,22 @@ export declare const SuccessApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    successControllerCreate(body: UpdateSuccessDTO, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    successControllerUpdatePoints(body: UpdateSuccessDTO, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<PointsBalanceDto>>>;
+    /**
+     *
+     * @summary Add or update discord channel IDs
+     * @param {DiscordIdDto} body The channel id
+     * @param {string} channelId The ID of the channel to update
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    successControllerUpsertChannelId(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+};
+/**
+ * SuccessApi - factory interface
+ * @export
+ */
+export declare const SuccessApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
      * @summary Get discord channel IDs
@@ -119,7 +129,25 @@ export declare const SuccessApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    successControllerLeaderboard(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<LeaderboardEntryDto>>>;
+    successControllerGetLeaderboard(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<LeaderboardEntryDto>>>;
+    /**
+     *
+     * @summary Get success ledger info for a specific message ID
+     * @param {string} channelId The ID of the channel to fetch info from
+     * @param {string} messageId The ID of the message to fetch info from
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    successControllerGetSuccessLedgerInfo(channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>>;
+    /**
+     *
+     * @summary Update or create success points for a user
+     * @param {UpdateSuccessDTO} body The points and related info to update/create
+     * @param {string} userId The ID of the user to update/create points for
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    successControllerUpdatePoints(body: UpdateSuccessDTO, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PointsBalanceDto>>;
     /**
      *
      * @summary Add or update discord channel IDs
@@ -128,7 +156,7 @@ export declare const SuccessApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    successControllerUpsertDiscordIds(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    successControllerUpsertChannelId(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * SuccessApi - object-oriented interface
@@ -139,16 +167,6 @@ export declare const SuccessApiFactory: (configuration?: Configuration, basePath
 export declare class SuccessApi extends BaseAPI {
     /**
      *
-     * @summary Update or create success points for a user
-     * @param {UpdateSuccessDTO} body The points and related info to update/create
-     * @param {string} userId The ID of the user to update/create points for
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SuccessApi
-     */
-    successControllerCreate(body: UpdateSuccessDTO, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
-    /**
-     *
      * @summary Get discord channel IDs
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -162,7 +180,27 @@ export declare class SuccessApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SuccessApi
      */
-    successControllerLeaderboard(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<LeaderboardEntryDto>>>;
+    successControllerGetLeaderboard(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<LeaderboardEntryDto>>>;
+    /**
+     *
+     * @summary Get success ledger info for a specific message ID
+     * @param {string} channelId The ID of the channel to fetch info from
+     * @param {string} messageId The ID of the message to fetch info from
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SuccessApi
+     */
+    successControllerGetSuccessLedgerInfo(channelId: string, messageId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>>;
+    /**
+     *
+     * @summary Update or create success points for a user
+     * @param {UpdateSuccessDTO} body The points and related info to update/create
+     * @param {string} userId The ID of the user to update/create points for
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SuccessApi
+     */
+    successControllerUpdatePoints(body: UpdateSuccessDTO, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<PointsBalanceDto>>;
     /**
      *
      * @summary Add or update discord channel IDs
@@ -172,5 +210,5 @@ export declare class SuccessApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SuccessApi
      */
-    successControllerUpsertDiscordIds(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    successControllerUpsertChannelId(body: DiscordIdDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }

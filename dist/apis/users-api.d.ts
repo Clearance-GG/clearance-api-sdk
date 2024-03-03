@@ -21,21 +21,21 @@ import { UserDto } from '../models';
 export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
+     * @summary Find data for a specific user
+     * @param {string} userId The ID of the user to find
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersControllerGetUser: (userId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Update or create user data
      * @param {UpsertUserDto} body The info to update/create
      * @param {string} userId The ID of the user to update/create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    usersControllerCreate: (body: UpsertUserDto, userId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Find data for a specific user
-     * @param {string} userId The ID of the user to find
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    usersControllerFindOne: (userId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    usersControllerUpdateUser: (body: UpsertUserDto, userId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * UsersApi - functional programming interface
@@ -44,21 +44,21 @@ export declare const UsersApiAxiosParamCreator: (configuration?: Configuration) 
 export declare const UsersApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @summary Find data for a specific user
+     * @param {string} userId The ID of the user to find
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersControllerGetUser(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<UserDto>>>;
+    /**
+     *
      * @summary Update or create user data
      * @param {UpsertUserDto} body The info to update/create
      * @param {string} userId The ID of the user to update/create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    usersControllerCreate(body: UpsertUserDto, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
-    /**
-     *
-     * @summary Find data for a specific user
-     * @param {string} userId The ID of the user to find
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    usersControllerFindOne(userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<UserDto>>>;
+    usersControllerUpdateUser(body: UpsertUserDto, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * UsersApi - factory interface
@@ -67,21 +67,21 @@ export declare const UsersApiFp: (configuration?: Configuration) => {
 export declare const UsersApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @summary Find data for a specific user
+     * @param {string} userId The ID of the user to find
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersControllerGetUser(userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UserDto>>;
+    /**
+     *
      * @summary Update or create user data
      * @param {UpsertUserDto} body The info to update/create
      * @param {string} userId The ID of the user to update/create
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    usersControllerCreate(body: UpsertUserDto, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
-    /**
-     *
-     * @summary Find data for a specific user
-     * @param {string} userId The ID of the user to find
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    usersControllerFindOne(userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UserDto>>;
+    usersControllerUpdateUser(body: UpsertUserDto, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * UsersApi - object-oriented interface
@@ -92,6 +92,15 @@ export declare const UsersApiFactory: (configuration?: Configuration, basePath?:
 export declare class UsersApi extends BaseAPI {
     /**
      *
+     * @summary Find data for a specific user
+     * @param {string} userId The ID of the user to find
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    usersControllerGetUser(userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UserDto>>;
+    /**
+     *
      * @summary Update or create user data
      * @param {UpsertUserDto} body The info to update/create
      * @param {string} userId The ID of the user to update/create
@@ -99,14 +108,5 @@ export declare class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    usersControllerCreate(body: UpsertUserDto, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
-    /**
-     *
-     * @summary Find data for a specific user
-     * @param {string} userId The ID of the user to find
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    usersControllerFindOne(userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UserDto>>;
+    usersControllerUpdateUser(body: UpsertUserDto, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }

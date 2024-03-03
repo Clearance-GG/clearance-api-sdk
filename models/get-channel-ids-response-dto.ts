@@ -37,4 +37,10 @@ export interface GetChannelIdsResponseDto {
      * @memberof GetChannelIdsResponseDto
      */
     infoIds: any;
+
+    /**
+     * @type {any}
+     * @memberof GetChannelIdsResponseDto
+     */
+    reactionIds: any;
 }

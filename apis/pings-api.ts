@@ -32,14 +32,14 @@ export const PingsApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pingsControllerAddPing: async (body: CreateUpdatePingDto, channelId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        pingsControllerCreatePing: async (body: CreateUpdatePingDto, channelId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling pingsControllerAddPing.');
+                throw new RequiredError('body','Required parameter body was null or undefined when calling pingsControllerCreatePing.');
             }
             // verify required parameter 'channelId' is not null or undefined
             if (channelId === null || channelId === undefined) {
-                throw new RequiredError('channelId','Required parameter channelId was null or undefined when calling pingsControllerAddPing.');
+                throw new RequiredError('channelId','Required parameter channelId was null or undefined when calling pingsControllerCreatePing.');
             }
             const localVarPath = `/api/pings/{channelId}`
                 .replace(`{${"channelId"}}`, encodeURIComponent(String(channelId)));
@@ -206,8 +206,8 @@ export const PingsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pingsControllerAddPing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await PingsApiAxiosParamCreator(configuration).pingsControllerAddPing(body, channelId, options);
+        async pingsControllerCreatePing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await PingsApiAxiosParamCreator(configuration).pingsControllerCreatePing(body, channelId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -259,8 +259,8 @@ export const PingsApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pingsControllerAddPing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return PingsApiFp(configuration).pingsControllerAddPing(body, channelId, options).then((request) => request(axios, basePath));
+        async pingsControllerCreatePing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return PingsApiFp(configuration).pingsControllerCreatePing(body, channelId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -302,8 +302,8 @@ export class PingsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PingsApi
      */
-    public async pingsControllerAddPing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return PingsApiFp(this.configuration).pingsControllerAddPing(body, channelId, options).then((request) => request(this.axios, this.basePath));
+    public async pingsControllerCreatePing(body: CreateUpdatePingDto, channelId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return PingsApiFp(this.configuration).pingsControllerCreatePing(body, channelId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

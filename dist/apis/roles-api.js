@@ -94,7 +94,7 @@ var RolesApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rolesControllerCreateCategory: function (body, options) {
+        rolesControllerCreateRoleCategory: function (body, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions, needsSerialization;
@@ -103,7 +103,7 @@ var RolesApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'body' is not null or undefined
                             if (body === null || body === undefined) {
-                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling rolesControllerCreateCategory.');
+                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling rolesControllerCreateRoleCategory.');
                             }
                             localVarPath = "/api/roles/create-category";
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -467,12 +467,12 @@ var RolesApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rolesControllerCreateCategory: function (body, options) {
+        rolesControllerCreateRoleCategory: function (body, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.RolesApiAxiosParamCreator)(configuration).rolesControllerCreateCategory(body, options)];
+                        case 0: return [4 /*yield*/, (0, exports.RolesApiAxiosParamCreator)(configuration).rolesControllerCreateRoleCategory(body, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -625,10 +625,10 @@ var RolesApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rolesControllerCreateCategory: function (body, options) {
+        rolesControllerCreateRoleCategory: function (body, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.RolesApiFp)(configuration).rolesControllerCreateCategory(body, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.RolesApiFp)(configuration).rolesControllerCreateRoleCategory(body, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -723,11 +723,11 @@ var RolesApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof RolesApi
      */
-    RolesApi.prototype.rolesControllerCreateCategory = function (body, options) {
+    RolesApi.prototype.rolesControllerCreateRoleCategory = function (body, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.RolesApiFp)(this.configuration).rolesControllerCreateCategory(body, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.RolesApiFp)(this.configuration).rolesControllerCreateRoleCategory(body, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
