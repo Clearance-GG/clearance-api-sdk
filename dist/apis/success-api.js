@@ -261,10 +261,11 @@ var SuccessApiAxiosParamCreator = function (configuration) {
          * @param {string} userId The user to check for
          * @param {string} channelId The ID of the channel to fetch info from
          * @param {string} messageId The ID of the message to fetch info from
+         * @param {boolean} reaction Only looking for reactions?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerGetSuccessLedgerInfo: function (userId, channelId, messageId, options) {
+        successControllerGetSuccessLedgerInfo: function (userId, channelId, messageId, reaction, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
@@ -283,10 +284,15 @@ var SuccessApiAxiosParamCreator = function (configuration) {
                             if (messageId === null || messageId === undefined) {
                                 throw new base_1.RequiredError('messageId', 'Required parameter messageId was null or undefined when calling successControllerGetSuccessLedgerInfo.');
                             }
+                            // verify required parameter 'reaction' is not null or undefined
+                            if (reaction === null || reaction === undefined) {
+                                throw new base_1.RequiredError('reaction', 'Required parameter reaction was null or undefined when calling successControllerGetSuccessLedgerInfo.');
+                            }
                             localVarPath = "/api/success/ledger/{userId}/{channelId}/{messageId}"
                                 .replace("{".concat("userId", "}"), encodeURIComponent(String(userId)))
                                 .replace("{".concat("channelId", "}"), encodeURIComponent(String(channelId)))
-                                .replace("{".concat("messageId", "}"), encodeURIComponent(String(messageId)));
+                                .replace("{".concat("messageId", "}"), encodeURIComponent(String(messageId)))
+                                .replace("{".concat("reaction", "}"), encodeURIComponent(String(reaction)));
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
@@ -551,15 +557,16 @@ var SuccessApiFp = function (configuration) {
          * @param {string} userId The user to check for
          * @param {string} channelId The ID of the channel to fetch info from
          * @param {string} messageId The ID of the message to fetch info from
+         * @param {boolean} reaction Only looking for reactions?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerGetSuccessLedgerInfo: function (userId, channelId, messageId, options) {
+        successControllerGetSuccessLedgerInfo: function (userId, channelId, messageId, reaction, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.SuccessApiAxiosParamCreator)(configuration).successControllerGetSuccessLedgerInfo(userId, channelId, messageId, options)];
+                        case 0: return [4 /*yield*/, (0, exports.SuccessApiAxiosParamCreator)(configuration).successControllerGetSuccessLedgerInfo(userId, channelId, messageId, reaction, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -679,13 +686,14 @@ var SuccessApiFactory = function (configuration, basePath, axios) {
          * @param {string} userId The user to check for
          * @param {string} channelId The ID of the channel to fetch info from
          * @param {string} messageId The ID of the message to fetch info from
+         * @param {boolean} reaction Only looking for reactions?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        successControllerGetSuccessLedgerInfo: function (userId, channelId, messageId, options) {
+        successControllerGetSuccessLedgerInfo: function (userId, channelId, messageId, reaction, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.SuccessApiFp)(configuration).successControllerGetSuccessLedgerInfo(userId, channelId, messageId, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.SuccessApiFp)(configuration).successControllerGetSuccessLedgerInfo(userId, channelId, messageId, reaction, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -785,15 +793,16 @@ var SuccessApi = /** @class */ (function (_super) {
      * @param {string} userId The user to check for
      * @param {string} channelId The ID of the channel to fetch info from
      * @param {string} messageId The ID of the message to fetch info from
+     * @param {boolean} reaction Only looking for reactions?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SuccessApi
      */
-    SuccessApi.prototype.successControllerGetSuccessLedgerInfo = function (userId, channelId, messageId, options) {
+    SuccessApi.prototype.successControllerGetSuccessLedgerInfo = function (userId, channelId, messageId, reaction, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.SuccessApiFp)(this.configuration).successControllerGetSuccessLedgerInfo(userId, channelId, messageId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.SuccessApiFp)(this.configuration).successControllerGetSuccessLedgerInfo(userId, channelId, messageId, reaction, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
