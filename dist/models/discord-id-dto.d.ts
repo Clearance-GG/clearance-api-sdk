@@ -55,5 +55,10 @@ export interface DiscordIdDto {
      * @type {Array<string>}
      * @memberof DiscordIdDto
      */
-    defaultReactions: Array<string>;
+    defaultReactions?: Array<string>;
+    /**
+     * @type {boolean}
+     * @memberof DiscordIdDto
+     */
+    reactionsEnabled?: boolean;
 }
