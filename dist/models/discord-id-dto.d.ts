@@ -61,4 +61,9 @@ export interface DiscordIdDto {
      * @memberof DiscordIdDto
      */
     reactionsEnabled?: boolean;
+    /**
+     * @type {number}
+     * @memberof DiscordIdDto
+     */
+    reactionPoints?: number;
 }

@@ -24,6 +24,14 @@ import { UpdateSuccessDTO } from '../models';
 export declare const SuccessApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
+     * @summary Delete discord channel ID rules
+     * @param {string} channelId The ID of the channel to update
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    successControllerDeleteChannelId: (channelId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get discord channel IDs
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -70,6 +78,14 @@ export declare const SuccessApiAxiosParamCreator: (configuration?: Configuration
  * @export
  */
 export declare const SuccessApiFp: (configuration?: Configuration) => {
+    /**
+     *
+     * @summary Delete discord channel ID rules
+     * @param {string} channelId The ID of the channel to update
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    successControllerDeleteChannelId(channelId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Get discord channel IDs
@@ -120,6 +136,14 @@ export declare const SuccessApiFp: (configuration?: Configuration) => {
 export declare const SuccessApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @summary Delete discord channel ID rules
+     * @param {string} channelId The ID of the channel to update
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    successControllerDeleteChannelId(channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
      * @summary Get discord channel IDs
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -168,6 +192,15 @@ export declare const SuccessApiFactory: (configuration?: Configuration, basePath
  * @extends {BaseAPI}
  */
 export declare class SuccessApi extends BaseAPI {
+    /**
+     *
+     * @summary Delete discord channel ID rules
+     * @param {string} channelId The ID of the channel to update
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SuccessApi
+     */
+    successControllerDeleteChannelId(channelId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Get discord channel IDs
