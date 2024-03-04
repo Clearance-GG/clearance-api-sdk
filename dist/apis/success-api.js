@@ -288,7 +288,7 @@ var SuccessApiAxiosParamCreator = function (configuration) {
                             if (reaction === null || reaction === undefined) {
                                 throw new base_1.RequiredError('reaction', 'Required parameter reaction was null or undefined when calling successControllerGetSuccessLedgerInfo.');
                             }
-                            localVarPath = "/api/success/ledger/{userId}/{channelId}/{messageId}"
+                            localVarPath = "/api/success/ledger/{userId}/{channelId}/{messageId}/{reaction}"
                                 .replace("{".concat("userId", "}"), encodeURIComponent(String(userId)))
                                 .replace("{".concat("channelId", "}"), encodeURIComponent(String(channelId)))
                                 .replace("{".concat("messageId", "}"), encodeURIComponent(String(messageId)))
