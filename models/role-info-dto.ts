@@ -25,4 +25,10 @@ export interface RoleInfoDto {
      * @memberof RoleInfoDto
      */
     emoji: string;
+
+    /**
+     * @type {string}
+     * @memberof RoleInfoDto
+     */
+    requiredRoleId?: string;
 }

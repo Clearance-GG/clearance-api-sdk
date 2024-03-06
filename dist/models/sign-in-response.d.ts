@@ -87,4 +87,14 @@ export interface SignInResponse {
      * @memberof SignInResponse
      */
     instagramHandle?: string;
+    /**
+     * @type {string}
+     * @memberof SignInResponse
+     */
+    suggestionsChannel?: string;
+    /**
+     * @type {string}
+     * @memberof SignInResponse
+     */
+    rolesChannel?: string;
 }

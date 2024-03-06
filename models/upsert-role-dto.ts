@@ -37,4 +37,10 @@ export interface UpsertRoleDto {
      * @memberof UpsertRoleDto
      */
     emoji: string;
+
+    /**
+     * @type {string}
+     * @memberof UpsertRoleDto
+     */
+    requiredRoleId?: string;
 }
