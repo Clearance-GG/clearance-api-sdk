@@ -43,4 +43,10 @@ export interface UpsertRoleDto {
      * @memberof UpsertRoleDto
      */
     requiredRoleId?: string;
+
+    /**
+     * @type {boolean}
+     * @memberof UpsertRoleDto
+     */
+    protectedRole?: boolean;
 }

@@ -26,4 +26,9 @@ export interface RoleInfoDto {
      * @memberof RoleInfoDto
      */
     requiredRoleId?: string;
+    /**
+     * @type {boolean}
+     * @memberof RoleInfoDto
+     */
+    protectedRole?: boolean;
 }

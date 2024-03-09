@@ -28,7 +28,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * Do not edit the class manually.
  */
 __exportStar(require("./apis/auth-api"), exports);
-__exportStar(require("./apis/pings-api"), exports);
 __exportStar(require("./apis/proxies-api"), exports);
 __exportStar(require("./apis/roles-api"), exports);
 __exportStar(require("./apis/success-api"), exports);

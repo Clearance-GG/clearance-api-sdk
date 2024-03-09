@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 export * from './apis/auth-api';
-export * from './apis/pings-api';
 export * from './apis/proxies-api';
 export * from './apis/roles-api';
 export * from './apis/success-api';

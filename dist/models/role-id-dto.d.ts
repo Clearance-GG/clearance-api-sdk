@@ -13,12 +13,12 @@
 *
 *
 * @export
-* @interface DeletePingDto
+* @interface RoleIdDto
 */
-export interface DeletePingDto {
+export interface RoleIdDto {
     /**
      * @type {string}
-     * @memberof DeletePingDto
+     * @memberof RoleIdDto
      */
-    channelId: string;
+    roleId: string;
 }

@@ -12,9 +12,9 @@
 import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
-import { DeleteRoleDto } from '../models';
 import { DumpRolesResponseDto } from '../models';
 import { RoleCategoryDto } from '../models';
+import { RoleIdDto } from '../models';
 import { UpsertRoleDto } from '../models';
 /**
  * RolesApi - axios parameter creator
@@ -32,11 +32,11 @@ export declare const RolesApiAxiosParamCreator: (configuration?: Configuration) 
     /**
      *
      * @summary Delete a role
-     * @param {DeleteRoleDto} body
+     * @param {RoleIdDto} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rolesControllerDeleteRole: (body: DeleteRoleDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    rolesControllerDeleteRole: (body: RoleIdDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Delete a role category and its associated roles
@@ -62,6 +62,15 @@ export declare const RolesApiAxiosParamCreator: (configuration?: Configuration) 
     rolesControllerUpdateRoleCategory: (body: RoleCategoryDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Update a user's role status
+     * @param {RoleIdDto} body
+     * @param {string} userId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    rolesControllerUpdateUser: (body: RoleIdDto, userId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Upsert a role within a role category
      * @param {UpsertRoleDto} body
      * @param {*} [options] Override http request option.
@@ -85,11 +94,11 @@ export declare const RolesApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Delete a role
-     * @param {DeleteRoleDto} body
+     * @param {RoleIdDto} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rolesControllerDeleteRole(body: DeleteRoleDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    rolesControllerDeleteRole(body: RoleIdDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Delete a role category and its associated roles
@@ -115,6 +124,15 @@ export declare const RolesApiFp: (configuration?: Configuration) => {
     rolesControllerUpdateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
+     * @summary Update a user's role status
+     * @param {RoleIdDto} body
+     * @param {string} userId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    rolesControllerUpdateUser(body: RoleIdDto, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    /**
+     *
      * @summary Upsert a role within a role category
      * @param {UpsertRoleDto} body
      * @param {*} [options] Override http request option.
@@ -138,11 +156,11 @@ export declare const RolesApiFactory: (configuration?: Configuration, basePath?:
     /**
      *
      * @summary Delete a role
-     * @param {DeleteRoleDto} body
+     * @param {RoleIdDto} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    rolesControllerDeleteRole(body: DeleteRoleDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    rolesControllerDeleteRole(body: RoleIdDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Delete a role category and its associated roles
@@ -166,6 +184,15 @@ export declare const RolesApiFactory: (configuration?: Configuration, basePath?:
      * @throws {RequiredError}
      */
     rolesControllerUpdateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
+     * @summary Update a user's role status
+     * @param {RoleIdDto} body
+     * @param {string} userId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    rolesControllerUpdateUser(body: RoleIdDto, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Upsert a role within a role category
@@ -194,12 +221,12 @@ export declare class RolesApi extends BaseAPI {
     /**
      *
      * @summary Delete a role
-     * @param {DeleteRoleDto} body
+     * @param {RoleIdDto} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RolesApi
      */
-    rolesControllerDeleteRole(body: DeleteRoleDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    rolesControllerDeleteRole(body: RoleIdDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Delete a role category and its associated roles
@@ -226,6 +253,16 @@ export declare class RolesApi extends BaseAPI {
      * @memberof RolesApi
      */
     rolesControllerUpdateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
+     * @summary Update a user's role status
+     * @param {RoleIdDto} body
+     * @param {string} userId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RolesApi
+     */
+    rolesControllerUpdateUser(body: RoleIdDto, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Upsert a role within a role category

@@ -17,9 +17,9 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { DeleteRoleDto } from '../models';
 import { DumpRolesResponseDto } from '../models';
 import { RoleCategoryDto } from '../models';
+import { RoleIdDto } from '../models';
 import { UpsertRoleDto } from '../models';
 /**
  * RolesApi - axios parameter creator
@@ -82,11 +82,11 @@ export const RolesApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * 
          * @summary Delete a role
-         * @param {DeleteRoleDto} body 
+         * @param {RoleIdDto} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        rolesControllerDeleteRole: async (body: DeleteRoleDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        rolesControllerDeleteRole: async (body: RoleIdDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling rolesControllerDeleteRole.');
@@ -280,6 +280,64 @@ export const RolesApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          * 
+         * @summary Update a user's role status
+         * @param {RoleIdDto} body 
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        rolesControllerUpdateUser: async (body: RoleIdDto, userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling rolesControllerUpdateUser.');
+            }
+            // verify required parameter 'userId' is not null or undefined
+            if (userId === null || userId === undefined) {
+                throw new RequiredError('userId','Required parameter userId was null or undefined when calling rolesControllerUpdateUser.');
+            }
+            const localVarPath = `/api/roles/{userId}`
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Upsert a role within a role category
          * @param {UpsertRoleDto} body 
          * @param {*} [options] Override http request option.
@@ -356,11 +414,11 @@ export const RolesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Delete a role
-         * @param {DeleteRoleDto} body 
+         * @param {RoleIdDto} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async rolesControllerDeleteRole(body: DeleteRoleDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+        async rolesControllerDeleteRole(body: RoleIdDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await RolesApiAxiosParamCreator(configuration).rolesControllerDeleteRole(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -410,6 +468,21 @@ export const RolesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Update a user's role status
+         * @param {RoleIdDto} body 
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async rolesControllerUpdateUser(body: RoleIdDto, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await RolesApiAxiosParamCreator(configuration).rolesControllerUpdateUser(body, userId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary Upsert a role within a role category
          * @param {UpsertRoleDto} body 
          * @param {*} [options] Override http request option.
@@ -444,11 +517,11 @@ export const RolesApiFactory = function (configuration?: Configuration, basePath
         /**
          * 
          * @summary Delete a role
-         * @param {DeleteRoleDto} body 
+         * @param {RoleIdDto} body 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async rolesControllerDeleteRole(body: DeleteRoleDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+        async rolesControllerDeleteRole(body: RoleIdDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return RolesApiFp(configuration).rolesControllerDeleteRole(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -479,6 +552,17 @@ export const RolesApiFactory = function (configuration?: Configuration, basePath
          */
         async rolesControllerUpdateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return RolesApiFp(configuration).rolesControllerUpdateRoleCategory(body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update a user's role status
+         * @param {RoleIdDto} body 
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async rolesControllerUpdateUser(body: RoleIdDto, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return RolesApiFp(configuration).rolesControllerUpdateUser(body, userId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -514,12 +598,12 @@ export class RolesApi extends BaseAPI {
     /**
      * 
      * @summary Delete a role
-     * @param {DeleteRoleDto} body 
+     * @param {RoleIdDto} body 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RolesApi
      */
-    public async rolesControllerDeleteRole(body: DeleteRoleDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+    public async rolesControllerDeleteRole(body: RoleIdDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return RolesApiFp(this.configuration).rolesControllerDeleteRole(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -553,6 +637,18 @@ export class RolesApi extends BaseAPI {
      */
     public async rolesControllerUpdateRoleCategory(body: RoleCategoryDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return RolesApiFp(this.configuration).rolesControllerUpdateRoleCategory(body, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Update a user's role status
+     * @param {RoleIdDto} body 
+     * @param {string} userId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RolesApi
+     */
+    public async rolesControllerUpdateUser(body: RoleIdDto, userId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return RolesApiFp(this.configuration).rolesControllerUpdateUser(body, userId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

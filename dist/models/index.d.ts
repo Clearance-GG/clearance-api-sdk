@@ -1,8 +1,6 @@
 export * from './auth-dto';
 export * from './category-roles-dto';
 export * from './create-proxies-dto';
-export * from './create-update-ping-dto';
-export * from './delete-role-dto';
 export * from './discord-id-dto';
 export * from './dump-roles-response-dto';
 export * from './get-channel-ids-response-dto';
@@ -10,6 +8,7 @@ export * from './leaderboard-entry-dto';
 export * from './points-balance-dto';
 export * from './proxy-dto';
 export * from './role-category-dto';
+export * from './role-id-dto';
 export * from './role-info-dto';
 export * from './sign-in-response';
 export * from './update-success-dto';
