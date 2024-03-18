@@ -41,4 +41,9 @@ export interface UpsertUserDto {
      * @memberof UpsertUserDto
      */
     whopReview?: boolean;
+    /**
+     * @type {string}
+     * @memberof UpsertUserDto
+     */
+    zipcode?: string;
 }

@@ -36,7 +36,7 @@ export interface UserDto {
      * @type {number}
      * @memberof UserDto
      */
-    points: number;
+    points?: number;
 
     /**
      * @type {string}
@@ -54,17 +54,11 @@ export interface UserDto {
      * @type {boolean}
      * @memberof UserDto
      */
-    whopReview: boolean;
+    whopReview?: boolean;
 
     /**
-     * @type {Date}
+     * @type {string}
      * @memberof UserDto
      */
-    createdAt: Date;
-
-    /**
-     * @type {Date}
-     * @memberof UserDto
-     */
-    updatedAt: Date;
+    zipcode?: string;
 }
