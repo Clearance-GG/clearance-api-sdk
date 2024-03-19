@@ -24,17 +24,17 @@ export interface ZipcodeDto {
      */
     zipcode: string;
     /**
-     * @type {string}
+     * @type {number}
      * @memberof ZipcodeDto
      * @example 34.0901
      */
-    lat: string;
+    lat: number;
     /**
-     * @type {string}
+     * @type {number}
      * @memberof ZipcodeDto
      * @example -118.4065
      */
-    lng: string;
+    lng: number;
     /**
      * @type {MapQuestResultDto}
      * @memberof ZipcodeDto

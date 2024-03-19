@@ -21,12 +21,6 @@
 export interface UpsertUserDto {
 
     /**
-     * @type {string}
-     * @memberof UpsertUserDto
-     */
-    userId: string;
-
-    /**
      * @type {number}
      * @memberof UpsertUserDto
      */
@@ -36,7 +30,7 @@ export interface UpsertUserDto {
      * @type {string}
      * @memberof UpsertUserDto
      */
-    twitterHandle: string;
+    twitterHandle?: string;
 
     /**
      * @type {string}

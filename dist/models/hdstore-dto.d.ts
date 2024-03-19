@@ -88,14 +88,4 @@ export interface HDStoreDto {
      * @memberof HDStoreDto
      */
     mapquestData?: MapQuestResultDto;
-    /**
-     * @type {any}
-     * @memberof HDStoreDto
-     */
-    dataDump?: any;
-    /**
-     * @type {Date}
-     * @memberof HDStoreDto
-     */
-    createdAt: Date;
 }
