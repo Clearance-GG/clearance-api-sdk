@@ -15,6 +15,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./auth-dto"), exports);
+__exportStar(require("./barcode-response-dto"), exports);
 __exportStar(require("./bulk-upsert-hdstore-items-dto"), exports);
 __exportStar(require("./category-roles-dto"), exports);
 __exportStar(require("./create-proxies-dto"), exports);

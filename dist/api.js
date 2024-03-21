@@ -34,4 +34,5 @@ __exportStar(require("./apis/retailers-api"), exports);
 __exportStar(require("./apis/roles-api"), exports);
 __exportStar(require("./apis/success-api"), exports);
 __exportStar(require("./apis/users-api"), exports);
+__exportStar(require("./apis/utility-api"), exports);
 __exportStar(require("./apis/zipcodes-api"), exports);

@@ -16,4 +16,5 @@ export * from './apis/retailers-api';
 export * from './apis/roles-api';
 export * from './apis/success-api';
 export * from './apis/users-api';
+export * from './apis/utility-api';
 export * from './apis/zipcodes-api';
