@@ -94,7 +94,7 @@ var UtilityApiAxiosParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerGetBarcodeImage: function (upc, options) {
+        utilityControllerGetBarcodeImage: function (upc, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
@@ -103,7 +103,7 @@ var UtilityApiAxiosParamCreator = function (configuration) {
                         case 0:
                             // verify required parameter 'upc' is not null or undefined
                             if (upc === null || upc === undefined) {
-                                throw new base_1.RequiredError('upc', 'Required parameter upc was null or undefined when calling usersControllerGetBarcodeImage.');
+                                throw new base_1.RequiredError('upc', 'Required parameter upc was null or undefined when calling utilityControllerGetBarcodeImage.');
                             }
                             localVarPath = "/api/utility/barcode/{upc}"
                                 .replace("{".concat("upc", "}"), encodeURIComponent(String(upc)));
@@ -163,12 +163,12 @@ var UtilityApiFp = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerGetBarcodeImage: function (upc, options) {
+        utilityControllerGetBarcodeImage: function (upc, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.UtilityApiAxiosParamCreator)(configuration).usersControllerGetBarcodeImage(upc, options)];
+                        case 0: return [4 /*yield*/, (0, exports.UtilityApiAxiosParamCreator)(configuration).utilityControllerGetBarcodeImage(upc, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -197,10 +197,10 @@ var UtilityApiFactory = function (configuration, basePath, axios) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerGetBarcodeImage: function (upc, options) {
+        utilityControllerGetBarcodeImage: function (upc, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.UtilityApiFp)(configuration).usersControllerGetBarcodeImage(upc, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.UtilityApiFp)(configuration).utilityControllerGetBarcodeImage(upc, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -226,11 +226,11 @@ var UtilityApi = /** @class */ (function (_super) {
      * @throws {RequiredError}
      * @memberof UtilityApi
      */
-    UtilityApi.prototype.usersControllerGetBarcodeImage = function (upc, options) {
+    UtilityApi.prototype.utilityControllerGetBarcodeImage = function (upc, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.UtilityApiFp)(this.configuration).usersControllerGetBarcodeImage(upc, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.UtilityApiFp)(this.configuration).utilityControllerGetBarcodeImage(upc, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

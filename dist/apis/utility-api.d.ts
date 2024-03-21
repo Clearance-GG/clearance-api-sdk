@@ -25,7 +25,7 @@ export declare const UtilityApiAxiosParamCreator: (configuration?: Configuration
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    usersControllerGetBarcodeImage: (upc: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    utilityControllerGetBarcodeImage: (upc: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * UtilityApi - functional programming interface
@@ -39,7 +39,7 @@ export declare const UtilityApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    usersControllerGetBarcodeImage(upc: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<BarcodeResponseDto>>>;
+    utilityControllerGetBarcodeImage(upc: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<BarcodeResponseDto>>>;
 };
 /**
  * UtilityApi - factory interface
@@ -53,7 +53,7 @@ export declare const UtilityApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    usersControllerGetBarcodeImage(upc: string, options?: AxiosRequestConfig): Promise<AxiosResponse<BarcodeResponseDto>>;
+    utilityControllerGetBarcodeImage(upc: string, options?: AxiosRequestConfig): Promise<AxiosResponse<BarcodeResponseDto>>;
 };
 /**
  * UtilityApi - object-oriented interface
@@ -70,5 +70,5 @@ export declare class UtilityApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UtilityApi
      */
-    usersControllerGetBarcodeImage(upc: string, options?: AxiosRequestConfig): Promise<AxiosResponse<BarcodeResponseDto>>;
+    utilityControllerGetBarcodeImage(upc: string, options?: AxiosRequestConfig): Promise<AxiosResponse<BarcodeResponseDto>>;
 }

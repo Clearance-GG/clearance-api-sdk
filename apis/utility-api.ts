@@ -31,10 +31,10 @@ export const UtilityApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersControllerGetBarcodeImage: async (upc: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        utilityControllerGetBarcodeImage: async (upc: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'upc' is not null or undefined
             if (upc === null || upc === undefined) {
-                throw new RequiredError('upc','Required parameter upc was null or undefined when calling usersControllerGetBarcodeImage.');
+                throw new RequiredError('upc','Required parameter upc was null or undefined when calling utilityControllerGetBarcodeImage.');
             }
             const localVarPath = `/api/utility/barcode/{upc}`
                 .replace(`{${"upc"}}`, encodeURIComponent(String(upc)));
@@ -89,8 +89,8 @@ export const UtilityApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async usersControllerGetBarcodeImage(upc: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<BarcodeResponseDto>>> {
-            const localVarAxiosArgs = await UtilityApiAxiosParamCreator(configuration).usersControllerGetBarcodeImage(upc, options);
+        async utilityControllerGetBarcodeImage(upc: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<BarcodeResponseDto>>> {
+            const localVarAxiosArgs = await UtilityApiAxiosParamCreator(configuration).utilityControllerGetBarcodeImage(upc, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -112,8 +112,8 @@ export const UtilityApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async usersControllerGetBarcodeImage(upc: string, options?: AxiosRequestConfig): Promise<AxiosResponse<BarcodeResponseDto>> {
-            return UtilityApiFp(configuration).usersControllerGetBarcodeImage(upc, options).then((request) => request(axios, basePath));
+        async utilityControllerGetBarcodeImage(upc: string, options?: AxiosRequestConfig): Promise<AxiosResponse<BarcodeResponseDto>> {
+            return UtilityApiFp(configuration).utilityControllerGetBarcodeImage(upc, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -133,7 +133,7 @@ export class UtilityApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UtilityApi
      */
-    public async usersControllerGetBarcodeImage(upc: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<BarcodeResponseDto>> {
-        return UtilityApiFp(this.configuration).usersControllerGetBarcodeImage(upc, options).then((request) => request(this.axios, this.basePath));
+    public async utilityControllerGetBarcodeImage(upc: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<BarcodeResponseDto>> {
+        return UtilityApiFp(this.configuration).utilityControllerGetBarcodeImage(upc, options).then((request) => request(this.axios, this.basePath));
     }
 }
