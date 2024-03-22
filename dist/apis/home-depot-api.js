@@ -352,10 +352,11 @@ var HomeDepotApiAxiosParamCreator = function (configuration) {
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
          * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerGetItemsByStore: function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options) {
+        hDControllerGetItemsByStore: function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
@@ -394,6 +395,9 @@ var HomeDepotApiAxiosParamCreator = function (configuration) {
                     if (clearanceOnly !== undefined) {
                         localVarQueryParameter['clearanceOnly'] = clearanceOnly;
                     }
+                    if (instockOnly !== undefined) {
+                        localVarQueryParameter['instockOnly'] = instockOnly;
+                    }
                     query = new URLSearchParams(localVarUrlObj.search);
                     for (key in localVarQueryParameter) {
                         query.set(key, localVarQueryParameter[key]);
@@ -420,10 +424,11 @@ var HomeDepotApiAxiosParamCreator = function (configuration) {
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
+         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerGetItemsGlobally: function (page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, options) {
+        hDControllerGetItemsGlobally: function (page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
@@ -453,6 +458,9 @@ var HomeDepotApiAxiosParamCreator = function (configuration) {
                     }
                     if (buyAsLowAs !== undefined) {
                         localVarQueryParameter['buyAsLowAs'] = buyAsLowAs;
+                    }
+                    if (clearanceOnly !== undefined) {
+                        localVarQueryParameter['clearanceOnly'] = clearanceOnly;
                     }
                     query = new URLSearchParams(localVarUrlObj.search);
                     for (key in localVarQueryParameter) {
@@ -640,15 +648,16 @@ var HomeDepotApiFp = function (configuration) {
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
          * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerGetItemsByStore: function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options) {
+        hDControllerGetItemsByStore: function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.HomeDepotApiAxiosParamCreator)(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options)];
+                        case 0: return [4 /*yield*/, (0, exports.HomeDepotApiAxiosParamCreator)(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -670,15 +679,16 @@ var HomeDepotApiFp = function (configuration) {
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
+         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerGetItemsGlobally: function (page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, options) {
+        hDControllerGetItemsGlobally: function (page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.HomeDepotApiAxiosParamCreator)(configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, options)];
+                        case 0: return [4 /*yield*/, (0, exports.HomeDepotApiAxiosParamCreator)(configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -794,13 +804,14 @@ var HomeDepotApiFactory = function (configuration, basePath, axios) {
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
          * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerGetItemsByStore: function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options) {
+        hDControllerGetItemsByStore: function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.HomeDepotApiFp)(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.HomeDepotApiFp)(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -813,13 +824,14 @@ var HomeDepotApiFactory = function (configuration, basePath, axios) {
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
+         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerGetItemsGlobally: function (page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, options) {
+        hDControllerGetItemsGlobally: function (page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.HomeDepotApiFp)(configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.HomeDepotApiFp)(configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -943,15 +955,16 @@ var HomeDepotApi = /** @class */ (function (_super) {
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
      * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+     * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HomeDepotApi
      */
-    HomeDepotApi.prototype.hDControllerGetItemsByStore = function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options) {
+    HomeDepotApi.prototype.hDControllerGetItemsByStore = function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.HomeDepotApiFp)(this.configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.HomeDepotApiFp)(this.configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
@@ -964,15 +977,16 @@ var HomeDepotApi = /** @class */ (function (_super) {
      * @param {string} [categoryId] Filter by category ID
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
+     * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HomeDepotApi
      */
-    HomeDepotApi.prototype.hDControllerGetItemsGlobally = function (page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, options) {
+    HomeDepotApi.prototype.hDControllerGetItemsGlobally = function (page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.HomeDepotApiFp)(this.configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.HomeDepotApiFp)(this.configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

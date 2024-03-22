@@ -286,10 +286,11 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
          * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerGetItemsByStore: async (storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        hDControllerGetItemsByStore: async (storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, instockOnly?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'storeId' is not null or undefined
             if (storeId === null || storeId === undefined) {
                 throw new RequiredError('storeId','Required parameter storeId was null or undefined when calling hDControllerGetItemsByStore.');
@@ -334,6 +335,10 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
                 localVarQueryParameter['clearanceOnly'] = clearanceOnly;
             }
 
+            if (instockOnly !== undefined) {
+                localVarQueryParameter['instockOnly'] = instockOnly;
+            }
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -359,10 +364,11 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
+         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerGetItemsGlobally: async (page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        hDControllerGetItemsGlobally: async (page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/retailers/homedepot/items`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -396,6 +402,10 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
 
             if (buyAsLowAs !== undefined) {
                 localVarQueryParameter['buyAsLowAs'] = buyAsLowAs;
+            }
+
+            if (clearanceOnly !== undefined) {
+                localVarQueryParameter['clearanceOnly'] = clearanceOnly;
             }
 
             const query = new URLSearchParams(localVarUrlObj.search);
@@ -517,11 +527,12 @@ export const HomeDepotApiFp = function(configuration?: Configuration) {
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
          * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDStoreItemsResponseDto>>> {
-            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options);
+        async hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, instockOnly?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDStoreItemsResponseDto>>> {
+            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -536,11 +547,12 @@ export const HomeDepotApiFp = function(configuration?: Configuration) {
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
+         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDGlobalItemsResponseDto>>> {
-            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, options);
+        async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDGlobalItemsResponseDto>>> {
+            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -625,11 +637,12 @@ export const HomeDepotApiFactory = function (configuration?: Configuration, base
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
          * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDStoreItemsResponseDto>> {
-            return HomeDepotApiFp(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then((request) => request(axios, basePath));
+        async hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, instockOnly?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDStoreItemsResponseDto>> {
+            return HomeDepotApiFp(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -640,11 +653,12 @@ export const HomeDepotApiFactory = function (configuration?: Configuration, base
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
+         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>> {
-            return HomeDepotApiFp(configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, options).then((request) => request(axios, basePath));
+        async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>> {
+            return HomeDepotApiFp(configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -732,12 +746,13 @@ export class HomeDepotApi extends BaseAPI {
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
      * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+     * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HomeDepotApi
      */
-    public async hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDStoreItemsResponseDto>> {
-        return HomeDepotApiFp(this.configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then((request) => request(this.axios, this.basePath));
+    public async hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, instockOnly?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDStoreItemsResponseDto>> {
+        return HomeDepotApiFp(this.configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
@@ -748,11 +763,12 @@ export class HomeDepotApi extends BaseAPI {
      * @param {string} [categoryId] Filter by category ID
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
+     * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HomeDepotApi
      */
-    public async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDGlobalItemsResponseDto>> {
-        return HomeDepotApiFp(this.configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, options).then((request) => request(this.axios, this.basePath));
+    public async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDGlobalItemsResponseDto>> {
+        return HomeDepotApiFp(this.configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then((request) => request(this.axios, this.basePath));
     }
 }
