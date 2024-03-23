@@ -80,12 +80,13 @@ export declare const RetailersApiAxiosParamCreator: (configuration?: Configurati
      * @param {string} [categoryId] Filter by category ID
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-     * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
-     * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+     * @param {boolean} [clearanceOnly] Filter only clearance items?
+     * @param {boolean} [instockOnly] Filter only instock items?
+     * @param {number} [minimumStock] Filter stores with minimum stock per store
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerGetItemsByStore: (storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, instockOnly?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    hDControllerGetItemsByStore: (storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, instockOnly?: boolean, minimumStock?: number, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns items with optional pagination
@@ -95,11 +96,11 @@ export declare const RetailersApiAxiosParamCreator: (configuration?: Configurati
      * @param {string} [categoryId] Filter by category ID
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-     * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+     * @param {boolean} [clearanceOnly] Filter only clearance items?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerGetItemsGlobally: (page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    hDControllerGetItemsGlobally: (page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * RetailersApi - functional programming interface
@@ -163,12 +164,13 @@ export declare const RetailersApiFp: (configuration?: Configuration) => {
      * @param {string} [categoryId] Filter by category ID
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-     * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
-     * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+     * @param {boolean} [clearanceOnly] Filter only clearance items?
+     * @param {boolean} [instockOnly] Filter only instock items?
+     * @param {number} [minimumStock] Filter stores with minimum stock per store
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, instockOnly?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDStoreItemsResponseDto>>>;
+    hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, instockOnly?: boolean, minimumStock?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDStoreItemsResponseDto>>>;
     /**
      *
      * @summary Returns items with optional pagination
@@ -178,11 +180,11 @@ export declare const RetailersApiFp: (configuration?: Configuration) => {
      * @param {string} [categoryId] Filter by category ID
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-     * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+     * @param {boolean} [clearanceOnly] Filter only clearance items?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDGlobalItemsResponseDto>>>;
+    hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDGlobalItemsResponseDto>>>;
 };
 /**
  * RetailersApi - factory interface
@@ -246,12 +248,13 @@ export declare const RetailersApiFactory: (configuration?: Configuration, basePa
      * @param {string} [categoryId] Filter by category ID
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-     * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
-     * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+     * @param {boolean} [clearanceOnly] Filter only clearance items?
+     * @param {boolean} [instockOnly] Filter only instock items?
+     * @param {number} [minimumStock] Filter stores with minimum stock per store
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, instockOnly?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDStoreItemsResponseDto>>;
+    hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, instockOnly?: boolean, minimumStock?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<HDStoreItemsResponseDto>>;
     /**
      *
      * @summary Returns items with optional pagination
@@ -261,11 +264,11 @@ export declare const RetailersApiFactory: (configuration?: Configuration, basePa
      * @param {string} [categoryId] Filter by category ID
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-     * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+     * @param {boolean} [clearanceOnly] Filter only clearance items?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>>;
+    hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>>;
 };
 /**
  * RetailersApi - object-oriented interface
@@ -337,13 +340,14 @@ export declare class RetailersApi extends BaseAPI {
      * @param {string} [categoryId] Filter by category ID
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-     * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
-     * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+     * @param {boolean} [clearanceOnly] Filter only clearance items?
+     * @param {boolean} [instockOnly] Filter only instock items?
+     * @param {number} [minimumStock] Filter stores with minimum stock per store
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RetailersApi
      */
-    hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, instockOnly?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDStoreItemsResponseDto>>;
+    hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, instockOnly?: boolean, minimumStock?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<HDStoreItemsResponseDto>>;
     /**
      *
      * @summary Returns items with optional pagination
@@ -353,10 +357,10 @@ export declare class RetailersApi extends BaseAPI {
      * @param {string} [categoryId] Filter by category ID
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-     * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+     * @param {boolean} [clearanceOnly] Filter only clearance items?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RetailersApi
      */
-    hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>>;
+    hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>>;
 }

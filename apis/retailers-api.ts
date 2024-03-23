@@ -285,12 +285,13 @@ export const RetailersApiAxiosParamCreator = function (configuration?: Configura
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
-         * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {boolean} [clearanceOnly] Filter only clearance items?
+         * @param {boolean} [instockOnly] Filter only instock items?
+         * @param {number} [minimumStock] Filter stores with minimum stock per store
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerGetItemsByStore: async (storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, instockOnly?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        hDControllerGetItemsByStore: async (storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, instockOnly?: boolean, minimumStock?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'storeId' is not null or undefined
             if (storeId === null || storeId === undefined) {
                 throw new RequiredError('storeId','Required parameter storeId was null or undefined when calling hDControllerGetItemsByStore.');
@@ -339,6 +340,10 @@ export const RetailersApiAxiosParamCreator = function (configuration?: Configura
                 localVarQueryParameter['instockOnly'] = instockOnly;
             }
 
+            if (minimumStock !== undefined) {
+                localVarQueryParameter['minimumStock'] = minimumStock;
+            }
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -364,11 +369,11 @@ export const RetailersApiAxiosParamCreator = function (configuration?: Configura
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {boolean} [clearanceOnly] Filter only clearance items?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerGetItemsGlobally: async (page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        hDControllerGetItemsGlobally: async (page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/retailers/homedepot/items`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -526,13 +531,14 @@ export const RetailersApiFp = function(configuration?: Configuration) {
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
-         * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {boolean} [clearanceOnly] Filter only clearance items?
+         * @param {boolean} [instockOnly] Filter only instock items?
+         * @param {number} [minimumStock] Filter stores with minimum stock per store
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, instockOnly?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDStoreItemsResponseDto>>> {
-            const localVarAxiosArgs = await RetailersApiAxiosParamCreator(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options);
+        async hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, instockOnly?: boolean, minimumStock?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDStoreItemsResponseDto>>> {
+            const localVarAxiosArgs = await RetailersApiAxiosParamCreator(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, minimumStock, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -547,11 +553,11 @@ export const RetailersApiFp = function(configuration?: Configuration) {
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {boolean} [clearanceOnly] Filter only clearance items?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDGlobalItemsResponseDto>>> {
+        async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDGlobalItemsResponseDto>>> {
             const localVarAxiosArgs = await RetailersApiAxiosParamCreator(configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -636,13 +642,14 @@ export const RetailersApiFactory = function (configuration?: Configuration, base
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
-         * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {boolean} [clearanceOnly] Filter only clearance items?
+         * @param {boolean} [instockOnly] Filter only instock items?
+         * @param {number} [minimumStock] Filter stores with minimum stock per store
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, instockOnly?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDStoreItemsResponseDto>> {
-            return RetailersApiFp(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options).then((request) => request(axios, basePath));
+        async hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, instockOnly?: boolean, minimumStock?: number, options?: AxiosRequestConfig): Promise<AxiosResponse<HDStoreItemsResponseDto>> {
+            return RetailersApiFp(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, minimumStock, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -653,11 +660,11 @@ export const RetailersApiFactory = function (configuration?: Configuration, base
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {boolean} [clearanceOnly] Filter only clearance items?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>> {
+        async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>> {
             return RetailersApiFp(configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then((request) => request(axios, basePath));
         },
     };
@@ -745,14 +752,15 @@ export class RetailersApi extends BaseAPI {
      * @param {string} [categoryId] Filter by category ID
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-     * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
-     * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+     * @param {boolean} [clearanceOnly] Filter only clearance items?
+     * @param {boolean} [instockOnly] Filter only instock items?
+     * @param {number} [minimumStock] Filter stores with minimum stock per store
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RetailersApi
      */
-    public async hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, instockOnly?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDStoreItemsResponseDto>> {
-        return RetailersApiFp(this.configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options).then((request) => request(this.axios, this.basePath));
+    public async hDControllerGetItemsByStore(storeId: string, page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, instockOnly?: boolean, minimumStock?: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDStoreItemsResponseDto>> {
+        return RetailersApiFp(this.configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, minimumStock, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
@@ -763,12 +771,12 @@ export class RetailersApi extends BaseAPI {
      * @param {string} [categoryId] Filter by category ID
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-     * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+     * @param {boolean} [clearanceOnly] Filter only clearance items?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RetailersApi
      */
-    public async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDGlobalItemsResponseDto>> {
+    public async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDGlobalItemsResponseDto>> {
         return RetailersApiFp(this.configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then((request) => request(this.axios, this.basePath));
     }
 }

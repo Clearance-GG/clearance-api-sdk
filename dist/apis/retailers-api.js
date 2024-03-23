@@ -351,12 +351,13 @@ var RetailersApiAxiosParamCreator = function (configuration) {
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
-         * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {boolean} [clearanceOnly] Filter only clearance items?
+         * @param {boolean} [instockOnly] Filter only instock items?
+         * @param {number} [minimumStock] Filter stores with minimum stock per store
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerGetItemsByStore: function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options) {
+        hDControllerGetItemsByStore: function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, minimumStock, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
@@ -398,6 +399,9 @@ var RetailersApiAxiosParamCreator = function (configuration) {
                     if (instockOnly !== undefined) {
                         localVarQueryParameter['instockOnly'] = instockOnly;
                     }
+                    if (minimumStock !== undefined) {
+                        localVarQueryParameter['minimumStock'] = minimumStock;
+                    }
                     query = new URLSearchParams(localVarUrlObj.search);
                     for (key in localVarQueryParameter) {
                         query.set(key, localVarQueryParameter[key]);
@@ -424,7 +428,7 @@ var RetailersApiAxiosParamCreator = function (configuration) {
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {boolean} [clearanceOnly] Filter only clearance items?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -647,17 +651,18 @@ var RetailersApiFp = function (configuration) {
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
-         * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {boolean} [clearanceOnly] Filter only clearance items?
+         * @param {boolean} [instockOnly] Filter only instock items?
+         * @param {number} [minimumStock] Filter stores with minimum stock per store
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerGetItemsByStore: function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options) {
+        hDControllerGetItemsByStore: function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, minimumStock, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.RetailersApiAxiosParamCreator)(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options)];
+                        case 0: return [4 /*yield*/, (0, exports.RetailersApiAxiosParamCreator)(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, minimumStock, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -679,7 +684,7 @@ var RetailersApiFp = function (configuration) {
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {boolean} [clearanceOnly] Filter only clearance items?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -803,15 +808,16 @@ var RetailersApiFactory = function (configuration, basePath, axios) {
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
-         * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {boolean} [clearanceOnly] Filter only clearance items?
+         * @param {boolean} [instockOnly] Filter only instock items?
+         * @param {number} [minimumStock] Filter stores with minimum stock per store
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerGetItemsByStore: function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options) {
+        hDControllerGetItemsByStore: function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, minimumStock, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.RetailersApiFp)(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.RetailersApiFp)(configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, minimumStock, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -824,7 +830,7 @@ var RetailersApiFactory = function (configuration, basePath, axios) {
          * @param {string} [categoryId] Filter by category ID
          * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
          * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-         * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+         * @param {boolean} [clearanceOnly] Filter only clearance items?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -954,17 +960,18 @@ var RetailersApi = /** @class */ (function (_super) {
      * @param {string} [categoryId] Filter by category ID
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-     * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
-     * @param {string} [instockOnly] Filter only instock items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+     * @param {boolean} [clearanceOnly] Filter only clearance items?
+     * @param {boolean} [instockOnly] Filter only instock items?
+     * @param {number} [minimumStock] Filter stores with minimum stock per store
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RetailersApi
      */
-    RetailersApi.prototype.hDControllerGetItemsByStore = function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options) {
+    RetailersApi.prototype.hDControllerGetItemsByStore = function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, minimumStock, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.RetailersApiFp)(this.configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.RetailersApiFp)(this.configuration).hDControllerGetItemsByStore(storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, minimumStock, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
@@ -977,7 +984,7 @@ var RetailersApi = /** @class */ (function (_super) {
      * @param {string} [categoryId] Filter by category ID
      * @param {string} [msrp] Filter items with msrp greater than, less than, or equal
      * @param {string} [buyAsLowAs] Filter items with buyAsLowAs greater than, less than, or equal
-     * @param {string} [clearanceOnly] Filter only clearance items? Accepts &#x27;Y&#x27; or &#x27;N&#x27;
+     * @param {boolean} [clearanceOnly] Filter only clearance items?
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RetailersApi
