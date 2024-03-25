@@ -87,6 +87,13 @@ export interface HDGlobalItemDto {
      */
     image: string;
     /**
+     * Is the item clearanced?
+     *
+     * @type {boolean}
+     * @memberof HDGlobalItemDto
+     */
+    isClearance?: boolean;
+    /**
      * Price at which the item can be bought as low as
      *
      * @type {number}
