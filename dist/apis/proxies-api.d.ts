@@ -12,7 +12,7 @@
 import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
-import { CreateProxiesDto } from '../models';
+import { ProxyDto } from '../models';
 /**
  * ProxiesApi - axios parameter creator
  * @export
@@ -21,11 +21,11 @@ export declare const ProxiesApiAxiosParamCreator: (configuration?: Configuration
     /**
      *
      * @summary Add new proxies
-     * @param {CreateProxiesDto} body
+     * @param {Array<ProxyDto>} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    proxiesControllerAddProxies: (body: CreateProxiesDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    proxiesControllerAddProxies: (body: Array<ProxyDto>, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Delete all proxies
@@ -49,11 +49,11 @@ export declare const ProxiesApiFp: (configuration?: Configuration) => {
     /**
      *
      * @summary Add new proxies
-     * @param {CreateProxiesDto} body
+     * @param {Array<ProxyDto>} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    proxiesControllerAddProxies(body: CreateProxiesDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    proxiesControllerAddProxies(body: Array<ProxyDto>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Delete all proxies
@@ -67,7 +67,7 @@ export declare const ProxiesApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    proxiesControllerGetAllProxies(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<CreateProxiesDto>>>>;
+    proxiesControllerGetAllProxies(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<ProxyDto>>>>;
 };
 /**
  * ProxiesApi - factory interface
@@ -77,11 +77,11 @@ export declare const ProxiesApiFactory: (configuration?: Configuration, basePath
     /**
      *
      * @summary Add new proxies
-     * @param {CreateProxiesDto} body
+     * @param {Array<ProxyDto>} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    proxiesControllerAddProxies(body: CreateProxiesDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    proxiesControllerAddProxies(body: Array<ProxyDto>, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Delete all proxies
@@ -95,7 +95,7 @@ export declare const ProxiesApiFactory: (configuration?: Configuration, basePath
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    proxiesControllerGetAllProxies(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<CreateProxiesDto>>>;
+    proxiesControllerGetAllProxies(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<ProxyDto>>>;
 };
 /**
  * ProxiesApi - object-oriented interface
@@ -107,12 +107,12 @@ export declare class ProxiesApi extends BaseAPI {
     /**
      *
      * @summary Add new proxies
-     * @param {CreateProxiesDto} body
+     * @param {Array<ProxyDto>} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProxiesApi
      */
-    proxiesControllerAddProxies(body: CreateProxiesDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    proxiesControllerAddProxies(body: Array<ProxyDto>, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Delete all proxies
@@ -128,5 +128,5 @@ export declare class ProxiesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ProxiesApi
      */
-    proxiesControllerGetAllProxies(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<CreateProxiesDto>>>;
+    proxiesControllerGetAllProxies(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<ProxyDto>>>;
 }

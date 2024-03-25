@@ -2,7 +2,6 @@ export * from './auth-dto';
 export * from './barcode-response-dto';
 export * from './bulk-upsert-hdstore-items-dto';
 export * from './category-roles-dto';
-export * from './create-proxies-dto';
 export * from './discord-id-dto';
 export * from './dump-roles-response-dto';
 export * from './geometry-dto';

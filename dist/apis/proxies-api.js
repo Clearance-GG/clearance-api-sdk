@@ -90,7 +90,7 @@ var ProxiesApiAxiosParamCreator = function (configuration) {
         /**
          *
          * @summary Add new proxies
-         * @param {CreateProxiesDto} body
+         * @param {Array<ProxyDto>} body
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -269,7 +269,7 @@ var ProxiesApiFp = function (configuration) {
         /**
          *
          * @summary Add new proxies
-         * @param {CreateProxiesDto} body
+         * @param {Array<ProxyDto>} body
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -351,7 +351,7 @@ var ProxiesApiFactory = function (configuration, basePath, axios) {
         /**
          *
          * @summary Add new proxies
-         * @param {CreateProxiesDto} body
+         * @param {Array<ProxyDto>} body
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -405,7 +405,7 @@ var ProxiesApi = /** @class */ (function (_super) {
     /**
      *
      * @summary Add new proxies
-     * @param {CreateProxiesDto} body
+     * @param {Array<ProxyDto>} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProxiesApi

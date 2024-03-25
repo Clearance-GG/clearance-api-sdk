@@ -37,11 +37,6 @@ export interface HDStoreDto {
      * @type {string}
      * @memberof HDStoreDto
      */
-    addressLine2?: string;
-    /**
-     * @type {string}
-     * @memberof HDStoreDto
-     */
     city: string;
     /**
      * @type {string}
@@ -53,6 +48,11 @@ export interface HDStoreDto {
      * @memberof HDStoreDto
      */
     zipcode: string;
+    /**
+     * @type {string}
+     * @memberof HDStoreDto
+     */
+    country: string;
     /**
      * @type {number}
      * @memberof HDStoreDto

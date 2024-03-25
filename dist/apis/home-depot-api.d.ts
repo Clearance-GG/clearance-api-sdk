@@ -56,6 +56,13 @@ export declare const HomeDepotApiAxiosParamCreator: (configuration?: Configurati
     hDControllerGetAllHDStores: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get all HD stores from zipcodes
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetAndAddAllStores: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get HD item MSRP price
      * @param {Array<string>} body
      * @param {*} [options] Override http request option.
@@ -140,6 +147,13 @@ export declare const HomeDepotApiFp: (configuration?: Configuration) => {
     hDControllerGetAllHDStores(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<HDStoreDto>>>>;
     /**
      *
+     * @summary Get all HD stores from zipcodes
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetAndAddAllStores(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<boolean>>>;
+    /**
+     *
      * @summary Get HD item MSRP price
      * @param {Array<string>} body
      * @param {*} [options] Override http request option.
@@ -222,6 +236,13 @@ export declare const HomeDepotApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     hDControllerGetAllHDStores(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<HDStoreDto>>>;
+    /**
+     *
+     * @summary Get all HD stores from zipcodes
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetAndAddAllStores(options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>>;
     /**
      *
      * @summary Get HD item MSRP price
@@ -312,6 +333,14 @@ export declare class HomeDepotApi extends BaseAPI {
      * @memberof HomeDepotApi
      */
     hDControllerGetAllHDStores(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<HDStoreDto>>>;
+    /**
+     *
+     * @summary Get all HD stores from zipcodes
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    hDControllerGetAndAddAllStores(options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>>;
     /**
      *
      * @summary Get HD item MSRP price

@@ -18,7 +18,6 @@ __exportStar(require("./auth-dto"), exports);
 __exportStar(require("./barcode-response-dto"), exports);
 __exportStar(require("./bulk-upsert-hdstore-items-dto"), exports);
 __exportStar(require("./category-roles-dto"), exports);
-__exportStar(require("./create-proxies-dto"), exports);
 __exportStar(require("./discord-id-dto"), exports);
 __exportStar(require("./dump-roles-response-dto"), exports);
 __exportStar(require("./geometry-dto"), exports);

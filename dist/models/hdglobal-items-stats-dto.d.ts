@@ -17,6 +17,20 @@
 */
 export interface HDGlobalItemsStatsDto {
     /**
+     * Amount of stores this item is found in
+     *
+     * @type {number}
+     * @memberof HDGlobalItemsStatsDto
+     */
+    foundInStores?: number;
+    /**
+     * Percent of stores this item is found in
+     *
+     * @type {number}
+     * @memberof HDGlobalItemsStatsDto
+     */
+    foundInStoresPercent?: number;
+    /**
      * Percentage of stores with the item on clearance
      *
      * @type {number}
@@ -51,6 +65,13 @@ export interface HDGlobalItemsStatsDto {
      * @memberof HDGlobalItemsStatsDto
      */
     averagePrice?: number;
+    /**
+     * Mode price of the item across all stores
+     *
+     * @type {string | number}
+     * @memberof HDGlobalItemsStatsDto
+     */
+    modePrice?: string | number;
     /**
      * Lowest price of the item across all stores
      *
