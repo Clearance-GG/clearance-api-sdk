@@ -19,4 +19,16 @@
  * @interface MonitorAuthDTO
  */
 export interface MonitorAuthDTO {
+
+    /**
+     * @type {string}
+     * @memberof MonitorAuthDTO
+     */
+    monitorKey: string;
+
+    /**
+     * @type {string}
+     * @memberof MonitorAuthDTO
+     */
+    signature: string;
 }
