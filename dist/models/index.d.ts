@@ -17,6 +17,8 @@ export * from './hdstore-items-response-dto';
 export * from './hours-dto';
 export * from './leaderboard-entry-dto';
 export * from './map-quest-result-dto';
+export * from './monitor-auth-dto';
+export * from './monitor-sign-in-response';
 export * from './place-dto';
 export * from './points-balance-dto';
 export * from './properties-dto';

@@ -13,6 +13,8 @@ import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
 import { AuthDTO } from '../models';
+import { MonitorAuthDTO } from '../models';
+import { MonitorSignInResponse } from '../models';
 import { SignInResponse } from '../models';
 /**
  * AuthApi - axios parameter creator
@@ -27,6 +29,14 @@ export declare const AuthApiAxiosParamCreator: (configuration?: Configuration) =
      * @throws {RequiredError}
      */
     authControllerSignIn: (body: AuthDTO, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Sign in a monitor and issue an access token
+     * @param {MonitorAuthDTO} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authControllerSignInMonitor: (body: MonitorAuthDTO, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * AuthApi - functional programming interface
@@ -41,6 +51,14 @@ export declare const AuthApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     authControllerSignIn(body: AuthDTO, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<SignInResponse>>>;
+    /**
+     *
+     * @summary Sign in a monitor and issue an access token
+     * @param {MonitorAuthDTO} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authControllerSignInMonitor(body: MonitorAuthDTO, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MonitorSignInResponse>>>;
 };
 /**
  * AuthApi - factory interface
@@ -55,6 +73,14 @@ export declare const AuthApiFactory: (configuration?: Configuration, basePath?: 
      * @throws {RequiredError}
      */
     authControllerSignIn(body: AuthDTO, options?: AxiosRequestConfig): Promise<AxiosResponse<SignInResponse>>;
+    /**
+     *
+     * @summary Sign in a monitor and issue an access token
+     * @param {MonitorAuthDTO} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    authControllerSignInMonitor(body: MonitorAuthDTO, options?: AxiosRequestConfig): Promise<AxiosResponse<MonitorSignInResponse>>;
 };
 /**
  * AuthApi - object-oriented interface
@@ -72,4 +98,13 @@ export declare class AuthApi extends BaseAPI {
      * @memberof AuthApi
      */
     authControllerSignIn(body: AuthDTO, options?: AxiosRequestConfig): Promise<AxiosResponse<SignInResponse>>;
+    /**
+     *
+     * @summary Sign in a monitor and issue an access token
+     * @param {MonitorAuthDTO} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    authControllerSignInMonitor(body: MonitorAuthDTO, options?: AxiosRequestConfig): Promise<AxiosResponse<MonitorSignInResponse>>;
 }

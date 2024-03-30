@@ -33,6 +33,8 @@ __exportStar(require("./hdstore-items-response-dto"), exports);
 __exportStar(require("./hours-dto"), exports);
 __exportStar(require("./leaderboard-entry-dto"), exports);
 __exportStar(require("./map-quest-result-dto"), exports);
+__exportStar(require("./monitor-auth-dto"), exports);
+__exportStar(require("./monitor-sign-in-response"), exports);
 __exportStar(require("./place-dto"), exports);
 __exportStar(require("./points-balance-dto"), exports);
 __exportStar(require("./properties-dto"), exports);
