@@ -45,6 +45,13 @@ export interface HDGlobalItemsStatsDto {
      */
     averageInventory?: number;
     /**
+     * Median inventory of the item across all stores
+     *
+     * @type {number}
+     * @memberof HDGlobalItemsStatsDto
+     */
+    medianInventory?: number;
+    /**
      * Lowest inventory amount among all stores
      *
      * @type {number}

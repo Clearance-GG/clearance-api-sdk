@@ -23,6 +23,7 @@ import { HDGlobalItemsResponseDto } from '../models';
 import { HDItemMSRPDto } from '../models';
 import { HDStoreDto } from '../models';
 import { HDStoreItemsResponseDto } from '../models';
+import { HDUpdateItemStatusDto } from '../models';
 /**
  * HomeDepotApi - axios parameter creator
  * @export
@@ -51,6 +52,15 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
             const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -101,6 +111,15 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             const query = new URLSearchParams(localVarUrlObj.search);
@@ -139,6 +158,15 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -173,6 +201,15 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -206,6 +243,15 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
             const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
 
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
@@ -245,6 +291,15 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
             const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -288,6 +343,15 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
             const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
@@ -341,6 +405,15 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
             const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
 
             if (page !== undefined) {
                 localVarQueryParameter['page'] = page;
@@ -419,6 +492,15 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
             if (page !== undefined) {
                 localVarQueryParameter['page'] = page;
             }
@@ -457,6 +539,58 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add as low as price or mark an item as clearance
+         * @param {HDUpdateItemStatusDto} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerUpdateItemStatus: async (body: HDUpdateItemStatusDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling hDControllerUpdateItemStatus.');
+            }
+            const localVarPath = `/api/retailers/homedepot/items`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -611,6 +745,20 @@ export const HomeDepotApiFp = function(configuration?: Configuration) {
                 return axios.request(axiosRequestArgs);
             };
         },
+        /**
+         * 
+         * @summary Add as low as price or mark an item as clearance
+         * @param {HDUpdateItemStatusDto} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerUpdateItemStatus(body, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
     }
 };
 
@@ -722,6 +870,16 @@ export const HomeDepotApiFactory = function (configuration?: Configuration, base
          */
         async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>> {
             return HomeDepotApiFp(configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add as low as price or mark an item as clearance
+         * @param {HDUpdateItemStatusDto} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return HomeDepotApiFp(configuration).hDControllerUpdateItemStatus(body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -844,5 +1002,16 @@ export class HomeDepotApi extends BaseAPI {
      */
     public async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDGlobalItemsResponseDto>> {
         return HomeDepotApiFp(this.configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Add as low as price or mark an item as clearance
+     * @param {HDUpdateItemStatusDto} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    public async hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return HomeDepotApiFp(this.configuration).hDControllerUpdateItemStatus(body, options).then((request) => request(this.axios, this.basePath));
     }
 }

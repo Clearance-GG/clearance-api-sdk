@@ -30,6 +30,7 @@ __exportStar(require("./hditem-msrpdto"), exports);
 __exportStar(require("./hdstore-dto"), exports);
 __exportStar(require("./hdstore-item-dto"), exports);
 __exportStar(require("./hdstore-items-response-dto"), exports);
+__exportStar(require("./hdupdate-item-status-dto"), exports);
 __exportStar(require("./hours-dto"), exports);
 __exportStar(require("./leaderboard-entry-dto"), exports);
 __exportStar(require("./map-quest-result-dto"), exports);

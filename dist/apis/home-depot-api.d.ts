@@ -18,6 +18,7 @@ import { HDGlobalItemsResponseDto } from '../models';
 import { HDItemMSRPDto } from '../models';
 import { HDStoreDto } from '../models';
 import { HDStoreItemsResponseDto } from '../models';
+import { HDUpdateItemStatusDto } from '../models';
 /**
  * HomeDepotApi - axios parameter creator
  * @export
@@ -108,6 +109,14 @@ export declare const HomeDepotApiAxiosParamCreator: (configuration?: Configurati
      * @throws {RequiredError}
      */
     hDControllerGetItemsGlobally: (page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Add as low as price or mark an item as clearance
+     * @param {HDUpdateItemStatusDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdateItemStatus: (body: HDUpdateItemStatusDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * HomeDepotApi - functional programming interface
@@ -199,6 +208,14 @@ export declare const HomeDepotApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDGlobalItemsResponseDto>>>;
+    /**
+     *
+     * @summary Add as low as price or mark an item as clearance
+     * @param {HDUpdateItemStatusDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * HomeDepotApi - factory interface
@@ -290,6 +307,14 @@ export declare const HomeDepotApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>>;
+    /**
+     *
+     * @summary Add as low as price or mark an item as clearance
+     * @param {HDUpdateItemStatusDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * HomeDepotApi - object-oriented interface
@@ -392,4 +417,13 @@ export declare class HomeDepotApi extends BaseAPI {
      * @memberof HomeDepotApi
      */
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>>;
+    /**
+     *
+     * @summary Add as low as price or mark an item as clearance
+     * @param {HDUpdateItemStatusDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }

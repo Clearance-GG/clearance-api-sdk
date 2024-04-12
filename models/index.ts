@@ -14,6 +14,7 @@ export * from './hditem-msrpdto';
 export * from './hdstore-dto';
 export * from './hdstore-item-dto';
 export * from './hdstore-items-response-dto';
+export * from './hdupdate-item-status-dto';
 export * from './hours-dto';
 export * from './leaderboard-entry-dto';
 export * from './map-quest-result-dto';

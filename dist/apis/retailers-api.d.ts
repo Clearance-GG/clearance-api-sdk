@@ -18,6 +18,7 @@ import { HDGlobalItemsResponseDto } from '../models';
 import { HDItemMSRPDto } from '../models';
 import { HDStoreDto } from '../models';
 import { HDStoreItemsResponseDto } from '../models';
+import { HDUpdateItemStatusDto } from '../models';
 /**
  * RetailersApi - axios parameter creator
  * @export
@@ -108,6 +109,14 @@ export declare const RetailersApiAxiosParamCreator: (configuration?: Configurati
      * @throws {RequiredError}
      */
     hDControllerGetItemsGlobally: (page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Add as low as price or mark an item as clearance
+     * @param {HDUpdateItemStatusDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdateItemStatus: (body: HDUpdateItemStatusDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * RetailersApi - functional programming interface
@@ -199,6 +208,14 @@ export declare const RetailersApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDGlobalItemsResponseDto>>>;
+    /**
+     *
+     * @summary Add as low as price or mark an item as clearance
+     * @param {HDUpdateItemStatusDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
 };
 /**
  * RetailersApi - factory interface
@@ -290,6 +307,14 @@ export declare const RetailersApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>>;
+    /**
+     *
+     * @summary Add as low as price or mark an item as clearance
+     * @param {HDUpdateItemStatusDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 };
 /**
  * RetailersApi - object-oriented interface
@@ -392,4 +417,13 @@ export declare class RetailersApi extends BaseAPI {
      * @memberof RetailersApi
      */
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>>;
+    /**
+     *
+     * @summary Add as low as price or mark an item as clearance
+     * @param {HDUpdateItemStatusDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
 }

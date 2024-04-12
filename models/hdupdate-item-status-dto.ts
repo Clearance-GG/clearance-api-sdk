@@ -16,31 +16,31 @@
  * 
  *
  * @export
- * @interface HDCategoryDto
+ * @interface HDUpdateItemStatusDto
  */
-export interface HDCategoryDto {
+export interface HDUpdateItemStatusDto {
 
     /**
-     * Category name
+     * Item search key
      *
      * @type {string}
-     * @memberof HDCategoryDto
+     * @memberof HDUpdateItemStatusDto
      */
-    categoryName: string;
+    searchKey: string;
 
     /**
-     * Category URL
+     * Clearance status for the item
      *
-     * @type {string}
-     * @memberof HDCategoryDto
+     * @type {boolean}
+     * @memberof HDUpdateItemStatusDto
      */
-    url: string;
+    isClearance?: boolean;
 
     /**
-     * Category ID
+     * As low as price
      *
-     * @type {string}
-     * @memberof HDCategoryDto
+     * @type {number}
+     * @memberof HDUpdateItemStatusDto
      */
-    categoryId: string;
+    buyAsLowAs?: number;
 }

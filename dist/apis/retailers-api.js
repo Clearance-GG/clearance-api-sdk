@@ -97,37 +97,55 @@ var RetailersApiAxiosParamCreator = function (configuration) {
         hDControllerAddHDStore: function (body, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions, needsSerialization;
-                return __generator(this, function (_a) {
-                    // verify required parameter 'body' is not null or undefined
-                    if (body === null || body === undefined) {
-                        throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling hDControllerAddHDStore.');
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions, needsSerialization;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            // verify required parameter 'body' is not null or undefined
+                            if (body === null || body === undefined) {
+                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling hDControllerAddHDStore.');
+                            }
+                            localVarPath = "/api/retailers/homedepot/stores/add";
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarPath = "/api/retailers/homedepot/stores/add";
-                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
-                    }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    query = new URLSearchParams(localVarUrlObj.search);
-                    for (key in localVarQueryParameter) {
-                        query.set(key, localVarQueryParameter[key]);
-                    }
-                    for (key in options.params) {
-                        query.set(key, options.params[key]);
-                    }
-                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                    localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
-                    return [2 /*return*/, {
-                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -142,42 +160,60 @@ var RetailersApiAxiosParamCreator = function (configuration) {
         hDControllerAddItemsToStore: function (body, storeId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions, needsSerialization;
-                return __generator(this, function (_a) {
-                    // verify required parameter 'body' is not null or undefined
-                    if (body === null || body === undefined) {
-                        throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling hDControllerAddItemsToStore.');
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions, needsSerialization;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            // verify required parameter 'body' is not null or undefined
+                            if (body === null || body === undefined) {
+                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling hDControllerAddItemsToStore.');
+                            }
+                            // verify required parameter 'storeId' is not null or undefined
+                            if (storeId === null || storeId === undefined) {
+                                throw new base_1.RequiredError('storeId', 'Required parameter storeId was null or undefined when calling hDControllerAddItemsToStore.');
+                            }
+                            localVarPath = "/api/retailers/homedepot/items/stores/{storeId}"
+                                .replace("{".concat("storeId", "}"), encodeURIComponent(String(storeId)));
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    // verify required parameter 'storeId' is not null or undefined
-                    if (storeId === null || storeId === undefined) {
-                        throw new base_1.RequiredError('storeId', 'Required parameter storeId was null or undefined when calling hDControllerAddItemsToStore.');
-                    }
-                    localVarPath = "/api/retailers/homedepot/items/stores/{storeId}"
-                        .replace("{".concat("storeId", "}"), encodeURIComponent(String(storeId)));
-                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
-                    }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    query = new URLSearchParams(localVarUrlObj.search);
-                    for (key in localVarQueryParameter) {
-                        query.set(key, localVarQueryParameter[key]);
-                    }
-                    for (key in options.params) {
-                        query.set(key, options.params[key]);
-                    }
-                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                    localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
-                    return [2 /*return*/, {
-                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -190,30 +226,48 @@ var RetailersApiAxiosParamCreator = function (configuration) {
         hDControllerGetAllHDCategories: function (options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
-                return __generator(this, function (_a) {
-                    localVarPath = "/api/retailers/homedepot/categories";
-                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            localVarPath = "/api/retailers/homedepot/categories";
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    query = new URLSearchParams(localVarUrlObj.search);
-                    for (key in localVarQueryParameter) {
-                        query.set(key, localVarQueryParameter[key]);
-                    }
-                    for (key in options.params) {
-                        query.set(key, options.params[key]);
-                    }
-                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -226,30 +280,48 @@ var RetailersApiAxiosParamCreator = function (configuration) {
         hDControllerGetAllHDStores: function (options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
-                return __generator(this, function (_a) {
-                    localVarPath = "/api/retailers/homedepot/stores";
-                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            localVarPath = "/api/retailers/homedepot/stores";
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    query = new URLSearchParams(localVarUrlObj.search);
-                    for (key in localVarQueryParameter) {
-                        query.set(key, localVarQueryParameter[key]);
-                    }
-                    for (key in options.params) {
-                        query.set(key, options.params[key]);
-                    }
-                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -262,30 +334,48 @@ var RetailersApiAxiosParamCreator = function (configuration) {
         hDControllerGetAndAddAllStores: function (options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
-                return __generator(this, function (_a) {
-                    localVarPath = "/api/retailers/homedepot/stores/all";
-                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            localVarPath = "/api/retailers/homedepot/stores/all";
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    query = new URLSearchParams(localVarUrlObj.search);
-                    for (key in localVarQueryParameter) {
-                        query.set(key, localVarQueryParameter[key]);
-                    }
-                    for (key in options.params) {
-                        query.set(key, options.params[key]);
-                    }
-                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -299,37 +389,55 @@ var RetailersApiAxiosParamCreator = function (configuration) {
         hDControllerGetHDItemsPrice: function (body, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions, needsSerialization;
-                return __generator(this, function (_a) {
-                    // verify required parameter 'body' is not null or undefined
-                    if (body === null || body === undefined) {
-                        throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling hDControllerGetHDItemsPrice.');
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions, needsSerialization;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            // verify required parameter 'body' is not null or undefined
+                            if (body === null || body === undefined) {
+                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling hDControllerGetHDItemsPrice.');
+                            }
+                            localVarPath = "/api/retailers/homedepot/items";
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarPath = "/api/retailers/homedepot/items";
-                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
-                    }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    query = new URLSearchParams(localVarUrlObj.search);
-                    for (key in localVarQueryParameter) {
-                        query.set(key, localVarQueryParameter[key]);
-                    }
-                    for (key in options.params) {
-                        query.set(key, options.params[key]);
-                    }
-                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                    localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
-                    return [2 /*return*/, {
-                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -343,37 +451,55 @@ var RetailersApiAxiosParamCreator = function (configuration) {
         hDControllerGetHDStores: function (body, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions, needsSerialization;
-                return __generator(this, function (_a) {
-                    // verify required parameter 'body' is not null or undefined
-                    if (body === null || body === undefined) {
-                        throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling hDControllerGetHDStores.');
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions, needsSerialization;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            // verify required parameter 'body' is not null or undefined
+                            if (body === null || body === undefined) {
+                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling hDControllerGetHDStores.');
+                            }
+                            localVarPath = "/api/retailers/homedepot/stores";
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarPath = "/api/retailers/homedepot/stores";
-                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
-                    }
-                    localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    localVarHeaderParameter['Content-Type'] = 'application/json';
-                    query = new URLSearchParams(localVarUrlObj.search);
-                    for (key in localVarQueryParameter) {
-                        query.set(key, localVarQueryParameter[key]);
-                    }
-                    for (key in options.params) {
-                        query.set(key, options.params[key]);
-                    }
-                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-                    localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
-                    return [2 /*return*/, {
-                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -396,62 +522,80 @@ var RetailersApiAxiosParamCreator = function (configuration) {
         hDControllerGetItemsByStore: function (storeId, page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, instockOnly, minimumStock, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
-                return __generator(this, function (_a) {
-                    // verify required parameter 'storeId' is not null or undefined
-                    if (storeId === null || storeId === undefined) {
-                        throw new base_1.RequiredError('storeId', 'Required parameter storeId was null or undefined when calling hDControllerGetItemsByStore.');
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            // verify required parameter 'storeId' is not null or undefined
+                            if (storeId === null || storeId === undefined) {
+                                throw new base_1.RequiredError('storeId', 'Required parameter storeId was null or undefined when calling hDControllerGetItemsByStore.');
+                            }
+                            localVarPath = "/api/retailers/homedepot/items/store/{storeId}"
+                                .replace("{".concat("storeId", "}"), encodeURIComponent(String(storeId)));
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            if (page !== undefined) {
+                                localVarQueryParameter['page'] = page;
+                            }
+                            if (pageSize !== undefined) {
+                                localVarQueryParameter['pageSize'] = pageSize;
+                            }
+                            if (searchKey !== undefined) {
+                                localVarQueryParameter['searchKey'] = searchKey;
+                            }
+                            if (categoryId !== undefined) {
+                                localVarQueryParameter['categoryId'] = categoryId;
+                            }
+                            if (msrp !== undefined) {
+                                localVarQueryParameter['msrp'] = msrp;
+                            }
+                            if (buyAsLowAs !== undefined) {
+                                localVarQueryParameter['buyAsLowAs'] = buyAsLowAs;
+                            }
+                            if (clearanceOnly !== undefined) {
+                                localVarQueryParameter['clearanceOnly'] = clearanceOnly;
+                            }
+                            if (instockOnly !== undefined) {
+                                localVarQueryParameter['instockOnly'] = instockOnly;
+                            }
+                            if (minimumStock !== undefined) {
+                                localVarQueryParameter['minimumStock'] = minimumStock;
+                            }
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarPath = "/api/retailers/homedepot/items/store/{storeId}"
-                        .replace("{".concat("storeId", "}"), encodeURIComponent(String(storeId)));
-                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
-                    }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (page !== undefined) {
-                        localVarQueryParameter['page'] = page;
-                    }
-                    if (pageSize !== undefined) {
-                        localVarQueryParameter['pageSize'] = pageSize;
-                    }
-                    if (searchKey !== undefined) {
-                        localVarQueryParameter['searchKey'] = searchKey;
-                    }
-                    if (categoryId !== undefined) {
-                        localVarQueryParameter['categoryId'] = categoryId;
-                    }
-                    if (msrp !== undefined) {
-                        localVarQueryParameter['msrp'] = msrp;
-                    }
-                    if (buyAsLowAs !== undefined) {
-                        localVarQueryParameter['buyAsLowAs'] = buyAsLowAs;
-                    }
-                    if (clearanceOnly !== undefined) {
-                        localVarQueryParameter['clearanceOnly'] = clearanceOnly;
-                    }
-                    if (instockOnly !== undefined) {
-                        localVarQueryParameter['instockOnly'] = instockOnly;
-                    }
-                    if (minimumStock !== undefined) {
-                        localVarQueryParameter['minimumStock'] = minimumStock;
-                    }
-                    query = new URLSearchParams(localVarUrlObj.search);
-                    for (key in localVarQueryParameter) {
-                        query.set(key, localVarQueryParameter[key]);
-                    }
-                    for (key in options.params) {
-                        query.set(key, options.params[key]);
-                    }
-                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -471,51 +615,131 @@ var RetailersApiAxiosParamCreator = function (configuration) {
         hDControllerGetItemsGlobally: function (page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
-                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, query, key, key, headersFromBaseOptions;
-                return __generator(this, function (_a) {
-                    localVarPath = "/api/retailers/homedepot/items";
-                    localVarUrlObj = new URL(localVarPath, 'https://example.com');
-                    if (configuration) {
-                        baseOptions = configuration.baseOptions;
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            localVarPath = "/api/retailers/homedepot/items";
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            if (page !== undefined) {
+                                localVarQueryParameter['page'] = page;
+                            }
+                            if (pageSize !== undefined) {
+                                localVarQueryParameter['pageSize'] = pageSize;
+                            }
+                            if (searchKey !== undefined) {
+                                localVarQueryParameter['searchKey'] = searchKey;
+                            }
+                            if (categoryId !== undefined) {
+                                localVarQueryParameter['categoryId'] = categoryId;
+                            }
+                            if (msrp !== undefined) {
+                                localVarQueryParameter['msrp'] = msrp;
+                            }
+                            if (buyAsLowAs !== undefined) {
+                                localVarQueryParameter['buyAsLowAs'] = buyAsLowAs;
+                            }
+                            if (clearanceOnly !== undefined) {
+                                localVarQueryParameter['clearanceOnly'] = clearanceOnly;
+                            }
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
-                    localVarHeaderParameter = {};
-                    localVarQueryParameter = {};
-                    if (page !== undefined) {
-                        localVarQueryParameter['page'] = page;
+                });
+            });
+        },
+        /**
+         *
+         * @summary Add as low as price or mark an item as clearance
+         * @param {HDUpdateItemStatusDto} body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerUpdateItemStatus: function (body, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions, needsSerialization;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            // verify required parameter 'body' is not null or undefined
+                            if (body === null || body === undefined) {
+                                throw new base_1.RequiredError('body', 'Required parameter body was null or undefined when calling hDControllerUpdateItemStatus.');
+                            }
+                            localVarPath = "/api/retailers/homedepot/items";
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'PATCH' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            localVarHeaderParameter['Content-Type'] = 'application/json';
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+                            localVarRequestOptions.data = needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
                     }
-                    if (pageSize !== undefined) {
-                        localVarQueryParameter['pageSize'] = pageSize;
-                    }
-                    if (searchKey !== undefined) {
-                        localVarQueryParameter['searchKey'] = searchKey;
-                    }
-                    if (categoryId !== undefined) {
-                        localVarQueryParameter['categoryId'] = categoryId;
-                    }
-                    if (msrp !== undefined) {
-                        localVarQueryParameter['msrp'] = msrp;
-                    }
-                    if (buyAsLowAs !== undefined) {
-                        localVarQueryParameter['buyAsLowAs'] = buyAsLowAs;
-                    }
-                    if (clearanceOnly !== undefined) {
-                        localVarQueryParameter['clearanceOnly'] = clearanceOnly;
-                    }
-                    query = new URLSearchParams(localVarUrlObj.search);
-                    for (key in localVarQueryParameter) {
-                        query.set(key, localVarQueryParameter[key]);
-                    }
-                    for (key in options.params) {
-                        query.set(key, options.params[key]);
-                    }
-                    localVarUrlObj.search = (new URLSearchParams(query)).toString();
-                    headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-                    localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
-                    return [2 /*return*/, {
-                            url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                            options: localVarRequestOptions,
-                        }];
                 });
             });
         },
@@ -766,6 +990,31 @@ var RetailersApiFp = function (configuration) {
                 });
             });
         },
+        /**
+         *
+         * @summary Add as low as price or mark an item as clearance
+         * @param {HDUpdateItemStatusDto} body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerUpdateItemStatus: function (body, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, (0, exports.RetailersApiAxiosParamCreator)(configuration).hDControllerUpdateItemStatus(body, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
     };
 };
 exports.RetailersApiFp = RetailersApiFp;
@@ -911,6 +1160,20 @@ var RetailersApiFactory = function (configuration, basePath, axios) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     return [2 /*return*/, (0, exports.RetailersApiFp)(configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then(function (request) { return request(axios, basePath); })];
+                });
+            });
+        },
+        /**
+         *
+         * @summary Add as low as price or mark an item as clearance
+         * @param {HDUpdateItemStatusDto} body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerUpdateItemStatus: function (body, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, (0, exports.RetailersApiFp)(configuration).hDControllerUpdateItemStatus(body, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -1082,6 +1345,22 @@ var RetailersApi = /** @class */ (function (_super) {
             var _this = this;
             return __generator(this, function (_a) {
                 return [2 /*return*/, (0, exports.RetailersApiFp)(this.configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+            });
+        });
+    };
+    /**
+     *
+     * @summary Add as low as price or mark an item as clearance
+     * @param {HDUpdateItemStatusDto} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    RetailersApi.prototype.hDControllerUpdateItemStatus = function (body, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, (0, exports.RetailersApiFp)(this.configuration).hDControllerUpdateItemStatus(body, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
