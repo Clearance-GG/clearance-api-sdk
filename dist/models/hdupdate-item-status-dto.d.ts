@@ -29,12 +29,12 @@ export interface HDUpdateItemStatusDto {
      * @type {boolean}
      * @memberof HDUpdateItemStatusDto
      */
-    isClearance?: boolean;
+    isClearance: boolean;
     /**
      * As low as price
      *
      * @type {number}
      * @memberof HDUpdateItemStatusDto
      */
-    buyAsLowAs?: number;
+    buyAsLowAs: number;
 }

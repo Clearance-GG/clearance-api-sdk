@@ -34,7 +34,7 @@ export interface HDUpdateItemStatusDto {
      * @type {boolean}
      * @memberof HDUpdateItemStatusDto
      */
-    isClearance?: boolean;
+    isClearance: boolean;
 
     /**
      * As low as price
@@ -42,5 +42,5 @@ export interface HDUpdateItemStatusDto {
      * @type {number}
      * @memberof HDUpdateItemStatusDto
      */
-    buyAsLowAs?: number;
+    buyAsLowAs: number;
 }
