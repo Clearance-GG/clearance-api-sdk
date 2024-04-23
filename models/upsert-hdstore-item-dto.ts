@@ -45,10 +45,34 @@ export interface UpsertHDStoreItemDto {
     price?: number;
 
     /**
+     * How many items are in stock
+     *
+     * @type {number}
+     * @memberof UpsertHDStoreItemDto
+     */
+    inventory?: number;
+
+    /**
      * Whether the item is on clearance
      *
      * @type {boolean}
      * @memberof UpsertHDStoreItemDto
      */
     isClearance?: boolean;
+
+    /**
+     * Clearance price instore
+     *
+     * @type {number}
+     * @memberof UpsertHDStoreItemDto
+     */
+    clearancePrice?: number;
+
+    /**
+     * Location of the item in the store
+     *
+     * @type {string}
+     * @memberof UpsertHDStoreItemDto
+     */
+    location?: string;
 }
