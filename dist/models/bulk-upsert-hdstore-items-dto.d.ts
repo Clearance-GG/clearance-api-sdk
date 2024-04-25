@@ -23,5 +23,12 @@ export interface BulkUpsertHDStoreItemsDto {
      * @type {Array<UpsertHDStoreItemDto>}
      * @memberof BulkUpsertHDStoreItemsDto
      */
-    items?: Array<UpsertHDStoreItemDto>;
+    items: Array<UpsertHDStoreItemDto>;
+    /**
+     * Category ID for the items being upserted
+     *
+     * @type {string}
+     * @memberof BulkUpsertHDStoreItemsDto
+     */
+    categoryId: string;
 }
