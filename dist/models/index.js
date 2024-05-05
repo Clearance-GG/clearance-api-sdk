@@ -27,6 +27,7 @@ __exportStar(require("./hdglobal-item-dto"), exports);
 __exportStar(require("./hdglobal-items-response-dto"), exports);
 __exportStar(require("./hdglobal-items-stats-dto"), exports);
 __exportStar(require("./hditem-msrpdto"), exports);
+__exportStar(require("./hdpremium-usage-response-dto"), exports);
 __exportStar(require("./hdstore-dto"), exports);
 __exportStar(require("./hdstore-item-dto"), exports);
 __exportStar(require("./hdstore-items-response-dto"), exports);

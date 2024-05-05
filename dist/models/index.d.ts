@@ -11,6 +11,7 @@ export * from './hdglobal-item-dto';
 export * from './hdglobal-items-response-dto';
 export * from './hdglobal-items-stats-dto';
 export * from './hditem-msrpdto';
+export * from './hdpremium-usage-response-dto';
 export * from './hdstore-dto';
 export * from './hdstore-item-dto';
 export * from './hdstore-items-response-dto';

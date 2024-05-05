@@ -21,6 +21,7 @@ import { BulkUpsertHDStoreItemsDto } from '../models';
 import { HDCategoryDto } from '../models';
 import { HDGlobalItemsResponseDto } from '../models';
 import { HDItemMSRPDto } from '../models';
+import { HDPremiumUsageResponseDto } from '../models';
 import { HDStoreDto } from '../models';
 import { HDStoreItemsResponseDto } from '../models';
 import { HDUpdateItemStatusDto } from '../models';
@@ -84,6 +85,55 @@ export const RetailersApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary Processes all items in cache to the DB
+         * @param {string} categoryId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerAddItemsToDb: async (categoryId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'categoryId' is not null or undefined
+            if (categoryId === null || categoryId === undefined) {
+                throw new RequiredError('categoryId','Required parameter categoryId was null or undefined when calling hDControllerAddItemsToDb.');
+            }
+            const localVarPath = `/api/retailers/homedepot/items/process/{categoryId}`
+                .replace(`{${"categoryId"}}`, encodeURIComponent(String(categoryId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Adds item data for a specific store ID
          * @param {BulkUpsertHDStoreItemsDto} body 
          * @param {string} storeId 
@@ -134,6 +184,55 @@ export const RetailersApiAxiosParamCreator = function (configuration?: Configura
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Add premium check usage for a guild
+         * @param {string} guildId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerAddPremiumCheckUsage: async (guildId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'guildId' is not null or undefined
+            if (guildId === null || guildId === undefined) {
+                throw new RequiredError('guildId','Required parameter guildId was null or undefined when calling hDControllerAddPremiumCheckUsage.');
+            }
+            const localVarPath = `/api/retailers/homedepot/guilds/{guildId}/premium-checks`
+                .replace(`{${"guildId"}}`, encodeURIComponent(String(guildId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -547,6 +646,55 @@ export const RetailersApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary Get premium checks for a guild
+         * @param {string} guildId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerGetPremiumChecks: async (guildId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'guildId' is not null or undefined
+            if (guildId === null || guildId === undefined) {
+                throw new RequiredError('guildId','Required parameter guildId was null or undefined when calling hDControllerGetPremiumChecks.');
+            }
+            const localVarPath = `/api/retailers/homedepot/guilds/{guildId}/premium-checks`
+                .replace(`{${"guildId"}}`, encodeURIComponent(String(guildId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Add as low as price or mark an item as clearance
          * @param {HDUpdateItemStatusDto} body 
          * @param {*} [options] Override http request option.
@@ -622,6 +770,20 @@ export const RetailersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Processes all items in cache to the DB
+         * @param {string} categoryId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerAddItemsToDb(categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await RetailersApiAxiosParamCreator(configuration).hDControllerAddItemsToDb(categoryId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary Adds item data for a specific store ID
          * @param {BulkUpsertHDStoreItemsDto} body 
          * @param {string} storeId 
@@ -630,6 +792,20 @@ export const RetailersApiFp = function(configuration?: Configuration) {
          */
         async hDControllerAddItemsToStore(body: BulkUpsertHDStoreItemsDto, storeId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await RetailersApiAxiosParamCreator(configuration).hDControllerAddItemsToStore(body, storeId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
+         * @summary Add premium check usage for a guild
+         * @param {string} guildId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerAddPremiumCheckUsage(guildId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await RetailersApiAxiosParamCreator(configuration).hDControllerAddPremiumCheckUsage(guildId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -747,6 +923,20 @@ export const RetailersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get premium checks for a guild
+         * @param {string} guildId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerGetPremiumChecks(guildId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDPremiumUsageResponseDto>>> {
+            const localVarAxiosArgs = await RetailersApiAxiosParamCreator(configuration).hDControllerGetPremiumChecks(guildId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary Add as low as price or mark an item as clearance
          * @param {HDUpdateItemStatusDto} body 
          * @param {*} [options] Override http request option.
@@ -780,6 +970,16 @@ export const RetailersApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @summary Processes all items in cache to the DB
+         * @param {string} categoryId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerAddItemsToDb(categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return RetailersApiFp(configuration).hDControllerAddItemsToDb(categoryId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Adds item data for a specific store ID
          * @param {BulkUpsertHDStoreItemsDto} body 
          * @param {string} storeId 
@@ -788,6 +988,16 @@ export const RetailersApiFactory = function (configuration?: Configuration, base
          */
         async hDControllerAddItemsToStore(body: BulkUpsertHDStoreItemsDto, storeId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return RetailersApiFp(configuration).hDControllerAddItemsToStore(body, storeId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Add premium check usage for a guild
+         * @param {string} guildId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerAddPremiumCheckUsage(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return RetailersApiFp(configuration).hDControllerAddPremiumCheckUsage(guildId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -873,6 +1083,16 @@ export const RetailersApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @summary Get premium checks for a guild
+         * @param {string} guildId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerGetPremiumChecks(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDPremiumUsageResponseDto>> {
+            return RetailersApiFp(configuration).hDControllerGetPremiumChecks(guildId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Add as low as price or mark an item as clearance
          * @param {HDUpdateItemStatusDto} body 
          * @param {*} [options] Override http request option.
@@ -904,6 +1124,17 @@ export class RetailersApi extends BaseAPI {
     }
     /**
      * 
+     * @summary Processes all items in cache to the DB
+     * @param {string} categoryId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    public async hDControllerAddItemsToDb(categoryId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return RetailersApiFp(this.configuration).hDControllerAddItemsToDb(categoryId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
      * @summary Adds item data for a specific store ID
      * @param {BulkUpsertHDStoreItemsDto} body 
      * @param {string} storeId 
@@ -913,6 +1144,17 @@ export class RetailersApi extends BaseAPI {
      */
     public async hDControllerAddItemsToStore(body: BulkUpsertHDStoreItemsDto, storeId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return RetailersApiFp(this.configuration).hDControllerAddItemsToStore(body, storeId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Add premium check usage for a guild
+     * @param {string} guildId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    public async hDControllerAddPremiumCheckUsage(guildId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return RetailersApiFp(this.configuration).hDControllerAddPremiumCheckUsage(guildId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
@@ -1002,6 +1244,17 @@ export class RetailersApi extends BaseAPI {
      */
     public async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDGlobalItemsResponseDto>> {
         return RetailersApiFp(this.configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Get premium checks for a guild
+     * @param {string} guildId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    public async hDControllerGetPremiumChecks(guildId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDPremiumUsageResponseDto>> {
+        return RetailersApiFp(this.configuration).hDControllerGetPremiumChecks(guildId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
