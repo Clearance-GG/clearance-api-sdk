@@ -279,7 +279,7 @@ var RetailersApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
-         * @summary Add premium check usage for a guild
+         * @summary Add premium check usage for a specific item
          * @param {string} guildId
          * @param {string} userId
          * @param {string} storeId
@@ -315,6 +315,66 @@ var RetailersApiAxiosParamCreator = function (configuration) {
                                 .replace("{".concat("userId", "}"), encodeURIComponent(String(userId)))
                                 .replace("{".concat("storeId", "}"), encodeURIComponent(String(storeId)))
                                 .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Add premium check usage for a guild
+         * @param {string} guildId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerAddPremiumChecks: function (guildId, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            // verify required parameter 'guildId' is not null or undefined
+                            if (guildId === null || guildId === undefined) {
+                                throw new base_1.RequiredError('guildId', 'Required parameter guildId was null or undefined when calling hDControllerAddPremiumChecks.');
+                            }
+                            localVarPath = "/api/retailers/homedepot/guilds/{guildId}/premium-checks"
+                                .replace("{".concat("guildId", "}"), encodeURIComponent(String(guildId)));
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
@@ -1106,7 +1166,7 @@ var RetailersApiFp = function (configuration) {
         },
         /**
          *
-         * @summary Add premium check usage for a guild
+         * @summary Add premium check usage for a specific item
          * @param {string} guildId
          * @param {string} userId
          * @param {string} storeId
@@ -1120,6 +1180,31 @@ var RetailersApiFp = function (configuration) {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, (0, exports.RetailersApiAxiosParamCreator)(configuration).hDControllerAddPremiumCheckUsage(guildId, userId, storeId, itemId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Add premium check usage for a guild
+         * @param {string} guildId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerAddPremiumChecks: function (guildId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, (0, exports.RetailersApiAxiosParamCreator)(configuration).hDControllerAddPremiumChecks(guildId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1451,7 +1536,7 @@ var RetailersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
-         * @summary Add premium check usage for a guild
+         * @summary Add premium check usage for a specific item
          * @param {string} guildId
          * @param {string} userId
          * @param {string} storeId
@@ -1463,6 +1548,20 @@ var RetailersApiFactory = function (configuration, basePath, axios) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     return [2 /*return*/, (0, exports.RetailersApiFp)(configuration).hDControllerAddPremiumCheckUsage(guildId, userId, storeId, itemId, options).then(function (request) { return request(axios, basePath); })];
+                });
+            });
+        },
+        /**
+         *
+         * @summary Add premium check usage for a guild
+         * @param {string} guildId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerAddPremiumChecks: function (guildId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, (0, exports.RetailersApiFp)(configuration).hDControllerAddPremiumChecks(guildId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -1686,7 +1785,7 @@ var RetailersApi = /** @class */ (function (_super) {
     };
     /**
      *
-     * @summary Add premium check usage for a guild
+     * @summary Add premium check usage for a specific item
      * @param {string} guildId
      * @param {string} userId
      * @param {string} storeId
@@ -1700,6 +1799,22 @@ var RetailersApi = /** @class */ (function (_super) {
             var _this = this;
             return __generator(this, function (_a) {
                 return [2 /*return*/, (0, exports.RetailersApiFp)(this.configuration).hDControllerAddPremiumCheckUsage(guildId, userId, storeId, itemId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+            });
+        });
+    };
+    /**
+     *
+     * @summary Add premium check usage for a guild
+     * @param {string} guildId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    RetailersApi.prototype.hDControllerAddPremiumChecks = function (guildId, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, (0, exports.RetailersApiFp)(this.configuration).hDControllerAddPremiumChecks(guildId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
