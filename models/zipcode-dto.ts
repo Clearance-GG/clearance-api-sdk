@@ -43,14 +43,50 @@ export interface ZipcodeDto {
     lng: number;
 
     /**
+     * @type {string}
+     * @memberof ZipcodeDto
+     * @example America/Los_Angeles
+     */
+    ianaTimeZone: string;
+
+    /**
+     * @type {string}
+     * @memberof ZipcodeDto
+     * @example CA
+     */
+    state: string;
+
+    /**
+     * @type {string}
+     * @memberof ZipcodeDto
+     * @example PST
+     */
+    timeZoneAbbrevation: string;
+
+    /**
+     * @type {string}
+     * @memberof ZipcodeDto
+     * @example PDT
+     */
+    dstAbbrevation: string;
+
+    /**
+     * @type {string}
+     * @memberof ZipcodeDto
+     * @example UTC-8
+     */
+    offset: string;
+
+    /**
+     * @type {string}
+     * @memberof ZipcodeDto
+     * @example UTC-7
+     */
+    dstOffset: string;
+
+    /**
      * @type {MapQuestResultDto}
      * @memberof ZipcodeDto
      */
     mapquestData: MapQuestResultDto;
-
-    /**
-     * @type {Date}
-     * @memberof ZipcodeDto
-     */
-    createdAt: Date;
 }

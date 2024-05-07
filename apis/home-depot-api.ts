@@ -194,16 +194,34 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
          * 
          * @summary Add premium check usage for a guild
          * @param {string} guildId 
+         * @param {string} userId 
+         * @param {string} storeId 
+         * @param {string} itemId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerAddPremiumCheckUsage: async (guildId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        hDControllerAddPremiumCheckUsage: async (guildId: string, userId: string, storeId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'guildId' is not null or undefined
             if (guildId === null || guildId === undefined) {
                 throw new RequiredError('guildId','Required parameter guildId was null or undefined when calling hDControllerAddPremiumCheckUsage.');
             }
-            const localVarPath = `/api/retailers/homedepot/guilds/{guildId}/premium-checks`
-                .replace(`{${"guildId"}}`, encodeURIComponent(String(guildId)));
+            // verify required parameter 'userId' is not null or undefined
+            if (userId === null || userId === undefined) {
+                throw new RequiredError('userId','Required parameter userId was null or undefined when calling hDControllerAddPremiumCheckUsage.');
+            }
+            // verify required parameter 'storeId' is not null or undefined
+            if (storeId === null || storeId === undefined) {
+                throw new RequiredError('storeId','Required parameter storeId was null or undefined when calling hDControllerAddPremiumCheckUsage.');
+            }
+            // verify required parameter 'itemId' is not null or undefined
+            if (itemId === null || itemId === undefined) {
+                throw new RequiredError('itemId','Required parameter itemId was null or undefined when calling hDControllerAddPremiumCheckUsage.');
+            }
+            const localVarPath = `/api/retailers/homedepot/guilds/{guildId}/premium-checks/{userId}/{storeId}/{itemId}`
+                .replace(`{${"guildId"}}`, encodeURIComponent(String(guildId)))
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)))
+                .replace(`{${"storeId"}}`, encodeURIComponent(String(storeId)))
+                .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -646,6 +664,73 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary Get premium check usage for a specific user and item
+         * @param {string} guildId 
+         * @param {string} userId 
+         * @param {string} storeId 
+         * @param {string} itemId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerGetPremiumCheckUsage: async (guildId: string, userId: string, storeId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'guildId' is not null or undefined
+            if (guildId === null || guildId === undefined) {
+                throw new RequiredError('guildId','Required parameter guildId was null or undefined when calling hDControllerGetPremiumCheckUsage.');
+            }
+            // verify required parameter 'userId' is not null or undefined
+            if (userId === null || userId === undefined) {
+                throw new RequiredError('userId','Required parameter userId was null or undefined when calling hDControllerGetPremiumCheckUsage.');
+            }
+            // verify required parameter 'storeId' is not null or undefined
+            if (storeId === null || storeId === undefined) {
+                throw new RequiredError('storeId','Required parameter storeId was null or undefined when calling hDControllerGetPremiumCheckUsage.');
+            }
+            // verify required parameter 'itemId' is not null or undefined
+            if (itemId === null || itemId === undefined) {
+                throw new RequiredError('itemId','Required parameter itemId was null or undefined when calling hDControllerGetPremiumCheckUsage.');
+            }
+            const localVarPath = `/api/retailers/homedepot/guilds/{guildId}/premium-checks/{userId}/{storeId}/{itemId}`
+                .replace(`{${"guildId"}}`, encodeURIComponent(String(guildId)))
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)))
+                .replace(`{${"storeId"}}`, encodeURIComponent(String(storeId)))
+                .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get premium checks for a guild
          * @param {string} guildId 
          * @param {*} [options] Override http request option.
@@ -801,11 +886,14 @@ export const HomeDepotApiFp = function(configuration?: Configuration) {
          * 
          * @summary Add premium check usage for a guild
          * @param {string} guildId 
+         * @param {string} userId 
+         * @param {string} storeId 
+         * @param {string} itemId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerAddPremiumCheckUsage(guildId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
-            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerAddPremiumCheckUsage(guildId, options);
+        async hDControllerAddPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerAddPremiumCheckUsage(guildId, userId, storeId, itemId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -923,6 +1011,23 @@ export const HomeDepotApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get premium check usage for a specific user and item
+         * @param {string} guildId 
+         * @param {string} userId 
+         * @param {string} storeId 
+         * @param {string} itemId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerGetPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerGetPremiumCheckUsage(guildId, userId, storeId, itemId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary Get premium checks for a guild
          * @param {string} guildId 
          * @param {*} [options] Override http request option.
@@ -993,11 +1098,14 @@ export const HomeDepotApiFactory = function (configuration?: Configuration, base
          * 
          * @summary Add premium check usage for a guild
          * @param {string} guildId 
+         * @param {string} userId 
+         * @param {string} storeId 
+         * @param {string} itemId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerAddPremiumCheckUsage(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
-            return HomeDepotApiFp(configuration).hDControllerAddPremiumCheckUsage(guildId, options).then((request) => request(axios, basePath));
+        async hDControllerAddPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return HomeDepotApiFp(configuration).hDControllerAddPremiumCheckUsage(guildId, userId, storeId, itemId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1083,6 +1191,19 @@ export const HomeDepotApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @summary Get premium check usage for a specific user and item
+         * @param {string} guildId 
+         * @param {string} userId 
+         * @param {string} storeId 
+         * @param {string} itemId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerGetPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return HomeDepotApiFp(configuration).hDControllerGetPremiumCheckUsage(guildId, userId, storeId, itemId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get premium checks for a guild
          * @param {string} guildId 
          * @param {*} [options] Override http request option.
@@ -1149,12 +1270,15 @@ export class HomeDepotApi extends BaseAPI {
      * 
      * @summary Add premium check usage for a guild
      * @param {string} guildId 
+     * @param {string} userId 
+     * @param {string} storeId 
+     * @param {string} itemId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HomeDepotApi
      */
-    public async hDControllerAddPremiumCheckUsage(guildId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
-        return HomeDepotApiFp(this.configuration).hDControllerAddPremiumCheckUsage(guildId, options).then((request) => request(this.axios, this.basePath));
+    public async hDControllerAddPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return HomeDepotApiFp(this.configuration).hDControllerAddPremiumCheckUsage(guildId, userId, storeId, itemId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
@@ -1244,6 +1368,20 @@ export class HomeDepotApi extends BaseAPI {
      */
     public async hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDGlobalItemsResponseDto>> {
         return HomeDepotApiFp(this.configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Get premium check usage for a specific user and item
+     * @param {string} guildId 
+     * @param {string} userId 
+     * @param {string} storeId 
+     * @param {string} itemId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    public async hDControllerGetPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return HomeDepotApiFp(this.configuration).hDControllerGetPremiumCheckUsage(guildId, userId, storeId, itemId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

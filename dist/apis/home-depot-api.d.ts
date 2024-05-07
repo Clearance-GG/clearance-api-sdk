@@ -54,10 +54,13 @@ export declare const HomeDepotApiAxiosParamCreator: (configuration?: Configurati
      *
      * @summary Add premium check usage for a guild
      * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerAddPremiumCheckUsage: (guildId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    hDControllerAddPremiumCheckUsage: (guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all HD categories info
@@ -128,6 +131,17 @@ export declare const HomeDepotApiAxiosParamCreator: (configuration?: Configurati
     hDControllerGetItemsGlobally: (page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get premium check usage for a specific user and item
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetPremiumCheckUsage: (guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get premium checks for a guild
      * @param {string} guildId
      * @param {*} [options] Override http request option.
@@ -177,10 +191,13 @@ export declare const HomeDepotApiFp: (configuration?: Configuration) => {
      *
      * @summary Add premium check usage for a guild
      * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerAddPremiumCheckUsage(guildId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    hDControllerAddPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Get all HD categories info
@@ -251,6 +268,17 @@ export declare const HomeDepotApiFp: (configuration?: Configuration) => {
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDGlobalItemsResponseDto>>>;
     /**
      *
+     * @summary Get premium check usage for a specific user and item
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    /**
+     *
      * @summary Get premium checks for a guild
      * @param {string} guildId
      * @param {*} [options] Override http request option.
@@ -300,10 +328,13 @@ export declare const HomeDepotApiFactory: (configuration?: Configuration, basePa
      *
      * @summary Add premium check usage for a guild
      * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerAddPremiumCheckUsage(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    hDControllerAddPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Get all HD categories info
@@ -372,6 +403,17 @@ export declare const HomeDepotApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>>;
+    /**
+     *
+     * @summary Get premium check usage for a specific user and item
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Get premium checks for a guild
@@ -428,11 +470,14 @@ export declare class HomeDepotApi extends BaseAPI {
      *
      * @summary Add premium check usage for a guild
      * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HomeDepotApi
      */
-    hDControllerAddPremiumCheckUsage(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    hDControllerAddPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Get all HD categories info
@@ -508,6 +553,18 @@ export declare class HomeDepotApi extends BaseAPI {
      * @memberof HomeDepotApi
      */
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>>;
+    /**
+     *
+     * @summary Get premium check usage for a specific user and item
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    hDControllerGetPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Get premium checks for a guild

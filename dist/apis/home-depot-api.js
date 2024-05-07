@@ -281,10 +281,13 @@ var HomeDepotApiAxiosParamCreator = function (configuration) {
          *
          * @summary Add premium check usage for a guild
          * @param {string} guildId
+         * @param {string} userId
+         * @param {string} storeId
+         * @param {string} itemId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerAddPremiumCheckUsage: function (guildId, options) {
+        hDControllerAddPremiumCheckUsage: function (guildId, userId, storeId, itemId, options) {
             if (options === void 0) { options = {}; }
             return __awaiter(_this, void 0, void 0, function () {
                 var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
@@ -295,8 +298,23 @@ var HomeDepotApiAxiosParamCreator = function (configuration) {
                             if (guildId === null || guildId === undefined) {
                                 throw new base_1.RequiredError('guildId', 'Required parameter guildId was null or undefined when calling hDControllerAddPremiumCheckUsage.');
                             }
-                            localVarPath = "/api/retailers/homedepot/guilds/{guildId}/premium-checks"
-                                .replace("{".concat("guildId", "}"), encodeURIComponent(String(guildId)));
+                            // verify required parameter 'userId' is not null or undefined
+                            if (userId === null || userId === undefined) {
+                                throw new base_1.RequiredError('userId', 'Required parameter userId was null or undefined when calling hDControllerAddPremiumCheckUsage.');
+                            }
+                            // verify required parameter 'storeId' is not null or undefined
+                            if (storeId === null || storeId === undefined) {
+                                throw new base_1.RequiredError('storeId', 'Required parameter storeId was null or undefined when calling hDControllerAddPremiumCheckUsage.');
+                            }
+                            // verify required parameter 'itemId' is not null or undefined
+                            if (itemId === null || itemId === undefined) {
+                                throw new base_1.RequiredError('itemId', 'Required parameter itemId was null or undefined when calling hDControllerAddPremiumCheckUsage.');
+                            }
+                            localVarPath = "/api/retailers/homedepot/guilds/{guildId}/premium-checks/{userId}/{storeId}/{itemId}"
+                                .replace("{".concat("guildId", "}"), encodeURIComponent(String(guildId)))
+                                .replace("{".concat("userId", "}"), encodeURIComponent(String(userId)))
+                                .replace("{".concat("storeId", "}"), encodeURIComponent(String(storeId)))
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
                             localVarUrlObj = new URL(localVarPath, 'https://example.com');
                             if (configuration) {
                                 baseOptions = configuration.baseOptions;
@@ -803,6 +821,84 @@ var HomeDepotApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Get premium check usage for a specific user and item
+         * @param {string} guildId
+         * @param {string} userId
+         * @param {string} storeId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerGetPremiumCheckUsage: function (guildId, userId, storeId, itemId, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            // verify required parameter 'guildId' is not null or undefined
+                            if (guildId === null || guildId === undefined) {
+                                throw new base_1.RequiredError('guildId', 'Required parameter guildId was null or undefined when calling hDControllerGetPremiumCheckUsage.');
+                            }
+                            // verify required parameter 'userId' is not null or undefined
+                            if (userId === null || userId === undefined) {
+                                throw new base_1.RequiredError('userId', 'Required parameter userId was null or undefined when calling hDControllerGetPremiumCheckUsage.');
+                            }
+                            // verify required parameter 'storeId' is not null or undefined
+                            if (storeId === null || storeId === undefined) {
+                                throw new base_1.RequiredError('storeId', 'Required parameter storeId was null or undefined when calling hDControllerGetPremiumCheckUsage.');
+                            }
+                            // verify required parameter 'itemId' is not null or undefined
+                            if (itemId === null || itemId === undefined) {
+                                throw new base_1.RequiredError('itemId', 'Required parameter itemId was null or undefined when calling hDControllerGetPremiumCheckUsage.');
+                            }
+                            localVarPath = "/api/retailers/homedepot/guilds/{guildId}/premium-checks/{userId}/{storeId}/{itemId}"
+                                .replace("{".concat("guildId", "}"), encodeURIComponent(String(guildId)))
+                                .replace("{".concat("userId", "}"), encodeURIComponent(String(userId)))
+                                .replace("{".concat("storeId", "}"), encodeURIComponent(String(storeId)))
+                                .replace("{".concat("itemId", "}"), encodeURIComponent(String(itemId)));
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Get premium checks for a guild
          * @param {string} guildId
          * @param {*} [options] Override http request option.
@@ -1012,15 +1108,18 @@ var HomeDepotApiFp = function (configuration) {
          *
          * @summary Add premium check usage for a guild
          * @param {string} guildId
+         * @param {string} userId
+         * @param {string} storeId
+         * @param {string} itemId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerAddPremiumCheckUsage: function (guildId, options) {
+        hDControllerAddPremiumCheckUsage: function (guildId, userId, storeId, itemId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 var localVarAxiosArgs;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, (0, exports.HomeDepotApiAxiosParamCreator)(configuration).hDControllerAddPremiumCheckUsage(guildId, options)];
+                        case 0: return [4 /*yield*/, (0, exports.HomeDepotApiAxiosParamCreator)(configuration).hDControllerAddPremiumCheckUsage(guildId, userId, storeId, itemId, options)];
                         case 1:
                             localVarAxiosArgs = _a.sent();
                             return [2 /*return*/, function (axios, basePath) {
@@ -1222,6 +1321,34 @@ var HomeDepotApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Get premium check usage for a specific user and item
+         * @param {string} guildId
+         * @param {string} userId
+         * @param {string} storeId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerGetPremiumCheckUsage: function (guildId, userId, storeId, itemId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, (0, exports.HomeDepotApiAxiosParamCreator)(configuration).hDControllerGetPremiumCheckUsage(guildId, userId, storeId, itemId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Get premium checks for a guild
          * @param {string} guildId
          * @param {*} [options] Override http request option.
@@ -1326,13 +1453,16 @@ var HomeDepotApiFactory = function (configuration, basePath, axios) {
          *
          * @summary Add premium check usage for a guild
          * @param {string} guildId
+         * @param {string} userId
+         * @param {string} storeId
+         * @param {string} itemId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerAddPremiumCheckUsage: function (guildId, options) {
+        hDControllerAddPremiumCheckUsage: function (guildId, userId, storeId, itemId, options) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2 /*return*/, (0, exports.HomeDepotApiFp)(configuration).hDControllerAddPremiumCheckUsage(guildId, options).then(function (request) { return request(axios, basePath); })];
+                    return [2 /*return*/, (0, exports.HomeDepotApiFp)(configuration).hDControllerAddPremiumCheckUsage(guildId, userId, storeId, itemId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -1448,6 +1578,23 @@ var HomeDepotApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Get premium check usage for a specific user and item
+         * @param {string} guildId
+         * @param {string} userId
+         * @param {string} storeId
+         * @param {string} itemId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerGetPremiumCheckUsage: function (guildId, userId, storeId, itemId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, (0, exports.HomeDepotApiFp)(configuration).hDControllerGetPremiumCheckUsage(guildId, userId, storeId, itemId, options).then(function (request) { return request(axios, basePath); })];
+                });
+            });
+        },
+        /**
+         *
          * @summary Get premium checks for a guild
          * @param {string} guildId
          * @param {*} [options] Override http request option.
@@ -1541,15 +1688,18 @@ var HomeDepotApi = /** @class */ (function (_super) {
      *
      * @summary Add premium check usage for a guild
      * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HomeDepotApi
      */
-    HomeDepotApi.prototype.hDControllerAddPremiumCheckUsage = function (guildId, options) {
+    HomeDepotApi.prototype.hDControllerAddPremiumCheckUsage = function (guildId, userId, storeId, itemId, options) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                return [2 /*return*/, (0, exports.HomeDepotApiFp)(this.configuration).hDControllerAddPremiumCheckUsage(guildId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+                return [2 /*return*/, (0, exports.HomeDepotApiFp)(this.configuration).hDControllerAddPremiumCheckUsage(guildId, userId, storeId, itemId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
@@ -1674,6 +1824,25 @@ var HomeDepotApi = /** @class */ (function (_super) {
             var _this = this;
             return __generator(this, function (_a) {
                 return [2 /*return*/, (0, exports.HomeDepotApiFp)(this.configuration).hDControllerGetItemsGlobally(page, pageSize, searchKey, categoryId, msrp, buyAsLowAs, clearanceOnly, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+            });
+        });
+    };
+    /**
+     *
+     * @summary Get premium check usage for a specific user and item
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    HomeDepotApi.prototype.hDControllerGetPremiumCheckUsage = function (guildId, userId, storeId, itemId, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, (0, exports.HomeDepotApiFp)(this.configuration).hDControllerGetPremiumCheckUsage(guildId, userId, storeId, itemId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };
