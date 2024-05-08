@@ -20,6 +20,7 @@ import { HDPremiumUsageResponseDto } from '../models';
 import { HDStoreDto } from '../models';
 import { HDStoreItemsResponseDto } from '../models';
 import { HDUpdateItemStatusDto } from '../models';
+import { UpsertHDStoreItemDto } from '../models';
 /**
  * HomeDepotApi - axios parameter creator
  * @export
@@ -33,6 +34,15 @@ export declare const HomeDepotApiAxiosParamCreator: (configuration?: Configurati
      * @throws {RequiredError}
      */
     hDControllerAddHDStore: (body: Array<string>, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Adds specific item data for a specific store ID
+     * @param {UpsertHDStoreItemDto} body
+     * @param {string} storeId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerAddItemToStore: (body: UpsertHDStoreItemDto, storeId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Processes all items in cache to the DB
@@ -180,6 +190,15 @@ export declare const HomeDepotApiFp: (configuration?: Configuration) => {
     hDControllerAddHDStore(body: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
+     * @summary Adds specific item data for a specific store ID
+     * @param {UpsertHDStoreItemDto} body
+     * @param {string} storeId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerAddItemToStore(body: UpsertHDStoreItemDto, storeId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    /**
+     *
      * @summary Processes all items in cache to the DB
      * @param {string} categoryId
      * @param {*} [options] Override http request option.
@@ -323,6 +342,15 @@ export declare const HomeDepotApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     hDControllerAddHDStore(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
+     * @summary Adds specific item data for a specific store ID
+     * @param {UpsertHDStoreItemDto} body
+     * @param {string} storeId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerAddItemToStore(body: UpsertHDStoreItemDto, storeId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Processes all items in cache to the DB
@@ -471,6 +499,16 @@ export declare class HomeDepotApi extends BaseAPI {
      * @memberof HomeDepotApi
      */
     hDControllerAddHDStore(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
+     * @summary Adds specific item data for a specific store ID
+     * @param {UpsertHDStoreItemDto} body
+     * @param {string} storeId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    hDControllerAddItemToStore(body: UpsertHDStoreItemDto, storeId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Processes all items in cache to the DB
