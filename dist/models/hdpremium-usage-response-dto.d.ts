@@ -17,7 +17,7 @@
 */
 export interface HDPremiumUsageResponseDto {
     /**
-     * Premium Usage check for a guild
+     * Premium Usage
      *
      * @type {number}
      * @memberof HDPremiumUsageResponseDto

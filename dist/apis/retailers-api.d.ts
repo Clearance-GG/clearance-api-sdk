@@ -28,12 +28,31 @@ import { UpsertHDStoreItemDto } from '../models';
 export declare const RetailersApiAxiosParamCreator: (configuration?: Configuration) => {
     /**
      *
+     * @summary Add premium check usage for a guild
+     * @param {string} guildId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerAddGuildPremiumChecks: (guildId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Add HD Stores to DB
      * @param {Array<string>} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     hDControllerAddHDStore: (body: Array<string>, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Add premium check usage for a specific user and item
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerAddItemPremiumCheckUsage: (guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Adds specific item data for a specific store ID
@@ -62,23 +81,13 @@ export declare const RetailersApiAxiosParamCreator: (configuration?: Configurati
     hDControllerAddItemsToStore: (body: BulkUpsertHDStoreItemsDto, storeId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Add premium check usage for a specific item
+     * @summary Add premium check usage for a user
      * @param {string} guildId
      * @param {string} userId
-     * @param {string} storeId
-     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerAddPremiumCheckUsage: (guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Add premium check usage for a guild
-     * @param {string} guildId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    hDControllerAddPremiumChecks: (guildId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    hDControllerAddUserPremiumChecks: (guildId: string, userId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all HD categories info
@@ -102,6 +111,14 @@ export declare const RetailersApiAxiosParamCreator: (configuration?: Configurati
     hDControllerGetAndAddAllStores: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get premium checks for a guild
+     * @param {string} guildId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetGuildPremiumChecks: (guildId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get HD item MSRP price
      * @param {Array<string>} body
      * @param {*} [options] Override http request option.
@@ -116,6 +133,17 @@ export declare const RetailersApiAxiosParamCreator: (configuration?: Configurati
      * @throws {RequiredError}
      */
     hDControllerGetHDStores: (body: Array<string>, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get premium check usage for a specific user and item
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetItemPremiumCheckUsage: (guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Returns items with optional pagination within a specified store
@@ -149,23 +177,13 @@ export declare const RetailersApiAxiosParamCreator: (configuration?: Configurati
     hDControllerGetItemsGlobally: (page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Get premium check usage for a specific user and item
+     * @summary Get premium checks for a user
      * @param {string} guildId
      * @param {string} userId
-     * @param {string} storeId
-     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerGetPremiumCheckUsage: (guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
-    /**
-     *
-     * @summary Get premium checks for a guild
-     * @param {string} guildId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    hDControllerGetPremiumChecks: (guildId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    hDControllerGetUserPremiumChecks: (guildId: string, userId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Add as low as price or mark an item as clearance
@@ -182,12 +200,31 @@ export declare const RetailersApiAxiosParamCreator: (configuration?: Configurati
 export declare const RetailersApiFp: (configuration?: Configuration) => {
     /**
      *
+     * @summary Add premium check usage for a guild
+     * @param {string} guildId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerAddGuildPremiumChecks(guildId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    /**
+     *
      * @summary Add HD Stores to DB
      * @param {Array<string>} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     hDControllerAddHDStore(body: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    /**
+     *
+     * @summary Add premium check usage for a specific user and item
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerAddItemPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Adds specific item data for a specific store ID
@@ -216,23 +253,13 @@ export declare const RetailersApiFp: (configuration?: Configuration) => {
     hDControllerAddItemsToStore(body: BulkUpsertHDStoreItemsDto, storeId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
-     * @summary Add premium check usage for a specific item
+     * @summary Add premium check usage for a user
      * @param {string} guildId
      * @param {string} userId
-     * @param {string} storeId
-     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerAddPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
-    /**
-     *
-     * @summary Add premium check usage for a guild
-     * @param {string} guildId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    hDControllerAddPremiumChecks(guildId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    hDControllerAddUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Get all HD categories info
@@ -256,6 +283,14 @@ export declare const RetailersApiFp: (configuration?: Configuration) => {
     hDControllerGetAndAddAllStores(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<boolean>>>;
     /**
      *
+     * @summary Get premium checks for a guild
+     * @param {string} guildId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetGuildPremiumChecks(guildId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDPremiumUsageResponseDto>>>;
+    /**
+     *
      * @summary Get HD item MSRP price
      * @param {Array<string>} body
      * @param {*} [options] Override http request option.
@@ -270,6 +305,17 @@ export declare const RetailersApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     hDControllerGetHDStores(body: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<HDStoreDto>>>>;
+    /**
+     *
+     * @summary Get premium check usage for a specific user and item
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetItemPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Returns items with optional pagination within a specified store
@@ -303,23 +349,13 @@ export declare const RetailersApiFp: (configuration?: Configuration) => {
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDGlobalItemsResponseDto>>>;
     /**
      *
-     * @summary Get premium check usage for a specific user and item
+     * @summary Get premium checks for a user
      * @param {string} guildId
      * @param {string} userId
-     * @param {string} storeId
-     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerGetPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
-    /**
-     *
-     * @summary Get premium checks for a guild
-     * @param {string} guildId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    hDControllerGetPremiumChecks(guildId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDPremiumUsageResponseDto>>>;
+    hDControllerGetUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDPremiumUsageResponseDto>>>;
     /**
      *
      * @summary Add as low as price or mark an item as clearance
@@ -336,12 +372,31 @@ export declare const RetailersApiFp: (configuration?: Configuration) => {
 export declare const RetailersApiFactory: (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) => {
     /**
      *
+     * @summary Add premium check usage for a guild
+     * @param {string} guildId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerAddGuildPremiumChecks(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
      * @summary Add HD Stores to DB
      * @param {Array<string>} body
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     hDControllerAddHDStore(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
+     * @summary Add premium check usage for a specific user and item
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerAddItemPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Adds specific item data for a specific store ID
@@ -370,23 +425,13 @@ export declare const RetailersApiFactory: (configuration?: Configuration, basePa
     hDControllerAddItemsToStore(body: BulkUpsertHDStoreItemsDto, storeId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
-     * @summary Add premium check usage for a specific item
+     * @summary Add premium check usage for a user
      * @param {string} guildId
      * @param {string} userId
-     * @param {string} storeId
-     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerAddPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
-    /**
-     *
-     * @summary Add premium check usage for a guild
-     * @param {string} guildId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    hDControllerAddPremiumChecks(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    hDControllerAddUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Get all HD categories info
@@ -410,6 +455,14 @@ export declare const RetailersApiFactory: (configuration?: Configuration, basePa
     hDControllerGetAndAddAllStores(options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>>;
     /**
      *
+     * @summary Get premium checks for a guild
+     * @param {string} guildId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetGuildPremiumChecks(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDPremiumUsageResponseDto>>;
+    /**
+     *
      * @summary Get HD item MSRP price
      * @param {Array<string>} body
      * @param {*} [options] Override http request option.
@@ -424,6 +477,17 @@ export declare const RetailersApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     hDControllerGetHDStores(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<HDStoreDto>>>;
+    /**
+     *
+     * @summary Get premium check usage for a specific user and item
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetItemPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Returns items with optional pagination within a specified store
@@ -457,23 +521,13 @@ export declare const RetailersApiFactory: (configuration?: Configuration, basePa
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>>;
     /**
      *
-     * @summary Get premium check usage for a specific user and item
+     * @summary Get premium checks for a user
      * @param {string} guildId
      * @param {string} userId
-     * @param {string} storeId
-     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerGetPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
-    /**
-     *
-     * @summary Get premium checks for a guild
-     * @param {string} guildId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    hDControllerGetPremiumChecks(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDPremiumUsageResponseDto>>;
+    hDControllerGetUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDPremiumUsageResponseDto>>;
     /**
      *
      * @summary Add as low as price or mark an item as clearance
@@ -492,6 +546,15 @@ export declare const RetailersApiFactory: (configuration?: Configuration, basePa
 export declare class RetailersApi extends BaseAPI {
     /**
      *
+     * @summary Add premium check usage for a guild
+     * @param {string} guildId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    hDControllerAddGuildPremiumChecks(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
      * @summary Add HD Stores to DB
      * @param {Array<string>} body
      * @param {*} [options] Override http request option.
@@ -499,6 +562,18 @@ export declare class RetailersApi extends BaseAPI {
      * @memberof RetailersApi
      */
     hDControllerAddHDStore(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
+     * @summary Add premium check usage for a specific user and item
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    hDControllerAddItemPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Adds specific item data for a specific store ID
@@ -530,25 +605,14 @@ export declare class RetailersApi extends BaseAPI {
     hDControllerAddItemsToStore(body: BulkUpsertHDStoreItemsDto, storeId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
-     * @summary Add premium check usage for a specific item
+     * @summary Add premium check usage for a user
      * @param {string} guildId
      * @param {string} userId
-     * @param {string} storeId
-     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RetailersApi
      */
-    hDControllerAddPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
-    /**
-     *
-     * @summary Add premium check usage for a guild
-     * @param {string} guildId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof RetailersApi
-     */
-    hDControllerAddPremiumChecks(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    hDControllerAddUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Get all HD categories info
@@ -575,6 +639,15 @@ export declare class RetailersApi extends BaseAPI {
     hDControllerGetAndAddAllStores(options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>>;
     /**
      *
+     * @summary Get premium checks for a guild
+     * @param {string} guildId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    hDControllerGetGuildPremiumChecks(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDPremiumUsageResponseDto>>;
+    /**
+     *
      * @summary Get HD item MSRP price
      * @param {Array<string>} body
      * @param {*} [options] Override http request option.
@@ -591,6 +664,18 @@ export declare class RetailersApi extends BaseAPI {
      * @memberof RetailersApi
      */
     hDControllerGetHDStores(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<HDStoreDto>>>;
+    /**
+     *
+     * @summary Get premium check usage for a specific user and item
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    hDControllerGetItemPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Returns items with optional pagination within a specified store
@@ -626,25 +711,14 @@ export declare class RetailersApi extends BaseAPI {
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>>;
     /**
      *
-     * @summary Get premium check usage for a specific user and item
+     * @summary Get premium checks for a user
      * @param {string} guildId
      * @param {string} userId
-     * @param {string} storeId
-     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RetailersApi
      */
-    hDControllerGetPremiumCheckUsage(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
-    /**
-     *
-     * @summary Get premium checks for a guild
-     * @param {string} guildId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof RetailersApi
-     */
-    hDControllerGetPremiumChecks(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDPremiumUsageResponseDto>>;
+    hDControllerGetUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDPremiumUsageResponseDto>>;
     /**
      *
      * @summary Add as low as price or mark an item as clearance
