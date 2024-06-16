@@ -9,9 +9,11 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+export * from './apis/admin-api';
 export * from './apis/auth-api';
 export * from './apis/home-depot-api';
 export * from './apis/proxies-api';
+export * from './apis/queues-api';
 export * from './apis/retailers-api';
 export * from './apis/roles-api';
 export * from './apis/success-api';

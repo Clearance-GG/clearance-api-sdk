@@ -43,4 +43,20 @@ export interface HDCategoryDto {
      * @memberof HDCategoryDto
      */
     categoryId: string;
+
+    /**
+     * Is it a priority category
+     *
+     * @type {boolean}
+     * @memberof HDCategoryDto
+     */
+    isPriority: boolean;
+
+    /**
+     * is it a monitorable category
+     *
+     * @type {boolean}
+     * @memberof HDCategoryDto
+     */
+    isMonitorable: boolean;
 }

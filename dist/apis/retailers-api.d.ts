@@ -135,6 +135,13 @@ export declare const RetailersApiAxiosParamCreator: (configuration?: Configurati
     hDControllerGetHDStores: (body: Array<string>, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get new category to monitor
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetHdCategory: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get premium check usage for a specific user and item
      * @param {string} guildId
      * @param {string} userId
@@ -307,6 +314,13 @@ export declare const RetailersApiFp: (configuration?: Configuration) => {
     hDControllerGetHDStores(body: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<HDStoreDto>>>>;
     /**
      *
+     * @summary Get new category to monitor
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetHdCategory(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDCategoryDto>>>;
+    /**
+     *
      * @summary Get premium check usage for a specific user and item
      * @param {string} guildId
      * @param {string} userId
@@ -477,6 +491,13 @@ export declare const RetailersApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     hDControllerGetHDStores(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<HDStoreDto>>>;
+    /**
+     *
+     * @summary Get new category to monitor
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetHdCategory(options?: AxiosRequestConfig): Promise<AxiosResponse<HDCategoryDto>>;
     /**
      *
      * @summary Get premium check usage for a specific user and item
@@ -664,6 +685,14 @@ export declare class RetailersApi extends BaseAPI {
      * @memberof RetailersApi
      */
     hDControllerGetHDStores(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<HDStoreDto>>>;
+    /**
+     *
+     * @summary Get new category to monitor
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    hDControllerGetHdCategory(options?: AxiosRequestConfig): Promise<AxiosResponse<HDCategoryDto>>;
     /**
      *
      * @summary Get premium check usage for a specific user and item
