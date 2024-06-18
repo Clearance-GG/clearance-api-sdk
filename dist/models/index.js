@@ -23,6 +23,8 @@ __exportStar(require("./dump-roles-response-dto"), exports);
 __exportStar(require("./geometry-dto"), exports);
 __exportStar(require("./get-channel-ids-response-dto"), exports);
 __exportStar(require("./hdcategory-dto"), exports);
+__exportStar(require("./hdclearance-collection"), exports);
+__exportStar(require("./hdclearance-collection-response-dto"), exports);
 __exportStar(require("./hdglobal-item-dto"), exports);
 __exportStar(require("./hdglobal-items-response-dto"), exports);
 __exportStar(require("./hdglobal-items-stats-dto"), exports);
