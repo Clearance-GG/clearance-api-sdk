@@ -113,6 +113,13 @@ export declare const RetailersApiAxiosParamCreator: (configuration?: Configurati
     hDControllerGetAllHDStores: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get all priority HD categories
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetAllPriorityCategories: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get all HD stores from zipcodes
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -300,6 +307,13 @@ export declare const RetailersApiFp: (configuration?: Configuration) => {
     hDControllerGetAllHDStores(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<HDStoreDto>>>>;
     /**
      *
+     * @summary Get all priority HD categories
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetAllPriorityCategories(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<HDCategoryDto>>>>;
+    /**
+     *
      * @summary Get all HD stores from zipcodes
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -485,6 +499,13 @@ export declare const RetailersApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     hDControllerGetAllHDStores(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<HDStoreDto>>>;
+    /**
+     *
+     * @summary Get all priority HD categories
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetAllPriorityCategories(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<HDCategoryDto>>>;
     /**
      *
      * @summary Get all HD stores from zipcodes
@@ -684,6 +705,14 @@ export declare class RetailersApi extends BaseAPI {
      * @memberof RetailersApi
      */
     hDControllerGetAllHDStores(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<HDStoreDto>>>;
+    /**
+     *
+     * @summary Get all priority HD categories
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    hDControllerGetAllPriorityCategories(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<HDCategoryDto>>>;
     /**
      *
      * @summary Get all HD stores from zipcodes

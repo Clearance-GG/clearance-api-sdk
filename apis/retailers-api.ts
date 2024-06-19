@@ -561,6 +561,49 @@ export const RetailersApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary Get all priority HD categories
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerGetAllPriorityCategories: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/retailers/homedepot/categories/monitor-priority`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get all HD stores from zipcodes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1299,6 +1342,19 @@ export const RetailersApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get all priority HD categories
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerGetAllPriorityCategories(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<HDCategoryDto>>>> {
+            const localVarAxiosArgs = await RetailersApiAxiosParamCreator(configuration).hDControllerGetAllPriorityCategories(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary Get all HD stores from zipcodes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1569,6 +1625,15 @@ export const RetailersApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @summary Get all priority HD categories
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerGetAllPriorityCategories(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<HDCategoryDto>>> {
+            return RetailersApiFp(configuration).hDControllerGetAllPriorityCategories(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get all HD stores from zipcodes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1807,6 +1872,16 @@ export class RetailersApi extends BaseAPI {
      */
     public async hDControllerGetAllHDStores(options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<HDStoreDto>>> {
         return RetailersApiFp(this.configuration).hDControllerGetAllHDStores(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Get all priority HD categories
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    public async hDControllerGetAllPriorityCategories(options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<HDCategoryDto>>> {
+        return RetailersApiFp(this.configuration).hDControllerGetAllPriorityCategories(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
