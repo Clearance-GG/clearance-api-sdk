@@ -829,6 +829,66 @@ var RetailersApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Get specific category details
+         * @param {string} categoryId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerGetCategoryDetails: function (categoryId, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            // verify required parameter 'categoryId' is not null or undefined
+                            if (categoryId === null || categoryId === undefined) {
+                                throw new base_1.RequiredError('categoryId', 'Required parameter categoryId was null or undefined when calling hDControllerGetCategoryDetails.');
+                            }
+                            localVarPath = "/api/retailers/homedepot/categories/{categoryId}"
+                                .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)));
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'GET' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Get premium checks for a guild
          * @param {string} guildId
          * @param {*} [options] Override http request option.
@@ -1389,6 +1449,126 @@ var RetailersApiAxiosParamCreator = function (configuration) {
         },
         /**
          *
+         * @summary Update category monitorable status
+         * @param {string} categoryId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerUpdateCategoryMonitorable: function (categoryId, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            // verify required parameter 'categoryId' is not null or undefined
+                            if (categoryId === null || categoryId === undefined) {
+                                throw new base_1.RequiredError('categoryId', 'Required parameter categoryId was null or undefined when calling hDControllerUpdateCategoryMonitorable.');
+                            }
+                            localVarPath = "/api/retailers/homedepot/categories/update-monitor/{categoryId}"
+                                .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)));
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Update category priority status
+         * @param {string} categoryId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerUpdateCategoryPriority: function (categoryId, options) {
+            if (options === void 0) { options = {}; }
+            return __awaiter(_this, void 0, void 0, function () {
+                var localVarPath, localVarUrlObj, baseOptions, localVarRequestOptions, localVarHeaderParameter, localVarQueryParameter, accessToken, _a, query, key, key, headersFromBaseOptions;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            // verify required parameter 'categoryId' is not null or undefined
+                            if (categoryId === null || categoryId === undefined) {
+                                throw new base_1.RequiredError('categoryId', 'Required parameter categoryId was null or undefined when calling hDControllerUpdateCategoryPriority.');
+                            }
+                            localVarPath = "/api/retailers/homedepot/categories/update-priority/{categoryId}"
+                                .replace("{".concat("categoryId", "}"), encodeURIComponent(String(categoryId)));
+                            localVarUrlObj = new URL(localVarPath, 'https://example.com');
+                            if (configuration) {
+                                baseOptions = configuration.baseOptions;
+                            }
+                            localVarRequestOptions = __assign(__assign({ method: 'POST' }, baseOptions), options);
+                            localVarHeaderParameter = {};
+                            localVarQueryParameter = {};
+                            if (!(configuration && configuration.accessToken)) return [3 /*break*/, 5];
+                            if (!(typeof configuration.accessToken === 'function')) return [3 /*break*/, 2];
+                            return [4 /*yield*/, configuration.accessToken()];
+                        case 1:
+                            _a = _b.sent();
+                            return [3 /*break*/, 4];
+                        case 2: return [4 /*yield*/, configuration.accessToken];
+                        case 3:
+                            _a = _b.sent();
+                            _b.label = 4;
+                        case 4:
+                            accessToken = _a;
+                            localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+                            _b.label = 5;
+                        case 5:
+                            query = new URLSearchParams(localVarUrlObj.search);
+                            for (key in localVarQueryParameter) {
+                                query.set(key, localVarQueryParameter[key]);
+                            }
+                            for (key in options.params) {
+                                query.set(key, options.params[key]);
+                            }
+                            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+                            headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+                            localVarRequestOptions.headers = __assign(__assign(__assign({}, localVarHeaderParameter), headersFromBaseOptions), options.headers);
+                            return [2 /*return*/, {
+                                    url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                                    options: localVarRequestOptions,
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Add as low as price or mark an item as clearance
          * @param {HDUpdateItemStatusDto} body
          * @param {*} [options] Override http request option.
@@ -1762,6 +1942,31 @@ var RetailersApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Get specific category details
+         * @param {string} categoryId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerGetCategoryDetails: function (categoryId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, (0, exports.RetailersApiAxiosParamCreator)(configuration).hDControllerGetCategoryDetails(categoryId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Get premium checks for a guild
          * @param {string} guildId
          * @param {*} [options] Override http request option.
@@ -1980,6 +2185,56 @@ var RetailersApiFp = function (configuration) {
         },
         /**
          *
+         * @summary Update category monitorable status
+         * @param {string} categoryId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerUpdateCategoryMonitorable: function (categoryId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, (0, exports.RetailersApiAxiosParamCreator)(configuration).hDControllerUpdateCategoryMonitorable(categoryId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
+         * @summary Update category priority status
+         * @param {string} categoryId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerUpdateCategoryPriority: function (categoryId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var localVarAxiosArgs;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, (0, exports.RetailersApiAxiosParamCreator)(configuration).hDControllerUpdateCategoryPriority(categoryId, options)];
+                        case 1:
+                            localVarAxiosArgs = _a.sent();
+                            return [2 /*return*/, function (axios, basePath) {
+                                    if (axios === void 0) { axios = axios_1.default; }
+                                    if (basePath === void 0) { basePath = base_1.BASE_PATH; }
+                                    var axiosRequestArgs = __assign(__assign({}, localVarAxiosArgs.options), { url: basePath + localVarAxiosArgs.url });
+                                    return axios.request(axiosRequestArgs);
+                                }];
+                    }
+                });
+            });
+        },
+        /**
+         *
          * @summary Add as low as price or mark an item as clearance
          * @param {HDUpdateItemStatusDto} body
          * @param {*} [options] Override http request option.
@@ -2184,6 +2439,20 @@ var RetailersApiFactory = function (configuration, basePath, axios) {
         },
         /**
          *
+         * @summary Get specific category details
+         * @param {string} categoryId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerGetCategoryDetails: function (categoryId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, (0, exports.RetailersApiFp)(configuration).hDControllerGetCategoryDetails(categoryId, options).then(function (request) { return request(axios, basePath); })];
+                });
+            });
+        },
+        /**
+         *
          * @summary Get premium checks for a guild
          * @param {string} guildId
          * @param {*} [options] Override http request option.
@@ -2309,6 +2578,34 @@ var RetailersApiFactory = function (configuration, basePath, axios) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     return [2 /*return*/, (0, exports.RetailersApiFp)(configuration).hDControllerGetUserPremiumChecks(guildId, userId, options).then(function (request) { return request(axios, basePath); })];
+                });
+            });
+        },
+        /**
+         *
+         * @summary Update category monitorable status
+         * @param {string} categoryId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerUpdateCategoryMonitorable: function (categoryId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, (0, exports.RetailersApiFp)(configuration).hDControllerUpdateCategoryMonitorable(categoryId, options).then(function (request) { return request(axios, basePath); })];
+                });
+            });
+        },
+        /**
+         *
+         * @summary Update category priority status
+         * @param {string} categoryId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerUpdateCategoryPriority: function (categoryId, options) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, (0, exports.RetailersApiFp)(configuration).hDControllerUpdateCategoryPriority(categoryId, options).then(function (request) { return request(axios, basePath); })];
                 });
             });
         },
@@ -2536,6 +2833,22 @@ var RetailersApi = /** @class */ (function (_super) {
     };
     /**
      *
+     * @summary Get specific category details
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    RetailersApi.prototype.hDControllerGetCategoryDetails = function (categoryId, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, (0, exports.RetailersApiFp)(this.configuration).hDControllerGetCategoryDetails(categoryId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+            });
+        });
+    };
+    /**
+     *
      * @summary Get premium checks for a guild
      * @param {string} guildId
      * @param {*} [options] Override http request option.
@@ -2677,6 +2990,38 @@ var RetailersApi = /** @class */ (function (_super) {
             var _this = this;
             return __generator(this, function (_a) {
                 return [2 /*return*/, (0, exports.RetailersApiFp)(this.configuration).hDControllerGetUserPremiumChecks(guildId, userId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+            });
+        });
+    };
+    /**
+     *
+     * @summary Update category monitorable status
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    RetailersApi.prototype.hDControllerUpdateCategoryMonitorable = function (categoryId, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, (0, exports.RetailersApiFp)(this.configuration).hDControllerUpdateCategoryMonitorable(categoryId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
+            });
+        });
+    };
+    /**
+     *
+     * @summary Update category priority status
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    RetailersApi.prototype.hDControllerUpdateCategoryPriority = function (categoryId, options) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, (0, exports.RetailersApiFp)(this.configuration).hDControllerUpdateCategoryPriority(categoryId, options).then(function (request) { return request(_this.axios, _this.basePath); })];
             });
         });
     };

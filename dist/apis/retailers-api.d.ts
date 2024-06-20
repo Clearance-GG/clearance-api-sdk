@@ -13,6 +13,7 @@ import { AxiosResponse, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 import { RequestArgs, BaseAPI } from '../base';
 import { BulkUpsertHDStoreItemsDto } from '../models';
+import { HDCategoryDetailsDto } from '../models';
 import { HDCategoryDto } from '../models';
 import { HDClearanceCollectionResponseDto } from '../models';
 import { HDGlobalItemsResponseDto } from '../models';
@@ -127,6 +128,14 @@ export declare const RetailersApiAxiosParamCreator: (configuration?: Configurati
     hDControllerGetAndAddAllStores: (options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get specific category details
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetCategoryDetails: (categoryId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get premium checks for a guild
      * @param {string} guildId
      * @param {*} [options] Override http request option.
@@ -207,6 +216,22 @@ export declare const RetailersApiAxiosParamCreator: (configuration?: Configurati
      * @throws {RequiredError}
      */
     hDControllerGetUserPremiumChecks: (guildId: string, userId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Update category monitorable status
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdateCategoryMonitorable: (categoryId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Update category priority status
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdateCategoryPriority: (categoryId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Add as low as price or mark an item as clearance
@@ -321,6 +346,14 @@ export declare const RetailersApiFp: (configuration?: Configuration) => {
     hDControllerGetAndAddAllStores(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<boolean>>>;
     /**
      *
+     * @summary Get specific category details
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetCategoryDetails(categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDCategoryDetailsDto>>>;
+    /**
+     *
      * @summary Get premium checks for a guild
      * @param {string} guildId
      * @param {*} [options] Override http request option.
@@ -401,6 +434,22 @@ export declare const RetailersApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     hDControllerGetUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDPremiumUsageResponseDto>>>;
+    /**
+     *
+     * @summary Update category monitorable status
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdateCategoryMonitorable(categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDCategoryDto>>>;
+    /**
+     *
+     * @summary Update category priority status
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdateCategoryPriority(categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDCategoryDto>>>;
     /**
      *
      * @summary Add as low as price or mark an item as clearance
@@ -515,6 +564,14 @@ export declare const RetailersApiFactory: (configuration?: Configuration, basePa
     hDControllerGetAndAddAllStores(options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>>;
     /**
      *
+     * @summary Get specific category details
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetCategoryDetails(categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDCategoryDetailsDto>>;
+    /**
+     *
      * @summary Get premium checks for a guild
      * @param {string} guildId
      * @param {*} [options] Override http request option.
@@ -595,6 +652,22 @@ export declare const RetailersApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     hDControllerGetUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDPremiumUsageResponseDto>>;
+    /**
+     *
+     * @summary Update category monitorable status
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdateCategoryMonitorable(categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDCategoryDto>>;
+    /**
+     *
+     * @summary Update category priority status
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdateCategoryPriority(categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDCategoryDto>>;
     /**
      *
      * @summary Add as low as price or mark an item as clearance
@@ -723,6 +796,15 @@ export declare class RetailersApi extends BaseAPI {
     hDControllerGetAndAddAllStores(options?: AxiosRequestConfig): Promise<AxiosResponse<boolean>>;
     /**
      *
+     * @summary Get specific category details
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    hDControllerGetCategoryDetails(categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDCategoryDetailsDto>>;
+    /**
+     *
      * @summary Get premium checks for a guild
      * @param {string} guildId
      * @param {*} [options] Override http request option.
@@ -811,6 +893,24 @@ export declare class RetailersApi extends BaseAPI {
      * @memberof RetailersApi
      */
     hDControllerGetUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDPremiumUsageResponseDto>>;
+    /**
+     *
+     * @summary Update category monitorable status
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    hDControllerUpdateCategoryMonitorable(categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDCategoryDto>>;
+    /**
+     *
+     * @summary Update category priority status
+     * @param {string} categoryId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    hDControllerUpdateCategoryPriority(categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDCategoryDto>>;
     /**
      *
      * @summary Add as low as price or mark an item as clearance

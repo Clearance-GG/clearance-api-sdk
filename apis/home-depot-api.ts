@@ -18,6 +18,7 @@ import { Configuration } from '../configuration';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { BulkUpsertHDStoreItemsDto } from '../models';
+import { HDCategoryDetailsDto } from '../models';
 import { HDCategoryDto } from '../models';
 import { HDClearanceCollectionResponseDto } from '../models';
 import { HDGlobalItemsResponseDto } from '../models';
@@ -647,6 +648,55 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary Get specific category details
+         * @param {string} categoryId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerGetCategoryDetails: async (categoryId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'categoryId' is not null or undefined
+            if (categoryId === null || categoryId === undefined) {
+                throw new RequiredError('categoryId','Required parameter categoryId was null or undefined when calling hDControllerGetCategoryDetails.');
+            }
+            const localVarPath = `/api/retailers/homedepot/categories/{categoryId}`
+                .replace(`{${"categoryId"}}`, encodeURIComponent(String(categoryId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get premium checks for a guild
          * @param {string} guildId 
          * @param {*} [options] Override http request option.
@@ -1137,6 +1187,104 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary Update category monitorable status
+         * @param {string} categoryId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerUpdateCategoryMonitorable: async (categoryId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'categoryId' is not null or undefined
+            if (categoryId === null || categoryId === undefined) {
+                throw new RequiredError('categoryId','Required parameter categoryId was null or undefined when calling hDControllerUpdateCategoryMonitorable.');
+            }
+            const localVarPath = `/api/retailers/homedepot/categories/update-monitor/{categoryId}`
+                .replace(`{${"categoryId"}}`, encodeURIComponent(String(categoryId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Update category priority status
+         * @param {string} categoryId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerUpdateCategoryPriority: async (categoryId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'categoryId' is not null or undefined
+            if (categoryId === null || categoryId === undefined) {
+                throw new RequiredError('categoryId','Required parameter categoryId was null or undefined when calling hDControllerUpdateCategoryPriority.');
+            }
+            const localVarPath = `/api/retailers/homedepot/categories/update-priority/{categoryId}`
+                .replace(`{${"categoryId"}}`, encodeURIComponent(String(categoryId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Add as low as price or mark an item as clearance
          * @param {HDUpdateItemStatusDto} body 
          * @param {*} [options] Override http request option.
@@ -1368,6 +1516,20 @@ export const HomeDepotApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get specific category details
+         * @param {string} categoryId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerGetCategoryDetails(categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDCategoryDetailsDto>>> {
+            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerGetCategoryDetails(categoryId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary Get premium checks for a guild
          * @param {string} guildId 
          * @param {*} [options] Override http request option.
@@ -1491,6 +1653,34 @@ export const HomeDepotApiFp = function(configuration?: Configuration) {
          */
         async hDControllerGetUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDPremiumUsageResponseDto>>> {
             const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerGetUserPremiumChecks(guildId, userId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
+         * @summary Update category monitorable status
+         * @param {string} categoryId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerUpdateCategoryMonitorable(categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDCategoryDto>>> {
+            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerUpdateCategoryMonitorable(categoryId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
+         * @summary Update category priority status
+         * @param {string} categoryId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerUpdateCategoryPriority(categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDCategoryDto>>> {
+            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerUpdateCategoryPriority(categoryId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1643,6 +1833,16 @@ export const HomeDepotApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @summary Get specific category details
+         * @param {string} categoryId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerGetCategoryDetails(categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDCategoryDetailsDto>> {
+            return HomeDepotApiFp(configuration).hDControllerGetCategoryDetails(categoryId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get premium checks for a guild
          * @param {string} guildId 
          * @param {*} [options] Override http request option.
@@ -1738,6 +1938,26 @@ export const HomeDepotApiFactory = function (configuration?: Configuration, base
          */
         async hDControllerGetUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDPremiumUsageResponseDto>> {
             return HomeDepotApiFp(configuration).hDControllerGetUserPremiumChecks(guildId, userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update category monitorable status
+         * @param {string} categoryId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerUpdateCategoryMonitorable(categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDCategoryDto>> {
+            return HomeDepotApiFp(configuration).hDControllerUpdateCategoryMonitorable(categoryId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Update category priority status
+         * @param {string} categoryId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerUpdateCategoryPriority(categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDCategoryDto>> {
+            return HomeDepotApiFp(configuration).hDControllerUpdateCategoryPriority(categoryId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1895,6 +2115,17 @@ export class HomeDepotApi extends BaseAPI {
     }
     /**
      * 
+     * @summary Get specific category details
+     * @param {string} categoryId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    public async hDControllerGetCategoryDetails(categoryId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDCategoryDetailsDto>> {
+        return HomeDepotApiFp(this.configuration).hDControllerGetCategoryDetails(categoryId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
      * @summary Get premium checks for a guild
      * @param {string} guildId 
      * @param {*} [options] Override http request option.
@@ -1998,6 +2229,28 @@ export class HomeDepotApi extends BaseAPI {
      */
     public async hDControllerGetUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDPremiumUsageResponseDto>> {
         return HomeDepotApiFp(this.configuration).hDControllerGetUserPremiumChecks(guildId, userId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Update category monitorable status
+     * @param {string} categoryId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    public async hDControllerUpdateCategoryMonitorable(categoryId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDCategoryDto>> {
+        return HomeDepotApiFp(this.configuration).hDControllerUpdateCategoryMonitorable(categoryId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Update category priority status
+     * @param {string} categoryId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    public async hDControllerUpdateCategoryPriority(categoryId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDCategoryDto>> {
+        return HomeDepotApiFp(this.configuration).hDControllerUpdateCategoryPriority(categoryId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 

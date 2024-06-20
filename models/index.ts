@@ -6,6 +6,7 @@ export * from './discord-id-dto';
 export * from './dump-roles-response-dto';
 export * from './geometry-dto';
 export * from './get-channel-ids-response-dto';
+export * from './hdcategory-details-dto';
 export * from './hdcategory-dto';
 export * from './hdclearance-collection';
 export * from './hdclearance-collection-response-dto';

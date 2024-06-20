@@ -22,6 +22,7 @@ __exportStar(require("./discord-id-dto"), exports);
 __exportStar(require("./dump-roles-response-dto"), exports);
 __exportStar(require("./geometry-dto"), exports);
 __exportStar(require("./get-channel-ids-response-dto"), exports);
+__exportStar(require("./hdcategory-details-dto"), exports);
 __exportStar(require("./hdcategory-dto"), exports);
 __exportStar(require("./hdclearance-collection"), exports);
 __exportStar(require("./hdclearance-collection-response-dto"), exports);
