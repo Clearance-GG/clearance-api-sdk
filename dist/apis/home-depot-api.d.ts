@@ -18,7 +18,6 @@ import { HDCategoryDto } from '../models';
 import { HDClearanceCollectionResponseDto } from '../models';
 import { HDGlobalItemsResponseDto } from '../models';
 import { HDItemMSRPDto } from '../models';
-import { HDMonitoredItemDto } from '../models';
 import { HDPremiumUsageResponseDto } from '../models';
 import { HDStoreDto } from '../models';
 import { HDStoreItemsResponseDto } from '../models';
@@ -350,7 +349,7 @@ export declare const HomeDepotApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDMonitoredItemDto>>>;
+    hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HdTotalMonitoredItemsDto>>>;
     /**
      *
      * @summary Add premium check usage for a user
@@ -370,7 +369,7 @@ export declare const HomeDepotApiFp: (configuration?: Configuration) => {
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HdTotalMonitoredItemsDto>>>;
     /**
      *
      * @summary Get all HD categories info
@@ -607,7 +606,7 @@ export declare const HomeDepotApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDMonitoredItemDto>>;
+    hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HdTotalMonitoredItemsDto>>;
     /**
      *
      * @summary Add premium check usage for a user
@@ -627,7 +626,7 @@ export declare const HomeDepotApiFactory: (configuration?: Configuration, basePa
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HdTotalMonitoredItemsDto>>;
     /**
      *
      * @summary Get all HD categories info
@@ -873,7 +872,7 @@ export declare class HomeDepotApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof HomeDepotApi
      */
-    hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDMonitoredItemDto>>;
+    hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HdTotalMonitoredItemsDto>>;
     /**
      *
      * @summary Add premium check usage for a user
@@ -895,7 +894,7 @@ export declare class HomeDepotApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof HomeDepotApi
      */
-    hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HdTotalMonitoredItemsDto>>;
     /**
      *
      * @summary Get all HD categories info

@@ -23,7 +23,6 @@ import { HDCategoryDto } from '../models';
 import { HDClearanceCollectionResponseDto } from '../models';
 import { HDGlobalItemsResponseDto } from '../models';
 import { HDItemMSRPDto } from '../models';
-import { HDMonitoredItemDto } from '../models';
 import { HDPremiumUsageResponseDto } from '../models';
 import { HDStoreDto } from '../models';
 import { HDStoreItemsResponseDto } from '../models';
@@ -1683,7 +1682,7 @@ export const RetailersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDMonitoredItemDto>>> {
+        async hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HdTotalMonitoredItemsDto>>> {
             const localVarAxiosArgs = await RetailersApiAxiosParamCreator(configuration).hDControllerAddUserMonitoredItems(guildId, userId, storeId, itemId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -1715,7 +1714,7 @@ export const RetailersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+        async hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HdTotalMonitoredItemsDto>>> {
             const localVarAxiosArgs = await RetailersApiAxiosParamCreator(configuration).hDControllerDeleteUserMonitoredItem(guildId, userId, storeId, itemId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -2087,7 +2086,7 @@ export const RetailersApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDMonitoredItemDto>> {
+        async hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HdTotalMonitoredItemsDto>> {
             return RetailersApiFp(configuration).hDControllerAddUserMonitoredItems(guildId, userId, storeId, itemId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2111,7 +2110,7 @@ export const RetailersApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+        async hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HdTotalMonitoredItemsDto>> {
             return RetailersApiFp(configuration).hDControllerDeleteUserMonitoredItem(guildId, userId, storeId, itemId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2411,7 +2410,7 @@ export class RetailersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RetailersApi
      */
-    public async hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDMonitoredItemDto>> {
+    public async hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HdTotalMonitoredItemsDto>> {
         return RetailersApiFp(this.configuration).hDControllerAddUserMonitoredItems(guildId, userId, storeId, itemId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -2437,7 +2436,7 @@ export class RetailersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof RetailersApi
      */
-    public async hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+    public async hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HdTotalMonitoredItemsDto>> {
         return RetailersApiFp(this.configuration).hDControllerDeleteUserMonitoredItem(guildId, userId, storeId, itemId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
