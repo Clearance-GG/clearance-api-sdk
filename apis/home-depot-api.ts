@@ -23,10 +23,12 @@ import { HDCategoryDto } from '../models';
 import { HDClearanceCollectionResponseDto } from '../models';
 import { HDGlobalItemsResponseDto } from '../models';
 import { HDItemMSRPDto } from '../models';
+import { HDMonitoredItemDto } from '../models';
 import { HDPremiumUsageResponseDto } from '../models';
 import { HDStoreDto } from '../models';
 import { HDStoreItemsResponseDto } from '../models';
 import { HDUpdateItemStatusDto } from '../models';
+import { HdTotalMonitoredItemsDto } from '../models';
 import { UpsertHDStoreItemDto } from '../models';
 /**
  * HomeDepotApi - axios parameter creator
@@ -369,6 +371,73 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary Add item to be monitored for a specific user
+         * @param {string} guildId 
+         * @param {string} userId 
+         * @param {string} storeId 
+         * @param {string} itemId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerAddUserMonitoredItems: async (guildId: string, userId: string, storeId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'guildId' is not null or undefined
+            if (guildId === null || guildId === undefined) {
+                throw new RequiredError('guildId','Required parameter guildId was null or undefined when calling hDControllerAddUserMonitoredItems.');
+            }
+            // verify required parameter 'userId' is not null or undefined
+            if (userId === null || userId === undefined) {
+                throw new RequiredError('userId','Required parameter userId was null or undefined when calling hDControllerAddUserMonitoredItems.');
+            }
+            // verify required parameter 'storeId' is not null or undefined
+            if (storeId === null || storeId === undefined) {
+                throw new RequiredError('storeId','Required parameter storeId was null or undefined when calling hDControllerAddUserMonitoredItems.');
+            }
+            // verify required parameter 'itemId' is not null or undefined
+            if (itemId === null || itemId === undefined) {
+                throw new RequiredError('itemId','Required parameter itemId was null or undefined when calling hDControllerAddUserMonitoredItems.');
+            }
+            const localVarPath = `/api/retailers/homedepot/guilds/{guildId}/monitored-items/{userId}/{storeId}/{itemId}`
+                .replace(`{${"guildId"}}`, encodeURIComponent(String(guildId)))
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)))
+                .replace(`{${"storeId"}}`, encodeURIComponent(String(storeId)))
+                .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Add premium check usage for a user
          * @param {string} guildId 
          * @param {string} userId 
@@ -424,24 +493,43 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
-         * @summary Check stores clearance colletion
-         * @param {Array<string>} body 
+         * @summary Delete item being monitored for a specific user
+         * @param {string} guildId 
+         * @param {string} userId 
+         * @param {string} storeId 
+         * @param {string} itemId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        hDControllerCheckStoreDealLists: async (body: Array<string>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling hDControllerCheckStoreDealLists.');
+        hDControllerDeleteUserMonitoredItem: async (guildId: string, userId: string, storeId: string, itemId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'guildId' is not null or undefined
+            if (guildId === null || guildId === undefined) {
+                throw new RequiredError('guildId','Required parameter guildId was null or undefined when calling hDControllerDeleteUserMonitoredItem.');
             }
-            const localVarPath = `/api/retailers/homedepot/clearance-collection`;
+            // verify required parameter 'userId' is not null or undefined
+            if (userId === null || userId === undefined) {
+                throw new RequiredError('userId','Required parameter userId was null or undefined when calling hDControllerDeleteUserMonitoredItem.');
+            }
+            // verify required parameter 'storeId' is not null or undefined
+            if (storeId === null || storeId === undefined) {
+                throw new RequiredError('storeId','Required parameter storeId was null or undefined when calling hDControllerDeleteUserMonitoredItem.');
+            }
+            // verify required parameter 'itemId' is not null or undefined
+            if (itemId === null || itemId === undefined) {
+                throw new RequiredError('itemId','Required parameter itemId was null or undefined when calling hDControllerDeleteUserMonitoredItem.');
+            }
+            const localVarPath = `/api/retailers/homedepot/guilds/{guildId}/monitored-items/{userId}/{storeId}/{itemId}`
+                .replace(`{${"guildId"}}`, encodeURIComponent(String(guildId)))
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)))
+                .replace(`{${"storeId"}}`, encodeURIComponent(String(storeId)))
+                .replace(`{${"itemId"}}`, encodeURIComponent(String(itemId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
             }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -454,8 +542,6 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
                 localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
             }
 
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -466,8 +552,6 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -658,8 +742,57 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
             if (categoryId === null || categoryId === undefined) {
                 throw new RequiredError('categoryId','Required parameter categoryId was null or undefined when calling hDControllerGetCategoryDetails.');
             }
-            const localVarPath = `/api/retailers/homedepot/categories/{categoryId}`
+            const localVarPath = `/api/retailers/homedepot/categories/details/{categoryId}`
                 .replace(`{${"categoryId"}}`, encodeURIComponent(String(categoryId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get monitored items for a specific guild
+         * @param {string} guildId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerGetGuildMonitoredItems: async (guildId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'guildId' is not null or undefined
+            if (guildId === null || guildId === undefined) {
+                throw new RequiredError('guildId','Required parameter guildId was null or undefined when calling hDControllerGetGuildMonitoredItems.');
+            }
+            const localVarPath = `/api/retailers/homedepot/guilds/{guildId}/monitored-items`
+                .replace(`{${"guildId"}}`, encodeURIComponent(String(guildId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -1132,6 +1265,61 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * 
+         * @summary Get monitored items for a specific user
+         * @param {string} guildId 
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerGetUserMonitoredItems: async (guildId: string, userId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'guildId' is not null or undefined
+            if (guildId === null || guildId === undefined) {
+                throw new RequiredError('guildId','Required parameter guildId was null or undefined when calling hDControllerGetUserMonitoredItems.');
+            }
+            // verify required parameter 'userId' is not null or undefined
+            if (userId === null || userId === undefined) {
+                throw new RequiredError('userId','Required parameter userId was null or undefined when calling hDControllerGetUserMonitoredItems.');
+            }
+            const localVarPath = `/api/retailers/homedepot/guilds/{guildId}/monitored-items/{userId}`
+                .replace(`{${"guildId"}}`, encodeURIComponent(String(guildId)))
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get premium checks for a user
          * @param {string} guildId 
          * @param {string} userId 
@@ -1335,6 +1523,58 @@ export const HomeDepotApiAxiosParamCreator = function (configuration?: Configura
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Fetch stores updated clearance colletion
+         * @param {Array<string>} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        hDControllerUpdatedStoreDealLists: async (body: Array<string>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling hDControllerUpdatedStoreDealLists.');
+            }
+            const localVarPath = `/api/retailers/homedepot/clearance-collection`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            if (configuration && configuration.accessToken) {
+                const accessToken = typeof configuration.accessToken === 'function'
+                    ? await configuration.accessToken()
+                    : await configuration.accessToken;
+                localVarHeaderParameter["Authorization"] = "Bearer " + accessToken;
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -1435,6 +1675,23 @@ export const HomeDepotApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Add item to be monitored for a specific user
+         * @param {string} guildId 
+         * @param {string} userId 
+         * @param {string} storeId 
+         * @param {string} itemId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDMonitoredItemDto>>> {
+            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerAddUserMonitoredItems(guildId, userId, storeId, itemId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary Add premium check usage for a user
          * @param {string} guildId 
          * @param {string} userId 
@@ -1450,13 +1707,16 @@ export const HomeDepotApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Check stores clearance colletion
-         * @param {Array<string>} body 
+         * @summary Delete item being monitored for a specific user
+         * @param {string} guildId 
+         * @param {string} userId 
+         * @param {string} storeId 
+         * @param {string} itemId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerCheckStoreDealLists(body: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDClearanceCollectionResponseDto>>> {
-            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerCheckStoreDealLists(body, options);
+        async hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
+            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerDeleteUserMonitoredItem(guildId, userId, storeId, itemId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1523,6 +1783,20 @@ export const HomeDepotApiFp = function(configuration?: Configuration) {
          */
         async hDControllerGetCategoryDetails(categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDCategoryDetailsDto>>> {
             const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerGetCategoryDetails(categoryId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
+         * @summary Get monitored items for a specific guild
+         * @param {string} guildId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerGetGuildMonitoredItems(guildId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HdTotalMonitoredItemsDto>>> {
+            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerGetGuildMonitoredItems(guildId, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1645,6 +1919,21 @@ export const HomeDepotApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get monitored items for a specific user
+         * @param {string} guildId 
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerGetUserMonitoredItems(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HdTotalMonitoredItemsDto>>> {
+            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerGetUserMonitoredItems(guildId, userId, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
          * @summary Get premium checks for a user
          * @param {string} guildId 
          * @param {string} userId 
@@ -1695,6 +1984,20 @@ export const HomeDepotApiFp = function(configuration?: Configuration) {
          */
         async hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>> {
             const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerUpdateItemStatus(body, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * 
+         * @summary Fetch stores updated clearance colletion
+         * @param {Array<string>} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerUpdatedStoreDealLists(body: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDClearanceCollectionResponseDto>>> {
+            const localVarAxiosArgs = await HomeDepotApiAxiosParamCreator(configuration).hDControllerUpdatedStoreDealLists(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1776,6 +2079,19 @@ export const HomeDepotApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @summary Add item to be monitored for a specific user
+         * @param {string} guildId 
+         * @param {string} userId 
+         * @param {string} storeId 
+         * @param {string} itemId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDMonitoredItemDto>> {
+            return HomeDepotApiFp(configuration).hDControllerAddUserMonitoredItems(guildId, userId, storeId, itemId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Add premium check usage for a user
          * @param {string} guildId 
          * @param {string} userId 
@@ -1787,13 +2103,16 @@ export const HomeDepotApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
-         * @summary Check stores clearance colletion
-         * @param {Array<string>} body 
+         * @summary Delete item being monitored for a specific user
+         * @param {string} guildId 
+         * @param {string} userId 
+         * @param {string} storeId 
+         * @param {string} itemId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async hDControllerCheckStoreDealLists(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<HDClearanceCollectionResponseDto>> {
-            return HomeDepotApiFp(configuration).hDControllerCheckStoreDealLists(body, options).then((request) => request(axios, basePath));
+        async hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
+            return HomeDepotApiFp(configuration).hDControllerDeleteUserMonitoredItem(guildId, userId, storeId, itemId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1840,6 +2159,16 @@ export const HomeDepotApiFactory = function (configuration?: Configuration, base
          */
         async hDControllerGetCategoryDetails(categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDCategoryDetailsDto>> {
             return HomeDepotApiFp(configuration).hDControllerGetCategoryDetails(categoryId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get monitored items for a specific guild
+         * @param {string} guildId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerGetGuildMonitoredItems(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HdTotalMonitoredItemsDto>> {
+            return HomeDepotApiFp(configuration).hDControllerGetGuildMonitoredItems(guildId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1930,6 +2259,17 @@ export const HomeDepotApiFactory = function (configuration?: Configuration, base
         },
         /**
          * 
+         * @summary Get monitored items for a specific user
+         * @param {string} guildId 
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerGetUserMonitoredItems(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HdTotalMonitoredItemsDto>> {
+            return HomeDepotApiFp(configuration).hDControllerGetUserMonitoredItems(guildId, userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get premium checks for a user
          * @param {string} guildId 
          * @param {string} userId 
@@ -1968,6 +2308,16 @@ export const HomeDepotApiFactory = function (configuration?: Configuration, base
          */
         async hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>> {
             return HomeDepotApiFp(configuration).hDControllerUpdateItemStatus(body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Fetch stores updated clearance colletion
+         * @param {Array<string>} body 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async hDControllerUpdatedStoreDealLists(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<HDClearanceCollectionResponseDto>> {
+            return HomeDepotApiFp(configuration).hDControllerUpdatedStoreDealLists(body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2052,6 +2402,20 @@ export class HomeDepotApi extends BaseAPI {
     }
     /**
      * 
+     * @summary Add item to be monitored for a specific user
+     * @param {string} guildId 
+     * @param {string} userId 
+     * @param {string} storeId 
+     * @param {string} itemId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    public async hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDMonitoredItemDto>> {
+        return HomeDepotApiFp(this.configuration).hDControllerAddUserMonitoredItems(guildId, userId, storeId, itemId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
      * @summary Add premium check usage for a user
      * @param {string} guildId 
      * @param {string} userId 
@@ -2064,14 +2428,17 @@ export class HomeDepotApi extends BaseAPI {
     }
     /**
      * 
-     * @summary Check stores clearance colletion
-     * @param {Array<string>} body 
+     * @summary Delete item being monitored for a specific user
+     * @param {string} guildId 
+     * @param {string} userId 
+     * @param {string} storeId 
+     * @param {string} itemId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HomeDepotApi
      */
-    public async hDControllerCheckStoreDealLists(body: Array<string>, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDClearanceCollectionResponseDto>> {
-        return HomeDepotApiFp(this.configuration).hDControllerCheckStoreDealLists(body, options).then((request) => request(this.axios, this.basePath));
+    public async hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
+        return HomeDepotApiFp(this.configuration).hDControllerDeleteUserMonitoredItem(guildId, userId, storeId, itemId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
@@ -2123,6 +2490,17 @@ export class HomeDepotApi extends BaseAPI {
      */
     public async hDControllerGetCategoryDetails(categoryId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDCategoryDetailsDto>> {
         return HomeDepotApiFp(this.configuration).hDControllerGetCategoryDetails(categoryId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Get monitored items for a specific guild
+     * @param {string} guildId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    public async hDControllerGetGuildMonitoredItems(guildId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HdTotalMonitoredItemsDto>> {
+        return HomeDepotApiFp(this.configuration).hDControllerGetGuildMonitoredItems(guildId, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * 
@@ -2220,6 +2598,18 @@ export class HomeDepotApi extends BaseAPI {
     }
     /**
      * 
+     * @summary Get monitored items for a specific user
+     * @param {string} guildId 
+     * @param {string} userId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    public async hDControllerGetUserMonitoredItems(guildId: string, userId: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<HdTotalMonitoredItemsDto>> {
+        return HomeDepotApiFp(this.configuration).hDControllerGetUserMonitoredItems(guildId, userId, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
      * @summary Get premium checks for a user
      * @param {string} guildId 
      * @param {string} userId 
@@ -2262,5 +2652,16 @@ export class HomeDepotApi extends BaseAPI {
      */
     public async hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig) : Promise<AxiosResponse<void>> {
         return HomeDepotApiFp(this.configuration).hDControllerUpdateItemStatus(body, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * 
+     * @summary Fetch stores updated clearance colletion
+     * @param {Array<string>} body 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    public async hDControllerUpdatedStoreDealLists(body: Array<string>, options?: AxiosRequestConfig) : Promise<AxiosResponse<HDClearanceCollectionResponseDto>> {
+        return HomeDepotApiFp(this.configuration).hDControllerUpdatedStoreDealLists(body, options).then((request) => request(this.axios, this.basePath));
     }
 }

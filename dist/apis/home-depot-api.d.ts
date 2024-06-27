@@ -18,10 +18,12 @@ import { HDCategoryDto } from '../models';
 import { HDClearanceCollectionResponseDto } from '../models';
 import { HDGlobalItemsResponseDto } from '../models';
 import { HDItemMSRPDto } from '../models';
+import { HDMonitoredItemDto } from '../models';
 import { HDPremiumUsageResponseDto } from '../models';
 import { HDStoreDto } from '../models';
 import { HDStoreItemsResponseDto } from '../models';
 import { HDUpdateItemStatusDto } from '../models';
+import { HdTotalMonitoredItemsDto } from '../models';
 import { UpsertHDStoreItemDto } from '../models';
 /**
  * HomeDepotApi - axios parameter creator
@@ -83,6 +85,17 @@ export declare const HomeDepotApiAxiosParamCreator: (configuration?: Configurati
     hDControllerAddItemsToStore: (body: BulkUpsertHDStoreItemsDto, storeId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Add item to be monitored for a specific user
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerAddUserMonitoredItems: (guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Add premium check usage for a user
      * @param {string} guildId
      * @param {string} userId
@@ -92,12 +105,15 @@ export declare const HomeDepotApiAxiosParamCreator: (configuration?: Configurati
     hDControllerAddUserPremiumChecks: (guildId: string, userId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
-     * @summary Check stores clearance colletion
-     * @param {Array<string>} body
+     * @summary Delete item being monitored for a specific user
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerCheckStoreDealLists: (body: Array<string>, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    hDControllerDeleteUserMonitoredItem: (guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get all HD categories info
@@ -134,6 +150,14 @@ export declare const HomeDepotApiAxiosParamCreator: (configuration?: Configurati
      * @throws {RequiredError}
      */
     hDControllerGetCategoryDetails: (categoryId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Get monitored items for a specific guild
+     * @param {string} guildId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetGuildMonitoredItems: (guildId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
      * @summary Get premium checks for a guild
@@ -209,6 +233,15 @@ export declare const HomeDepotApiAxiosParamCreator: (configuration?: Configurati
     hDControllerGetItemsGlobally: (page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Get monitored items for a specific user
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetUserMonitoredItems: (guildId: string, userId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Get premium checks for a user
      * @param {string} guildId
      * @param {string} userId
@@ -240,6 +273,14 @@ export declare const HomeDepotApiAxiosParamCreator: (configuration?: Configurati
      * @throws {RequiredError}
      */
     hDControllerUpdateItemStatus: (body: HDUpdateItemStatusDto, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
+     * @summary Fetch stores updated clearance colletion
+     * @param {Array<string>} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdatedStoreDealLists: (body: Array<string>, options?: AxiosRequestConfig) => Promise<RequestArgs>;
 };
 /**
  * HomeDepotApi - functional programming interface
@@ -301,6 +342,17 @@ export declare const HomeDepotApiFp: (configuration?: Configuration) => {
     hDControllerAddItemsToStore(body: BulkUpsertHDStoreItemsDto, storeId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
+     * @summary Add item to be monitored for a specific user
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDMonitoredItemDto>>>;
+    /**
+     *
      * @summary Add premium check usage for a user
      * @param {string} guildId
      * @param {string} userId
@@ -310,12 +362,15 @@ export declare const HomeDepotApiFp: (configuration?: Configuration) => {
     hDControllerAddUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
-     * @summary Check stores clearance colletion
-     * @param {Array<string>} body
+     * @summary Delete item being monitored for a specific user
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerCheckStoreDealLists(body: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDClearanceCollectionResponseDto>>>;
+    hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
      * @summary Get all HD categories info
@@ -352,6 +407,14 @@ export declare const HomeDepotApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     hDControllerGetCategoryDetails(categoryId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDCategoryDetailsDto>>>;
+    /**
+     *
+     * @summary Get monitored items for a specific guild
+     * @param {string} guildId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetGuildMonitoredItems(guildId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HdTotalMonitoredItemsDto>>>;
     /**
      *
      * @summary Get premium checks for a guild
@@ -427,6 +490,15 @@ export declare const HomeDepotApiFp: (configuration?: Configuration) => {
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDGlobalItemsResponseDto>>>;
     /**
      *
+     * @summary Get monitored items for a specific user
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetUserMonitoredItems(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HdTotalMonitoredItemsDto>>>;
+    /**
+     *
      * @summary Get premium checks for a user
      * @param {string} guildId
      * @param {string} userId
@@ -458,6 +530,14 @@ export declare const HomeDepotApiFp: (configuration?: Configuration) => {
      * @throws {RequiredError}
      */
     hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
+    /**
+     *
+     * @summary Fetch stores updated clearance colletion
+     * @param {Array<string>} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdatedStoreDealLists(body: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDClearanceCollectionResponseDto>>>;
 };
 /**
  * HomeDepotApi - factory interface
@@ -519,6 +599,17 @@ export declare const HomeDepotApiFactory: (configuration?: Configuration, basePa
     hDControllerAddItemsToStore(body: BulkUpsertHDStoreItemsDto, storeId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
+     * @summary Add item to be monitored for a specific user
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDMonitoredItemDto>>;
+    /**
+     *
      * @summary Add premium check usage for a user
      * @param {string} guildId
      * @param {string} userId
@@ -528,12 +619,15 @@ export declare const HomeDepotApiFactory: (configuration?: Configuration, basePa
     hDControllerAddUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
-     * @summary Check stores clearance colletion
-     * @param {Array<string>} body
+     * @summary Delete item being monitored for a specific user
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    hDControllerCheckStoreDealLists(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<HDClearanceCollectionResponseDto>>;
+    hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Get all HD categories info
@@ -570,6 +664,14 @@ export declare const HomeDepotApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     hDControllerGetCategoryDetails(categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDCategoryDetailsDto>>;
+    /**
+     *
+     * @summary Get monitored items for a specific guild
+     * @param {string} guildId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetGuildMonitoredItems(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HdTotalMonitoredItemsDto>>;
     /**
      *
      * @summary Get premium checks for a guild
@@ -645,6 +747,15 @@ export declare const HomeDepotApiFactory: (configuration?: Configuration, basePa
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>>;
     /**
      *
+     * @summary Get monitored items for a specific user
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerGetUserMonitoredItems(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HdTotalMonitoredItemsDto>>;
+    /**
+     *
      * @summary Get premium checks for a user
      * @param {string} guildId
      * @param {string} userId
@@ -676,6 +787,14 @@ export declare const HomeDepotApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
+     * @summary Fetch stores updated clearance colletion
+     * @param {Array<string>} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerUpdatedStoreDealLists(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<HDClearanceCollectionResponseDto>>;
 };
 /**
  * HomeDepotApi - object-oriented interface
@@ -745,6 +864,18 @@ export declare class HomeDepotApi extends BaseAPI {
     hDControllerAddItemsToStore(body: BulkUpsertHDStoreItemsDto, storeId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
+     * @summary Add item to be monitored for a specific user
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    hDControllerAddUserMonitoredItems(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDMonitoredItemDto>>;
+    /**
+     *
      * @summary Add premium check usage for a user
      * @param {string} guildId
      * @param {string} userId
@@ -755,13 +886,16 @@ export declare class HomeDepotApi extends BaseAPI {
     hDControllerAddUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
-     * @summary Check stores clearance colletion
-     * @param {Array<string>} body
+     * @summary Delete item being monitored for a specific user
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {string} storeId
+     * @param {string} itemId
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof HomeDepotApi
      */
-    hDControllerCheckStoreDealLists(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<HDClearanceCollectionResponseDto>>;
+    hDControllerDeleteUserMonitoredItem(guildId: string, userId: string, storeId: string, itemId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
     /**
      *
      * @summary Get all HD categories info
@@ -803,6 +937,15 @@ export declare class HomeDepotApi extends BaseAPI {
      * @memberof HomeDepotApi
      */
     hDControllerGetCategoryDetails(categoryId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HDCategoryDetailsDto>>;
+    /**
+     *
+     * @summary Get monitored items for a specific guild
+     * @param {string} guildId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    hDControllerGetGuildMonitoredItems(guildId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HdTotalMonitoredItemsDto>>;
     /**
      *
      * @summary Get premium checks for a guild
@@ -885,6 +1028,16 @@ export declare class HomeDepotApi extends BaseAPI {
     hDControllerGetItemsGlobally(page?: number, pageSize?: number, searchKey?: string, categoryId?: string, msrp?: string, buyAsLowAs?: string, clearanceOnly?: boolean, options?: AxiosRequestConfig): Promise<AxiosResponse<HDGlobalItemsResponseDto>>;
     /**
      *
+     * @summary Get monitored items for a specific user
+     * @param {string} guildId
+     * @param {string} userId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    hDControllerGetUserMonitoredItems(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<HdTotalMonitoredItemsDto>>;
+    /**
+     *
      * @summary Get premium checks for a user
      * @param {string} guildId
      * @param {string} userId
@@ -920,4 +1073,13 @@ export declare class HomeDepotApi extends BaseAPI {
      * @memberof HomeDepotApi
      */
     hDControllerUpdateItemStatus(body: HDUpdateItemStatusDto, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
+     * @summary Fetch stores updated clearance colletion
+     * @param {Array<string>} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof HomeDepotApi
+     */
+    hDControllerUpdatedStoreDealLists(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<HDClearanceCollectionResponseDto>>;
 }
