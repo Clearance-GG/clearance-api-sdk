@@ -20,6 +20,7 @@ __exportStar(require("./bulk-upsert-hdstore-items-dto"), exports);
 __exportStar(require("./category-roles-dto"), exports);
 __exportStar(require("./discord-id-dto"), exports);
 __exportStar(require("./dump-roles-response-dto"), exports);
+__exportStar(require("./error-response-dto"), exports);
 __exportStar(require("./geometry-dto"), exports);
 __exportStar(require("./get-channel-ids-response-dto"), exports);
 __exportStar(require("./hdcategory-details-dto"), exports);

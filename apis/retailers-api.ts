@@ -18,6 +18,7 @@ import { Configuration } from '../configuration';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { BulkUpsertHDStoreItemsDto } from '../models';
+import { ErrorResponseDto } from '../models';
 import { HDCategoryDetailsDto } from '../models';
 import { HDCategoryDto } from '../models';
 import { HDClearanceCollectionResponseDto } from '../models';

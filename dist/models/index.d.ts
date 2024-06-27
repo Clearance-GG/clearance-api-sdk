@@ -4,6 +4,7 @@ export * from './bulk-upsert-hdstore-items-dto';
 export * from './category-roles-dto';
 export * from './discord-id-dto';
 export * from './dump-roles-response-dto';
+export * from './error-response-dto';
 export * from './geometry-dto';
 export * from './get-channel-ids-response-dto';
 export * from './hdcategory-details-dto';
