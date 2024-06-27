@@ -104,6 +104,14 @@ export declare const RetailersApiAxiosParamCreator: (configuration?: Configurati
     hDControllerAddUserPremiumChecks: (guildId: string, userId: string, options?: AxiosRequestConfig) => Promise<RequestArgs>;
     /**
      *
+     * @summary Check stores clearance colletion
+     * @param {Array<string>} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerCheckStoreDealLists: (body: Array<string>, options?: AxiosRequestConfig) => Promise<RequestArgs>;
+    /**
+     *
      * @summary Delete item being monitored for a specific user
      * @param {string} guildId
      * @param {string} userId
@@ -361,6 +369,14 @@ export declare const RetailersApiFp: (configuration?: Configuration) => {
     hDControllerAddUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<void>>>;
     /**
      *
+     * @summary Check stores clearance colletion
+     * @param {Array<string>} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerCheckStoreDealLists(body: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<HDClearanceCollectionResponseDto>>>;
+    /**
+     *
      * @summary Delete item being monitored for a specific user
      * @param {string} guildId
      * @param {string} userId
@@ -616,6 +632,14 @@ export declare const RetailersApiFactory: (configuration?: Configuration, basePa
      * @throws {RequiredError}
      */
     hDControllerAddUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
+     * @summary Check stores clearance colletion
+     * @param {Array<string>} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    hDControllerCheckStoreDealLists(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<HDClearanceCollectionResponseDto>>;
     /**
      *
      * @summary Delete item being monitored for a specific user
@@ -883,6 +907,15 @@ export declare class RetailersApi extends BaseAPI {
      * @memberof RetailersApi
      */
     hDControllerAddUserPremiumChecks(guildId: string, userId: string, options?: AxiosRequestConfig): Promise<AxiosResponse<void>>;
+    /**
+     *
+     * @summary Check stores clearance colletion
+     * @param {Array<string>} body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RetailersApi
+     */
+    hDControllerCheckStoreDealLists(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<HDClearanceCollectionResponseDto>>;
     /**
      *
      * @summary Delete item being monitored for a specific user
