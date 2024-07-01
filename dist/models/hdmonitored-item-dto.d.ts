@@ -24,6 +24,13 @@ export interface HDMonitoredItemDto {
      */
     userId: string;
     /**
+     * Guild which the item is being monitored for
+     *
+     * @type {string}
+     * @memberof HDMonitoredItemDto
+     */
+    guildId: string;
+    /**
      * Store that it is being monitored at
      *
      * @type {string}
@@ -37,6 +44,34 @@ export interface HDMonitoredItemDto {
      * @memberof HDMonitoredItemDto
      */
     itemId: string;
+    /**
+     * Brand of the item being monitored
+     *
+     * @type {string}
+     * @memberof HDMonitoredItemDto
+     */
+    brand: string;
+    /**
+     * Name of the item being monitored
+     *
+     * @type {string}
+     * @memberof HDMonitoredItemDto
+     */
+    name: string;
+    /**
+     * Msrp of the item being monitored
+     *
+     * @type {number}
+     * @memberof HDMonitoredItemDto
+     */
+    msrp: number;
+    /**
+     * Image of the item being monitored
+     *
+     * @type {string}
+     * @memberof HDMonitoredItemDto
+     */
+    image: string;
     /**
      * Item that is being monitored
      *

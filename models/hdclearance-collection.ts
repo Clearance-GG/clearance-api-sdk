@@ -61,6 +61,14 @@ export interface HDClearanceCollection {
     url: string;
 
     /**
+     * Product Category
+     *
+     * @type {string}
+     * @memberof HDClearanceCollection
+     */
+    category: string;
+
+    /**
      * Inventory count
      *
      * @type {number}
@@ -83,4 +91,12 @@ export interface HDClearanceCollection {
      * @memberof HDClearanceCollection
      */
     discountPercentage: number;
+
+    /**
+     * Product UPC
+     *
+     * @type {string}
+     * @memberof HDClearanceCollection
+     */
+    upc: string;
 }
